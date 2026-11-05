@@ -344,6 +344,7 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 /* ------------------------------------------------------------ diagrams */
 .diagram { margin: 1.25rem 0; padding: 0.75rem; background: var(--sheet); border: 1px solid var(--rule); overflow-x: auto; }
 .diagram-out svg { display: block; margin-inline: auto; max-width: 100%; height: auto; }
+.diagram.is-wide::after { content: "Kéo ngang để xem hết sơ đồ"; position: sticky; left: 0; display: block; width: max-content; margin-top: 0.5rem; font-size: 0.78rem; color: var(--ink-2); }
 .diagram-src { margin: 0; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; color: var(--ink-2); white-space: pre; }
 .diagram[data-drawn] .diagram-src { display: none; }
 .diagram.is-failed::before { content: "Không tải được thư viện vẽ sơ đồ. Đây là mã nguồn của sơ đồ."; display: block; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--ink); }
@@ -518,14 +519,14 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
       <div class="search-results" id="search-results" hidden></div>
     </div>
     <p class="progress nav-progress" data-progress></p>
-    <nav><section class="nav-group"><h2>1 · Nền tảng dùng chung</h2><ul><li><a class="nav-link" data-page="00-cach-hoc-feynman" href="#/00-cach-hoc-feynman"><span class="nav-num">0</span><span class="nav-label">Cách học Feynman</span><span class="seal" data-state-page="00-cach-hoc-feynman" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="01-encoding-csv-duong-dan" href="#/01-encoding-csv-duong-dan"><span class="nav-num">1</span><span class="nav-label">Encoding, BOM, CSV, đường dẫn</span><span class="seal" data-state-page="01-encoding-csv-duong-dan" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="02-van-hanh-theo-yeu-cau" href="#/02-van-hanh-theo-yeu-cau"><span class="nav-num">2</span><span class="nav-label">Vận hành theo yêu cầu</span><span class="seal" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="tu-vung-tieng-nhat" href="#/tu-vung-tieng-nhat"><span class="nav-num"></span><span class="nav-label">Từ vựng tiếng Nhật</span></a></li></ul></section><section class="nav-group"><h2>2 · Truyền và chuyển đổi dữ liệu</h2><ul><li><a class="nav-link" data-page="03-hulft" href="#/03-hulft"><span class="nav-num">3</span><span class="nav-label">HULFT</span><span class="seal" data-state-page="03-hulft" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="04-datamagic" href="#/04-datamagic"><span class="nav-num">4</span><span class="nav-label">DataMagic</span><span class="seal" data-state-page="04-datamagic" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>3 · Tool Excel</h2><ul><li><a class="nav-link" data-page="05-vba" href="#/05-vba"><span class="nav-num">5</span><span class="nav-label">VBA</span><span class="seal" data-state-page="05-vba" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="06-excel-pivot-chart" href="#/06-excel-pivot-chart"><span class="nav-num">6</span><span class="nav-label">Pivot và Chart</span><span class="seal" data-state-page="06-excel-pivot-chart" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>4 · Kiểm soát truy cập và giám sát</h2><ul><li><a class="nav-link" data-page="07-access-gateway" href="#/07-access-gateway"><span class="nav-num">7</span><span class="nav-label">Gateway đặc quyền</span><span class="seal" data-state-page="07-access-gateway" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="08-ess-rec" href="#/08-ess-rec"><span class="nav-num">8</span><span class="nav-label">ESS REC</span><span class="seal" data-state-page="08-ess-rec" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="09-slm" href="#/09-slm"><span class="nav-num">9</span><span class="nav-label">JP1/SLM</span><span class="seal" data-state-page="09-slm" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>5 · Hệ điều hành và file server</h2><ul><li><a class="nav-link" data-page="10-rhel" href="#/10-rhel"><span class="nav-num">10</span><span class="nav-label">RHEL</span><span class="seal" data-state-page="10-rhel" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="11-linux-shell-acl" href="#/11-linux-shell-acl"><span class="nav-num">11</span><span class="nav-label">Linux shell và ACL</span><span class="seal" data-state-page="11-linux-shell-acl" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="12-windows-server" href="#/12-windows-server"><span class="nav-num">12</span><span class="nav-label">Windows Server</span><span class="seal" data-state-page="12-windows-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="13-windows-file-server" href="#/13-windows-file-server"><span class="nav-num">13</span><span class="nav-label">Windows File Server</span><span class="seal" data-state-page="13-windows-file-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="14-samba" href="#/14-samba"><span class="nav-num">14</span><span class="nav-label">Samba</span><span class="seal" data-state-page="14-samba" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>6 · Công cụ bổ trợ</h2><ul><li><a class="nav-link" data-page="15-servicenow" href="#/15-servicenow"><span class="nav-num">15</span><span class="nav-label">ServiceNow</span><span class="seal" data-state-page="15-servicenow" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="16-clusterpro" href="#/16-clusterpro"><span class="nav-num">16</span><span class="nav-label">CLUSTERPRO</span><span class="seal" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="17-aws-cli-s3" href="#/17-aws-cli-s3"><span class="nav-num">17</span><span class="nav-label">AWS CLI và S3</span><span class="seal" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>Lab thực hành</h2><ul><li><a class="nav-link" data-page="lab-encoding" href="#/lab-encoding"><span class="nav-num"></span><span class="nav-label">Encoding và dữ liệu độ dài cố định</span></a></li><li><a class="nav-link" data-page="lab-vba" href="#/lab-vba"><span class="nav-num"></span><span class="nav-label">VBA</span></a></li><li><a class="nav-link" data-page="lab-linux-acl" href="#/lab-linux-acl"><span class="nav-num"></span><span class="nav-label">Quyền Linux và POSIX ACL</span></a></li><li><a class="nav-link" data-page="lab-samba" href="#/lab-samba"><span class="nav-num"></span><span class="nav-label">Samba</span></a></li></ul></section></nav>
+    <nav><section class="nav-group"><h2>1 · Nền tảng dùng chung</h2><ul><li><a class="nav-link" data-page="00-cach-hoc-feynman" href="#/00-cach-hoc-feynman"><span class="nav-num">0</span><span class="nav-label">Cách học Feynman</span><span class="seal" data-state-page="00-cach-hoc-feynman" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="01-encoding-csv-duong-dan" href="#/01-encoding-csv-duong-dan"><span class="nav-num">1</span><span class="nav-label">Encoding, BOM, CSV, đường dẫn</span><span class="seal" data-state-page="01-encoding-csv-duong-dan" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="02-van-hanh-theo-yeu-cau" href="#/02-van-hanh-theo-yeu-cau"><span class="nav-num">2</span><span class="nav-label">Vận hành theo yêu cầu</span><span class="seal" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="tu-vung-tieng-nhat" href="#/tu-vung-tieng-nhat"><span class="nav-num"></span><span class="nav-label">Từ vựng tiếng Nhật</span></a></li></ul></section><section class="nav-group"><h2>2 · Truyền và chuyển đổi dữ liệu</h2><ul><li><a class="nav-link" data-page="03-hulft" href="#/03-hulft"><span class="nav-num">3</span><span class="nav-label">HULFT</span><span class="seal" data-state-page="03-hulft" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="04-datamagic" href="#/04-datamagic"><span class="nav-num">4</span><span class="nav-label">DataMagic</span><span class="seal" data-state-page="04-datamagic" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>3 · Tool Excel</h2><ul><li><a class="nav-link" data-page="05-vba" href="#/05-vba"><span class="nav-num">5</span><span class="nav-label">VBA</span><span class="seal" data-state-page="05-vba" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="06-excel-pivot-chart" href="#/06-excel-pivot-chart"><span class="nav-num">6</span><span class="nav-label">Pivot và Chart</span><span class="seal" data-state-page="06-excel-pivot-chart" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>4 · Kiểm soát truy cập và giám sát</h2><ul><li><a class="nav-link" data-page="07-access-gateway" href="#/07-access-gateway"><span class="nav-num">7</span><span class="nav-label">Gateway đặc quyền</span><span class="seal" data-state-page="07-access-gateway" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="08-ess-rec" href="#/08-ess-rec"><span class="nav-num">8</span><span class="nav-label">ESS REC</span><span class="seal" data-state-page="08-ess-rec" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="09-slm" href="#/09-slm"><span class="nav-num">9</span><span class="nav-label">JP1/SLM</span><span class="seal" data-state-page="09-slm" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>5 · Hệ điều hành và file server</h2><ul><li><a class="nav-link" data-page="10-rhel" href="#/10-rhel"><span class="nav-num">10</span><span class="nav-label">RHEL</span><span class="seal" data-state-page="10-rhel" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="11-linux-shell-acl" href="#/11-linux-shell-acl"><span class="nav-num">11</span><span class="nav-label">Linux shell và ACL</span><span class="seal" data-state-page="11-linux-shell-acl" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="12-windows-server" href="#/12-windows-server"><span class="nav-num">12</span><span class="nav-label">Windows Server</span><span class="seal" data-state-page="12-windows-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="13-windows-file-server" href="#/13-windows-file-server"><span class="nav-num">13</span><span class="nav-label">Windows File Server</span><span class="seal" data-state-page="13-windows-file-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="14-samba" href="#/14-samba"><span class="nav-num">14</span><span class="nav-label">Samba</span><span class="seal" data-state-page="14-samba" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>6 · Công cụ bổ trợ</h2><ul><li><a class="nav-link" data-page="15-servicenow" href="#/15-servicenow"><span class="nav-num">15</span><span class="nav-label">ServiceNow</span><span class="seal" data-state-page="15-servicenow" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="16-clusterpro" href="#/16-clusterpro"><span class="nav-num">16</span><span class="nav-label">CLUSTERPRO</span><span class="seal" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="17-aws-cli-s3" href="#/17-aws-cli-s3"><span class="nav-num">17</span><span class="nav-label">AWS CLI và S3</span><span class="seal" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>7 · Oracle</h2><ul><li><a class="nav-link" data-page="18-oracle-database" href="#/18-oracle-database"><span class="nav-num">18</span><span class="nav-label">Oracle Database</span><span class="seal" data-state-page="18-oracle-database" role="img" aria-label="Đã học">済</span></a></li><li><a class="nav-link" data-page="19-oracle-web-app-server" href="#/19-oracle-web-app-server"><span class="nav-num">19</span><span class="nav-label">OHS, WebLogic, Tuxedo</span><span class="seal" data-state-page="19-oracle-web-app-server" role="img" aria-label="Đã học">済</span></a></li></ul></section><section class="nav-group"><h2>Lab thực hành</h2><ul><li><a class="nav-link" data-page="lab-encoding" href="#/lab-encoding"><span class="nav-num"></span><span class="nav-label">Encoding và dữ liệu độ dài cố định</span></a></li><li><a class="nav-link" data-page="lab-vba" href="#/lab-vba"><span class="nav-num"></span><span class="nav-label">VBA</span></a></li><li><a class="nav-link" data-page="lab-linux-acl" href="#/lab-linux-acl"><span class="nav-num"></span><span class="nav-label">Quyền Linux và POSIX ACL</span></a></li><li><a class="nav-link" data-page="lab-samba" href="#/lab-samba"><span class="nav-num"></span><span class="nav-label">Samba</span></a></li></ul></section></nav>
   </aside>
   <div class="backdrop" id="backdrop"></div>
   <main class="main" id="main">
 <article class="page page-home" data-page="home"><div class="hero"><p class="hero-eyebrow" lang="ja">運用保守</p><h1 tabindex="-1">Cẩm nang vận hành hệ thống doanh nghiệp Nhật</h1><div class="hero-intro"><p>Tài liệu tự học các tool hay gặp trong dự án vận hành (運用保守) cho doanh nghiệp Nhật, từ cơ bản đến trung bình.</p>
 <p>Các khái niệm khó được giải thích theo <a href="#/00-cach-hoc-feynman">phương pháp Feynman</a>: nói bằng lời đơn giản, dùng ví dụ đời thường, rồi chỉ ra ví dụ đó sai ở đâu.</p>
 </div><div class="hero-actions"><a class="cta" id="continue" href="#/00-cach-hoc-feynman">Bắt đầu từ Bài 0</a><span class="progress" data-progress></span></div></div><div class="home-body"><h2 class="route-title">Lộ trình</h2><p>Thứ tự dưới đây đi từ nền tảng dùng chung tới công cụ cụ thể. Mức <strong>A</strong> là cần dùng được khi đi làm, mức <strong>B</strong> là biết thêm thì tốt.</p>
-<section class="leg"><h2>Chặng 1: Nền tảng dùng chung</h2><ol class="route"><li><a class="route-row" href="#/00-cach-hoc-feynman"><span class="route-num">0</span><span class="route-text"><strong>Cách học Feynman</strong><span>Cách dùng repo này</span></span><span></span><span class="seal" data-state-page="00-cach-hoc-feynman" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/01-encoding-csv-duong-dan"><span class="route-num">1</span><span class="route-text"><strong>Encoding, BOM, CSV, đường dẫn</strong><span>Vì sao chữ lỗi, vì sao job không thấy file</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="01-encoding-csv-duong-dan" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/02-van-hanh-theo-yeu-cau"><span class="route-num">2</span><span class="route-text"><strong>Vận hành theo yêu cầu</strong><span>Đọc yêu cầu, đánh giá ảnh hưởng, bằng chứng</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/tu-vung-tieng-nhat"><span class="route-num"></span><span class="route-text"><strong>Từ vựng tiếng Nhật</strong><span>Tra cứu khi đọc tài liệu và ticket</span></span><span class="lv lv-b">B</span><span></span></a></li></ol></section><section class="leg"><h2>Chặng 2: Truyền và chuyển đổi dữ liệu</h2><ol class="route"><li><a class="route-row" href="#/03-hulft"><span class="route-num">3</span><span class="route-text"><strong>HULFT</strong><span>Truyền file giữa các hệ thống</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="03-hulft" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/04-datamagic"><span class="route-num">4</span><span class="route-text"><strong>DataMagic</strong><span>Chuyển đổi dữ liệu, EBCDIC, packed decimal</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="04-datamagic" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 3: Tool Excel</h2><ol class="route"><li><a class="route-row" href="#/05-vba"><span class="route-num">5</span><span class="route-text"><strong>VBA</strong><span>Đọc, sửa, kiểm thử macro có sẵn</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="05-vba" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/06-excel-pivot-chart"><span class="route-num">6</span><span class="route-text"><strong>Pivot và Chart</strong><span>Báo cáo đúng và tự động hoá</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="06-excel-pivot-chart" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 4: Kiểm soát truy cập và giám sát</h2><ol class="route"><li><a class="route-row" href="#/07-access-gateway"><span class="route-num">7</span><span class="route-text"><strong>Gateway đặc quyền</strong><span>Access Check, PS Gateway</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="07-access-gateway" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/08-ess-rec"><span class="route-num">8</span><span class="route-text"><strong>ESS REC</strong><span>Ghi lại thao tác để kiểm toán</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="08-ess-rec" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/09-slm"><span class="route-num">9</span><span class="route-text"><strong>JP1/SLM</strong><span>Giám sát mức dịch vụ web của Hitachi</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="09-slm" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 5: Hệ điều hành và file server</h2><ol class="route"><li><a class="route-row" href="#/10-rhel"><span class="route-num">10</span><span class="route-text"><strong>RHEL</strong><span>SELinux, LVM, chẩn đoán</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="10-rhel" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/11-linux-shell-acl"><span class="route-num">11</span><span class="route-text"><strong>Linux shell và ACL</strong><span>Quyền, mask, script an toàn</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="11-linux-shell-acl" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/12-windows-server"><span class="route-num">12</span><span class="route-text"><strong>Windows Server</strong><span>PowerShell, AD, Task Scheduler</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="12-windows-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/13-windows-file-server"><span class="route-num">13</span><span class="route-text"><strong>Windows File Server</strong><span>Quyền share và NTFS, chuyển dữ liệu</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="13-windows-file-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/14-samba"><span class="route-num">14</span><span class="route-text"><strong>Samba</strong><span>Chia sẻ file giữa Linux và Windows</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="14-samba" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 6: Công cụ bổ trợ</h2><ol class="route"><li><a class="route-row" href="#/15-servicenow"><span class="route-num">15</span><span class="route-text"><strong>ServiceNow</strong><span>Ticket, Incident, Change</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="15-servicenow" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/16-clusterpro"><span class="route-num">16</span><span class="route-text"><strong>CLUSTERPRO</strong><span>Failover, split brain</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/17-aws-cli-s3"><span class="route-num">17</span><span class="route-text"><strong>AWS CLI và S3</strong><span>Thao tác dữ liệu an toàn</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></a></li></ol></section><div class="home-rest"><h2 id="home--cau-truc-moi-bai">Cấu trúc mỗi bài</h2><ol>
+<section class="leg"><h2>Chặng 1: Nền tảng dùng chung</h2><ol class="route"><li><a class="route-row" href="#/00-cach-hoc-feynman"><span class="route-num">0</span><span class="route-text"><strong>Cách học Feynman</strong><span>Cách dùng repo này</span></span><span></span><span class="seal" data-state-page="00-cach-hoc-feynman" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/01-encoding-csv-duong-dan"><span class="route-num">1</span><span class="route-text"><strong>Encoding, BOM, CSV, đường dẫn</strong><span>Vì sao chữ lỗi, vì sao job không thấy file</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="01-encoding-csv-duong-dan" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/02-van-hanh-theo-yeu-cau"><span class="route-num">2</span><span class="route-text"><strong>Vận hành theo yêu cầu</strong><span>Đọc yêu cầu, đánh giá ảnh hưởng, bằng chứng</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/tu-vung-tieng-nhat"><span class="route-num"></span><span class="route-text"><strong>Từ vựng tiếng Nhật</strong><span>Tra cứu khi đọc tài liệu và ticket</span></span><span class="lv lv-b">B</span><span></span></a></li></ol></section><section class="leg"><h2>Chặng 2: Truyền và chuyển đổi dữ liệu</h2><ol class="route"><li><a class="route-row" href="#/03-hulft"><span class="route-num">3</span><span class="route-text"><strong>HULFT</strong><span>Truyền file giữa các hệ thống</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="03-hulft" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/04-datamagic"><span class="route-num">4</span><span class="route-text"><strong>DataMagic</strong><span>Chuyển đổi dữ liệu, EBCDIC, packed decimal</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="04-datamagic" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 3: Tool Excel</h2><ol class="route"><li><a class="route-row" href="#/05-vba"><span class="route-num">5</span><span class="route-text"><strong>VBA</strong><span>Đọc, sửa, kiểm thử macro có sẵn</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="05-vba" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/06-excel-pivot-chart"><span class="route-num">6</span><span class="route-text"><strong>Pivot và Chart</strong><span>Báo cáo đúng và tự động hoá</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="06-excel-pivot-chart" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 4: Kiểm soát truy cập và giám sát</h2><ol class="route"><li><a class="route-row" href="#/07-access-gateway"><span class="route-num">7</span><span class="route-text"><strong>Gateway đặc quyền</strong><span>Access Check, PS Gateway</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="07-access-gateway" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/08-ess-rec"><span class="route-num">8</span><span class="route-text"><strong>ESS REC</strong><span>Ghi lại thao tác để kiểm toán</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="08-ess-rec" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/09-slm"><span class="route-num">9</span><span class="route-text"><strong>JP1/SLM</strong><span>Giám sát mức dịch vụ web của Hitachi</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="09-slm" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 5: Hệ điều hành và file server</h2><ol class="route"><li><a class="route-row" href="#/10-rhel"><span class="route-num">10</span><span class="route-text"><strong>RHEL</strong><span>SELinux, LVM, chẩn đoán</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="10-rhel" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/11-linux-shell-acl"><span class="route-num">11</span><span class="route-text"><strong>Linux shell và ACL</strong><span>Quyền, mask, script an toàn</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="11-linux-shell-acl" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/12-windows-server"><span class="route-num">12</span><span class="route-text"><strong>Windows Server</strong><span>PowerShell, AD, Task Scheduler</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="12-windows-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/13-windows-file-server"><span class="route-num">13</span><span class="route-text"><strong>Windows File Server</strong><span>Quyền share và NTFS, chuyển dữ liệu</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="13-windows-file-server" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/14-samba"><span class="route-num">14</span><span class="route-text"><strong>Samba</strong><span>Chia sẻ file giữa Linux và Windows</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="14-samba" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 6: Công cụ bổ trợ</h2><ol class="route"><li><a class="route-row" href="#/15-servicenow"><span class="route-num">15</span><span class="route-text"><strong>ServiceNow</strong><span>Ticket, Incident, Change</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="15-servicenow" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/16-clusterpro"><span class="route-num">16</span><span class="route-text"><strong>CLUSTERPRO</strong><span>Failover, split brain</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/17-aws-cli-s3"><span class="route-num">17</span><span class="route-text"><strong>AWS CLI và S3</strong><span>Thao tác dữ liệu an toàn</span></span><span class="lv lv-b">B</span><span class="seal" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></a></li></ol></section><section class="leg"><h2>Chặng 7: Oracle</h2><ol class="route"><li><a class="route-row" href="#/18-oracle-database"><span class="route-num">18</span><span class="route-text"><strong>Oracle Database</strong><span>Instance, redo và undo, backup, dự phòng</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="18-oracle-database" role="img" aria-label="Đã học">済</span></a></li><li><a class="route-row" href="#/19-oracle-web-app-server"><span class="route-num">19</span><span class="route-text"><strong>OHS, WebLogic, Tuxedo</strong><span>Tầng web và ứng dụng, chẩn đoán 503, stuck thread</span></span><span class="lv lv-a">A</span><span class="seal" data-state-page="19-oracle-web-app-server" role="img" aria-label="Đã học">済</span></a></li></ol></section><div class="home-rest"><h2 id="home--cau-truc-moi-bai">Cấu trúc mỗi bài</h2><ol>
 <li><strong>Tool giải quyết vấn đề gì.</strong> Chưa trả lời được thì đừng đọc tiếp.</li>
 <li><strong>Khái niệm</strong>, chỗ khó có khung Feynman.</li>
 <li><strong>Kiến trúc và luồng chạy</strong>, có sơ đồ.</li>
@@ -568,6 +569,7 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 <li><strong><code>PS Gateway</code></strong> chưa xác định được là sản phẩm nào, xem <a href="#/07-access-gateway">Bài 7</a>.</li>
 <li><strong>JP1/SLM</strong> viết theo manual Version 11, chưa tìm thấy manual các bản mới hơn, xem <a href="#/09-slm">Bài 9</a>.</li>
 <li><strong>DataMagic, ESS REC, Access Check, CLUSTERPRO</strong> chỉ ở mức khái niệm và chức năng, không có hướng dẫn trên màn hình.</li>
+<li><strong>Oracle</strong> viết theo manual Database 19c, WebLogic và OHS 14.1.2, Tuxedo 22c. Chưa có bản cài nên lệnh và cấu hình chưa được chạy thử, và Tuxedo chỉ ở mức khái niệm.</li>
 <li><strong>Dùng thử:</strong> khoá CLUSTERPRO bản Nhật không đăng ký được ngoài Nhật, nhưng bản quốc tế EXPRESSCLUSTER X có trial riêng. HULFT dùng thử qua cổng myHULFT dành cho khách hàng, nên bài HULFT có bài tập giấy thay thế.</li>
 </ul>
 <p>Mỗi bài phân biệt <strong>Theo tài liệu hãng</strong> và <strong>Suy luận vận hành chung</strong>. Khi vào dự án thật, hãy ưu tiên manual đúng phiên bản và thiết kế của dự án.</p>
@@ -873,7 +875,7 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
 <h2 id="02-van-hanh-theo-yeu-cau--1-van-de">1. Vấn đề</h2><p>Trong môi trường vận hành doanh nghiệp, người làm thường không phải người thiết kế hệ thống. Bạn nhận yêu cầu dạng &quot;thêm truyền file X sang hệ thống Y&quot;, và một sai sót nhỏ có thể làm hỏng lô xử lý đêm, ảnh hưởng tới công việc của nhiều bộ phận vào sáng hôm sau. Vì vậy cách làm được chuẩn hoá thành quy trình nhiều lớp kiểm tra.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">&quot;định nghĩa&quot; là gì</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Định nghĩa là bản ghi cấu hình nói cho tool biết phải làm gì. Bạn không viết code; bạn thêm, sửa, xoá các bản ghi đó.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Danh bạ và lịch trong điện thoại. Đổi một số trong danh bạ thì các lịch gọi đang trỏ tới số đó đổi theo. Xoá một liên hệ thì mọi thứ dùng liên hệ đó bị ảnh hưởng dù bạn không hề sửa lịch.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Điện thoại lưu một bản. Ở đây định nghĩa thường nằm ở nhiều máy và phải khớp nhau, như File ID của HULFT ở cả bên gửi lẫn bên nhận.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao xoá một định nghĩa có thể nguy hiểm hơn thêm một định nghĩa?</dd></div></dl></section>
 <p>Nếu đã quen DevOps, hãy coi đây là GitOps do con người thực hiện: có khai báo, có review, có áp dụng và có kiểm chứng. Chỉ khác là bản khai báo nằm trong tool thương mại và người làm phải tự ghi lại bằng chứng.</p>
-<h2 id="02-van-hanh-theo-yeu-cau--2-luong-mot-yeu-cau">2. Luồng một yêu cầu</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
+<h2 id="02-van-hanh-theo-yeu-cau--2-luong-mot-yeu-cau">2. Luồng một yêu cầu</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
     A[&quot;Nhận yêu cầu&quot;] --&gt; B[&quot;Đọc và tìm chỗ thiếu&quot;]
     B --&gt;|&quot;Thiếu thông tin&quot;| C[&quot;Hỏi lại người yêu cầu&quot;]
     C --&gt; B
@@ -1284,6 +1286,80 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 <td>Định nghĩa</td>
 </tr>
 </tbody></table></div>
+<h2 id="tu-vung-tieng-nhat--database-va-tang-web-ap-db">Database và tầng Web/AP/DB</h2><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Từ</th>
+<th>Đọc</th>
+<th>Nghĩa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Web/AP/DB 3層構成</td>
+<td>sansō kōsei</td>
+<td>Kiến trúc ba tầng web, ứng dụng, database</td>
+</tr>
+<tr>
+<td>APサーバー</td>
+<td>ēpī sābā</td>
+<td>App server</td>
+</tr>
+<tr>
+<td>表領域</td>
+<td>hyōryōiki</td>
+<td>Tablespace</td>
+</tr>
+<tr>
+<td>制御ファイル</td>
+<td>seigyo fairu</td>
+<td>Control file</td>
+</tr>
+<tr>
+<td>REDOログ</td>
+<td>rido rogu</td>
+<td>Redo log</td>
+</tr>
+<tr>
+<td>起動 / 停止</td>
+<td>kidō / teishi</td>
+<td>Khởi động / dừng</td>
+</tr>
+<tr>
+<td>管理サーバー</td>
+<td>kanri sābā</td>
+<td>Admin Server</td>
+</tr>
+<tr>
+<td>管理対象サーバー</td>
+<td>kanri taishō sābā</td>
+<td>Managed Server</td>
+</tr>
+<tr>
+<td>接続プール</td>
+<td>setsuzoku pūru</td>
+<td>Connection pool</td>
+</tr>
+<tr>
+<td>過負荷</td>
+<td>kafuka</td>
+<td>Quá tải</td>
+</tr>
+<tr>
+<td>負荷分散</td>
+<td>fuka bunsan</td>
+<td>Phân tải</td>
+</tr>
+<tr>
+<td>閉塞</td>
+<td>heisoku</td>
+<td>Đưa server ra khỏi luồng nhận request</td>
+</tr>
+<tr>
+<td>縮退運転</td>
+<td>shukutai unten</td>
+<td>Chạy với ít thiết bị hơn sau khi có phần hỏng</td>
+</tr>
+</tbody></table></div>
 <h2 id="tu-vung-tieng-nhat--cau-hay-dung">Câu hay dùng</h2><div class="table-wrap" tabindex="0"><table>
 <thead>
 <tr>
@@ -1320,7 +1396,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 <td>作業日程の調整をお願いできますでしょうか。</td>
 </tr>
 </tbody></table></div>
-<nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/02-van-hanh-theo-yeu-cau"><small>Bài trước</small><span>Vận hành theo yêu cầu</span></a><a class="pager-link" href="#/03-hulft"><small>Bài sau</small><span>HULFT</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/tu-vung-tieng-nhat/quy-trinh">Quy trình</a></li><li><a href="#/tu-vung-tieng-nhat/su-co">Sự cố</a></li><li><a href="#/tu-vung-tieng-nhat/he-thong-va-du-lieu">Hệ thống và dữ liệu</a></li><li><a href="#/tu-vung-tieng-nhat/cau-hay-dung">Câu hay dùng</a></li></ol></details></div></article>
+<nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/02-van-hanh-theo-yeu-cau"><small>Bài trước</small><span>Vận hành theo yêu cầu</span></a><a class="pager-link" href="#/03-hulft"><small>Bài sau</small><span>HULFT</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/tu-vung-tieng-nhat/quy-trinh">Quy trình</a></li><li><a href="#/tu-vung-tieng-nhat/su-co">Sự cố</a></li><li><a href="#/tu-vung-tieng-nhat/he-thong-va-du-lieu">Hệ thống và dữ liệu</a></li><li><a href="#/tu-vung-tieng-nhat/database-va-tang-web-ap-db">Database và tầng Web/AP/DB</a></li><li><a href="#/tu-vung-tieng-nhat/cau-hay-dung">Câu hay dùng</a></li></ol></details></div></article>
 <article class="page" data-page="03-hulft" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 3. HULFT</h1><span class="seal seal-lg" data-state-page="03-hulft" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-a" title="Mức A: cần dùng được khi đi làm">Mức A</span></div></header><p>HULFT là phần mềm trung gian truyền file giữa các hệ thống, của Saison Technology (trước đây là Saison Information Systems). Rất phổ biến ở doanh nghiệp Nhật, đặc biệt khi cần nối mainframe, Unix, Windows và cloud với nhau.</p>
 <p><strong>Học xong bạn làm được</strong></p>
 <ul>
@@ -1454,7 +1530,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 </tr>
 </tbody></table></div>
 <p>Chúng tham chiếu lẫn nhau như sau:</p>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     subgraph S[&quot;Máy gửi&quot;]
         SND[&quot;配信管理情報&lt;br/&gt;File ID&quot;]
         GRP[&quot;転送グループ情報&lt;br/&gt;danh sách máy nhận&quot;]
@@ -1473,7 +1549,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
         RCV -.-&gt; HOSTS
     end
     SND == &quot;cùng File ID&quot; ==&gt; RCV</pre></figure><p>Tại máy nhận, 詳細ホスト情報 ghi tên máy gửi, và tên đó phải khớp với tên máy gửi tự khai báo. Sai chỗ này rất hay gặp khi máy đổi tên hoặc được chuyển sang máy mới.</p>
-<h2 id="03-hulft--3-hai-luong-truyen">3. Hai luồng truyền</h2><h3 id="03-hulft--3-1-gui-配信-ben-co-file-chu-dong">3.1. Gửi (配信): bên có file chủ động</h3><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
+<h2 id="03-hulft--3-hai-luong-truyen">3. Hai luồng truyền</h2><h3 id="03-hulft--3-1-gui-配信-ben-co-file-chu-dong">3.1. Gửi (配信): bên có file chủ động</h3><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
     participant Batch as Lô xử lý
     participant SD as Máy gửi hulsndd và hulsnd
     participant RD as Máy nhận hulrcvd
@@ -1485,7 +1561,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
     SD-&gt;&gt;RD: Truyền dữ liệu
     RD-&gt;&gt;Job: Chạy job khi thành công
     RD--&gt;&gt;SD: Báo kết quả
-    SD-&gt;&gt;SD: Ghi lịch sử, chạy job sau khi gửi</pre></figure><h3 id="03-hulft--3-2-yeu-cau-gui-送信要求-ben-can-file-chu-dong">3.2. Yêu cầu gửi (送信要求): bên cần file chủ động</h3><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
+    SD-&gt;&gt;SD: Ghi lịch sử, chạy job sau khi gửi</pre></figure><h3 id="03-hulft--3-2-yeu-cau-gui-送信要求-ben-can-file-chu-dong">3.2. Yêu cầu gửi (送信要求): bên cần file chủ động</h3><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
     participant Q as Máy cần file
     participant O as Máy có file hulobsd
     participant SD as Máy có file hulsnd
@@ -1724,7 +1800,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 </blockquote>
 <p>Đăng ký định nghĩa bằng màn hình HULFT Manager/Management Console hoặc bằng lệnh đọc file tham số. Dự án nhiều luồng thường dùng file tham số để review và lưu vết.</p>
 <h2 id="03-hulft--8-xu-ly-su-co">8. Xử lý sự cố</h2><p>Luôn đọc lịch sử ở <strong>cả hai đầu</strong>, vì mỗi bên chỉ thấy phần của mình.</p>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
     A[&quot;Truyền file lỗi&quot;] --&gt; B{&quot;Có kết nối được không?&quot;}
     B --&gt;|&quot;Không&quot;| C[&quot;Tiến trình bên kia có chạy không?&lt;br/&gt;Cổng, tường lửa, DNS&quot;]
     B --&gt;|&quot;Có, rồi lỗi ngay&quot;| D[&quot;Định nghĩa bên nhận có đúng File ID không?&lt;br/&gt;Tên máy gửi có trong 詳細ホスト情報 không?&quot;]
@@ -1899,7 +1975,7 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 <h2 id="04-datamagic--1-van-de">1. Vấn đề</h2><p>Hệ thống cũ xuất file độ dài cố định bằng EBCDIC. Hệ thống mới cần CSV UTF-8 với ngày dương lịch. Bạn có thể tự viết script, nhưng rồi phải duy trì hàng trăm script như vậy, xử lý ký tự riêng và lo tốc độ với file lớn.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">DataMagic khác HULFT ở đâu</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>HULFT là xe tải, DataMagic là xưởng đóng gói lại. Xe tải chở thùng nguyên vẹn đi xa. Xưởng mở thùng, phân loại, đóng thành thùng kiểu mới.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Công ty gửi hồ sơ từ chi nhánh về trụ sở (HULFT), rồi nhân viên nhập liệu chuyển hồ sơ giấy thành bảng Excel theo mẫu mới (DataMagic).</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>&quot;xe tải&quot; HULFT cũng đổi được mã ký tự theo loại truyền, nên hai vai trò có chỗ giao nhau. Đổi cấu trúc như lọc, tách, gộp, đổi định dạng là lúc cần DataMagic.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Chỉ cần đổi cp932 sang EBCDIC khi truyền file thì có cần DataMagic không?</dd></div></dl></section>
 <p>Hay gặp cặp đôi: HULFT nhận file, job sau khi nhận gọi DataMagic bằng dòng lệnh để chuyển đổi, rồi nạp vào hệ thống đích.</p>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     A[&quot;Mainframe&lt;br/&gt;EBCDIC, độ dài cố định&quot;] --&gt;|&quot;HULFT&quot;| B[&quot;Máy trung gian&quot;]
     B --&gt;|&quot;Job sau khi nhận gọi DataMagic&quot;| C[&quot;CSV UTF-8&quot;]
     C --&gt; D[&quot;Hệ thống mới&quot;]</pre></figure><h2 id="04-datamagic--2-datamagic-lam-duoc-gi">2. DataMagic làm được gì</h2><p>Theo tài liệu hãng:</p>
@@ -2095,7 +2171,7 @@ Số dư        : 12345
 <li><strong>Vẽ lại luồng:</strong> đọc gì, đổi gì, ghi gì.</li>
 <li><strong>Xuất module ra <code>.bas</code></strong> để so sánh trước và sau khi sửa bằng <code>git diff</code>.</li>
 </ol>
-<h2 id="05-vba--4-mo-hinh-doi-tuong">4. Mô hình đối tượng</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<h2 id="05-vba--4-mo-hinh-doi-tuong">4. Mô hình đối tượng</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     A[&quot;Application&lt;br/&gt;chính là Excel&quot;] --&gt; B[&quot;Workbooks&lt;br/&gt;các file đang mở&quot;]
     B --&gt; C[&quot;Worksheets&lt;br/&gt;các sheet&quot;]
     C --&gt; D[&quot;Range và Cells&lt;br/&gt;các ô&quot;]</pre></figure><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title"><code>ThisWorkbook</code> và <code>ActiveWorkbook</code></p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd><code>ThisWorkbook</code> là file chứa code. <code>ActiveWorkbook</code> là file đang được chọn trên màn hình lúc đó, có thể là bất kỳ file nào.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>&quot;nhà tôi&quot; so với &quot;ngôi nhà tôi đang đứng trong&quot;. Khi bạn sang nhà hàng xóm, câu &quot;dọn nhà tôi đang đứng&quot; làm bạn dọn nhầm.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bạn thì biết mình đang đứng đâu. Code thì không để ý, và chỉ cần người dùng bấm sang file khác trong lúc chạy, hoặc code vừa mở thêm file, là đối tượng &quot;đang chọn&quot; đổi mà không báo gì.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao macro chạy đúng khi <code>F8</code> mà chạy thẳng lại ghi nhầm file?</dd></div></dl></section>
@@ -2387,7 +2463,7 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 </ul>
 <p>Các quy định như J-SOX, PCI DSS hay FISC ở Nhật khiến câu hỏi này trở nên bắt buộc.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">特権ID (ID đặc quyền)</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Tài khoản có quyền làm gần như mọi thứ trên hệ thống. Vì quá mạnh nên không ai được giữ thường xuyên, mà phải mượn theo từng việc.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Chìa khoá tổng của toà nhà. Thợ sửa điện không được mang về nhà; họ ký sổ ở phòng bảo vệ, mượn đúng lúc cần, làm xong trả lại.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bảo vệ không biết thợ đã làm gì sau khi vào. Gateway thì còn ghi lại được thao tác trong suốt phiên, kể cả tự động đổi &quot;ổ khoá&quot; (mật khẩu) sau mỗi lần dùng.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Nêu ba việc mà dùng chung mật khẩu <code>root</code> không làm được nhưng gateway làm được.</dd></div></dl></section>
-<h2 id="07-access-gateway--2-luong-lam-viec">2. Luồng làm việc</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
+<h2 id="07-access-gateway--2-luong-lam-viec">2. Luồng làm việc</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
     participant U as Người vận hành
     participant G as Gateway
     participant A as Người duyệt
@@ -2564,7 +2640,7 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 </ul>
 <p>Ở môi trường có quy định chặt như ngân hàng, câu hỏi kiểm toán không chỉ là &quot;lệnh gì&quot; mà còn là &quot;ai ngồi đó, đã thấy gì và đã làm gì&quot;.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">証跡 và lý do cần video</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>ESS REC như camera gắn sau lưng người vận hành: quay màn hình, ghi phím bấm, ghi chữ hiện ra, rồi cho phép tìm kiếm lại sau đó.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Camera trong phòng két ngân hàng. Không phải vì nhân viên đáng nghi, mà vì khi có chênh lệch, phải có bằng chứng để xác định chuyện gì đã xảy ra, và cũng để bảo vệ người làm đúng.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Camera chỉ ghi hình, còn phải có người tua lại. ESS REC còn trích được chữ thành dữ liệu tìm kiếm, và có thể cảnh báo ngay hoặc khoá màn hình khi gặp điều kiện được định sẵn.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Có CloudTrail rồi thì ESS REC thêm được gì?</dd></div></dl></section>
-<h2 id="08-ess-rec--2-kien-truc">2. Kiến trúc</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<h2 id="08-ess-rec--2-kien-truc">2. Kiến trúc</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     subgraph M[&quot;Máy được giám sát: server hoặc PC&quot;]
         AG[&quot;Agent thường trú&quot;]
     end
@@ -2724,7 +2800,7 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 <h2 id="09-slm--1-van-de">1. Vấn đề</h2><p>Server có thể báo CPU 30%, RAM ổn, mọi đèn đều xanh, trong khi người dùng vẫn gọi lên phàn nàn hệ thống chậm. Giám sát hạ tầng trả lời &quot;máy có khoẻ không&quot;. JP1/SLM trả lời &quot;người dùng có được phục vụ tốt không&quot;.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">SLI, SLO, SLA</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>SLI là con số đo được. SLO là mục tiêu nội bộ cho con số đó. SLA là cam kết với khách hàng, thường có hậu quả nếu không đạt.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Nhà hàng giao món. SLI là thời gian giao thực tế. SLO là bếp tự đặt ra đơn phải dưới 25 phút. SLA là cam kết &quot;trên 40 phút thì miễn phí&quot;.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Trễ giao món thì khách thấy ngay. Hệ thống có thể chậm chỉ với một nhóm người dùng, trong khi con số chung vẫn đẹp.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao SLO phải chặt hơn SLA?</dd></div></dl></section>
 <p>Trong JP1/SLM, ba SLI được gọi chung là <strong>サービス性能 (service performance)</strong>: thời gian phản hồi trung bình, thông lượng và tỷ lệ lỗi. SLO là các ngưỡng bạn đặt cho chúng.</p>
-<h2 id="09-slm--2-kien-truc">2. Kiến trúc</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<h2 id="09-slm--2-kien-truc">2. Kiến trúc</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     U[&quot;Người dùng&quot;] --&gt; SW[&quot;Switch có port mirroring&quot;]
     SW --&gt; WEB[&quot;Web server&quot;]
     SW -.-&gt;|&quot;Bản sao gói HTTP&quot;| UR[&quot;JP1/SLM - UR&quot;]
@@ -3612,7 +3688,7 @@ Get-WinEvent -FilterHashtable @{ LogName='System'; Level=2 } -MaxEvents 20</code
 <li>Biết công cụ cho từng việc: DFS, FSRM, Shadow Copy.</li>
 </ul>
 <h2 id="13-windows-file-server--1-hai-lop-quyen">1. Hai lớp quyền</h2><p>Đây là phần cốt lõi. File trên share đi qua hai lớp:</p>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     U[&quot;Người dùng&quot;] --&gt; S[&quot;Lớp share&lt;br/&gt;Chỉ áp dụng khi qua mạng&quot;]
     S --&gt; N[&quot;Lớp NTFS&lt;br/&gt;Áp dụng mọi lúc&quot;]
     N --&gt; F[&quot;File&quot;]</pre></figure><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Share và NTFS</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Đi qua mạng phải qua cả hai lớp, và lấy quyền <strong>chặt hơn</strong>. Share cho Full mà NTFS cho Read thì chỉ được Read.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Cổng toà nhà và cửa phòng. Bảo vệ cho vào toà nhà thoải mái, nhưng phòng khoá thì vẫn không vào được. Ngược lại có chìa phòng mà cổng không cho vào thì cũng vậy.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Ngồi ngay trên server (đăng nhập cục bộ) thì không đi qua &quot;cổng&quot; share, chỉ NTFS áp dụng. Nên admin thử trên server thấy được không chứng minh người dùng truy cập qua mạng cũng được.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Quyền share là Read, NTFS là Full Control. Qua mạng được gì? Ngồi trên server được gì?</dd></div></dl></section>
@@ -3678,7 +3754,7 @@ Get-WinEvent -FilterHashtable @{ LogName='System'; Level=2 } -MaxEvents 20</code
 </tr>
 </tbody></table></div>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">DFS Namespace</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd><code>\\congty\share\ketoan</code> không phải địa chỉ thật mà là bảng chỉ đường. DFS bảo máy khách hãy tới <code>\\fs01\ketoan</code>. Đổi server chỉ cần đổi bảng chỉ đường.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Số tổng đài công ty. Nhân viên đổi bàn thì tổng đài chuyển tiếp mà khách không cần biết.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Tổng đài không giữ cuộc gọi của bạn. DFS cũng không chứa dữ liệu, chỉ là chỉ đường; muốn dữ liệu có ở hai nơi thì cần thêm DFS Replication hoặc cách khác.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Dùng DFS Namespace đã đủ để server hỏng mà không mất dữ liệu chưa?</dd></div></dl></section>
-<h2 id="13-windows-file-server--4-chan-doan-quot-access-denied-quot">4. Chẩn đoán &quot;Access denied&quot;</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
+<h2 id="13-windows-file-server--4-chan-doan-quot-access-denied-quot">4. Chẩn đoán &quot;Access denied&quot;</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
     A[&quot;Access denied&quot;] --&gt; B[&quot;Xem Effective Access của người dùng&quot;]
     B --&gt;|&quot;NTFS không đủ&quot;| C[&quot;Xem người đó có trong nhóm chưa&quot;]
     C --&gt;|&quot;Mới thêm&quot;| D[&quot;Đăng xuất rồi đăng nhập lại&quot;]
@@ -3795,7 +3871,7 @@ robocopy D:\src \\new\share /E /COPYALL /DCOPY:DAT /R:1 /W:1 /L /LOG:C:\log\plan
 </tbody></table></div>
 <p>Samba là phiên dịch viên giữa hai thế giới.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Samba</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Samba là chương trình trên Linux, nói tiếng SMB với Windows, rồi đổi yêu cầu đó thành thao tác file bình thường trên Linux.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Phiên dịch viên ở quầy: khách nói tiếng Nhật, phiên dịch nói lại cho nhân viên bằng tiếng Việt, rồi dịch câu trả lời về.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Phiên dịch viên không tự làm gì với hồ sơ. Samba cuối cùng phải thao tác trên file bằng <strong>một user Linux cụ thể</strong>, nên quyền Linux của user đó quyết định kết quả, bất kể Samba cấu hình gì.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd><code>smb.conf</code> cho <code>writable = yes</code>, vì sao người dùng vẫn không ghi được?</dd></div></dl></section>
-<h2 id="14-samba--2-cac-lop-quyen">2. Các lớp quyền</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<h2 id="14-samba--2-cac-lop-quyen">2. Các lớp quyền</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     C[&quot;Người dùng Windows&quot;] --&gt; A[&quot;Lớp 1: Samba&lt;br/&gt;valid users, write list&quot;]
     A --&gt; B[&quot;Lớp 2: quyền Linux&lt;br/&gt;rwx, POSIX ACL&quot;]
     B --&gt; D[&quot;Lớp 3: SELinux&lt;br/&gt;nhãn samba_share_t&quot;]
@@ -3973,7 +4049,7 @@ restorecon -Rv /srv/samba/reports</code></pre><p>Nếu share dùng chung với d
 </tbody></table></div>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Incident khác Problem</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Incident là chữa cháy cho xong. Problem là tìm xem vì sao nhà hay cháy.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bồn rửa nghẹt, thông xong là hết sự cố. Tháng nào cũng nghẹt thì phải tìm đoạn ống bị hỏng.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Nhà có thể sửa ống ngay. Trong doanh nghiệp, gốc rễ có thể chờ tới đợt thay đổi tiếp theo, trong thời gian đó dùng cách vòng (workaround) đã được ghi lại.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Khởi động lại dịch vụ làm hết lỗi. Bạn đóng incident rồi, còn phải làm gì nữa?</dd></div></dl></section>
 <h2 id="15-servicenow--3-vong-doi">3. Vòng đời</h2><p>Trạng thái chuẩn của Incident:</p>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
     N[&quot;New&quot;] --&gt; P[&quot;In Progress&quot;]
     P --&gt; H[&quot;On Hold&quot;]
     H --&gt; P
@@ -4109,7 +4185,7 @@ Tiếp theo  : ... (ai, khi nào)</code></pre><section class="feynman"><div clas
 <h2 id="16-clusterpro--1-van-de">1. Vấn đề</h2><p>Một server hỏng làm dừng cả nghiệp vụ. Muốn dịch vụ tiếp tục chạy thì cần một máy dự phòng, cùng dữ liệu, cùng địa chỉ, và có người phát hiện lỗi rồi chuyển sang. CLUSTERPRO tự động hoá việc đó.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Failover</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Hai máy, một máy chạy và một máy chờ. Máy chạy hỏng thì máy chờ tiếp quản cả địa chỉ IP, đĩa dữ liệu lẫn ứng dụng. Người dùng kết nối lại vào đúng địa chỉ cũ.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Hai phi công. Cơ trưởng ngất thì cơ phó cầm lái. Vé máy bay và hành khách vẫn là vé và hành khách đó.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Cơ phó đã thức, đã nắm tình hình. Máy chờ thì phải khởi động ứng dụng, gắn đĩa, có thể phải phục hồi dữ liệu, nên có một quãng ngừng, và các giao dịch đang dở có thể mất. Đây không phải chuyển tiếp không gián đoạn.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao có failover rồi ứng dụng vẫn cần biết kết nối lại?</dd></div></dl></section>
 <p>Nếu quen Kubernetes hay AWS: đây giống pod được dựng lại trên node khác, hoặc RDS Multi-AZ chuyển sang bản dự phòng. Khác biệt là ứng dụng ở đây thường có trạng thái và không được thiết kế để chạy nhiều bản, nên chỉ một máy được chạy tại một thời điểm.</p>
-<h2 id="16-clusterpro--2-cac-khai-niem">2. Các khái niệm</h2><figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart TB
+<h2 id="16-clusterpro--2-cac-khai-niem">2. Các khái niệm</h2><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TB
     subgraph CL[&quot;Cluster&quot;]
         subgraph S1[&quot;Máy chạy&quot;]
             G1[&quot;Failover group&lt;br/&gt;floating IP, đĩa, ứng dụng&quot;]
@@ -4185,7 +4261,7 @@ Tiếp theo  : ... (ai, khi nào)</code></pre><section class="feynman"><div clas
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Vì sao không failover ngay</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Failover cũng là rủi ro và cũng gây ngừng dịch vụ. Lỗi nhỏ thì khởi động lại tại chỗ nhanh hơn. Chỉ chuyển khi cách nhẹ không có tác dụng.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Máy tính treo thì tắt mở lại trước, không ai mua máy mới ngay.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Khởi động lại vô hạn thì không có tác dụng. Hệ thống phải có giới hạn số lần, không thì hỏng ứng dụng sẽ tạo ra vòng lặp chuyển qua chuyển lại giữa hai máy.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Ứng dụng lỗi cấu hình. Nếu failover thì máy kia có sửa được không?</dd></div></dl></section>
 <h2 id="16-clusterpro--4-split-brain">4. Split brain</h2><p>Đây là khái niệm quan trọng nhất của mọi hệ HA.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Split brain</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Đường liên lạc giữa hai máy đứt. Mỗi máy tưởng máy kia đã chết nên cả hai cùng tiếp quản và cùng ghi vào một đĩa. Dữ liệu hỏng.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Hai bác sĩ mất liên lạc với nhau. Mỗi người tưởng người kia đã nghỉ, nên cùng cho một bệnh nhân uống thuốc. Mỗi người đều làm đúng theo những gì mình biết, nhưng kết quả là quá liều.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Con người có thể gọi điện bằng cách khác để kiểm tra, còn máy tính chỉ biết những gì đã được thiết kế. Vì vậy phải cung cấp <strong>đường xác minh thứ hai</strong>, và phải định trước ai dừng.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao &quot;cả hai cùng chạy&quot; lại tệ hơn &quot;không ai chạy&quot;?</dd></div></dl></section>
-<figure class="diagram"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
     A[&quot;Mất heartbeat&quot;] --&gt; B{&quot;Thật ra chuyện gì xảy ra?&quot;}
     B --&gt;|&quot;Máy kia chết thật&quot;| C[&quot;Tiếp quản là đúng&quot;]
     B --&gt;|&quot;Chỉ đứt mạng giữa hai máy&quot;| D[&quot;Cùng tiếp quản là thảm hoạ&quot;]
@@ -4393,7 +4469,1323 @@ aws s3api list-object-versions --bucket my-bucket --prefix in/sales.csv</code></
 <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html" target="_blank" rel="noopener">Amazon S3: prefix</a></li>
 <li><a href="https://aws.amazon.com/s3/consistency/" target="_blank" rel="noopener">Amazon S3: strong consistency</a></li>
 </ul>
-<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="17-aws-cli-s3">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/16-clusterpro"><small>Bài trước</small><span>CLUSTERPRO</span></a><span></span></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/17-aws-cli-s3/1-s3-la-gi">1. S3 là gì</a></li><li><a href="#/17-aws-cli-s3/2-thao-tac-co-ban">2. Thao tác cơ bản</a></li><li><a href="#/17-aws-cli-s3/3-sync">3. sync</a></li><li><a href="#/17-aws-cli-s3/4-loc-file">4. Lọc file</a></li><li><a href="#/17-aws-cli-s3/5-s3-va-s3api">5. <code>s3</code> và <code>s3api</code></a></li><li><a href="#/17-aws-cli-s3/6-cac-diem-ket-hop-voi-hulft-va-linux">6. Các điểm kết hợp với HULFT và Linux</a></li><li><a href="#/17-aws-cli-s3/7-so-sanh">7. So sánh</a></li><li><a href="#/17-aws-cli-s3/8-tu-kiem-tra">8. Tự kiểm tra</a></li><li><a href="#/17-aws-cli-s3/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/17-aws-cli-s3/nguon">Nguồn</a></li></ol></details></div></article>
+<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="17-aws-cli-s3">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="17-aws-cli-s3" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/16-clusterpro"><small>Bài trước</small><span>CLUSTERPRO</span></a><a class="pager-link" href="#/18-oracle-database"><small>Bài sau</small><span>Oracle Database</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/17-aws-cli-s3/1-s3-la-gi">1. S3 là gì</a></li><li><a href="#/17-aws-cli-s3/2-thao-tac-co-ban">2. Thao tác cơ bản</a></li><li><a href="#/17-aws-cli-s3/3-sync">3. sync</a></li><li><a href="#/17-aws-cli-s3/4-loc-file">4. Lọc file</a></li><li><a href="#/17-aws-cli-s3/5-s3-va-s3api">5. <code>s3</code> và <code>s3api</code></a></li><li><a href="#/17-aws-cli-s3/6-cac-diem-ket-hop-voi-hulft-va-linux">6. Các điểm kết hợp với HULFT và Linux</a></li><li><a href="#/17-aws-cli-s3/7-so-sanh">7. So sánh</a></li><li><a href="#/17-aws-cli-s3/8-tu-kiem-tra">8. Tự kiểm tra</a></li><li><a href="#/17-aws-cli-s3/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/17-aws-cli-s3/nguon">Nguồn</a></li></ol></details></div></article>
+<article class="page" data-page="18-oracle-database" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 18. Oracle Database</h1><span class="seal seal-lg" data-state-page="18-oracle-database" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-a" title="Mức A: cần dùng được khi đi làm">Mức A</span></div></header><p>Oracle Database là hệ quản trị cơ sở dữ liệu quan hệ của Oracle. Bài này giúp bạn hiểu database đang chạy thế nào và xử lý được sự cố ở mức vận hành, chưa nhằm đưa bạn thành DBA.</p>
+<blockquote>
+<p>Bài viết theo manual <strong>Oracle Database 19c</strong>, bản có Premier Support tới cuối năm 2029. Bản mới hơn là 26ai, tên view và tham số có thể khác. Mình không có bản cài nên <strong>các lệnh trong bài chưa được chạy thử</strong>, hãy tra manual đúng phiên bản trước khi dùng.</p>
+</blockquote>
+<p><strong>Học xong bạn làm được</strong></p>
+<ul>
+<li>Phân biệt instance và database, biết database đang dừng ở giai đoạn khởi động nào.</li>
+<li>Giải thích một lệnh <code>COMMIT</code> đi qua đâu, và redo khác undo thế nào.</li>
+<li>Đọc một lỗi <code>ORA-</code> và biết nhìn vào đâu trước.</li>
+<li>Chọn đúng RMAN, Data Pump, Data Guard hay RAC cho từng loại sự cố.</li>
+<li>Biết những tính năng tốn thêm license để không dùng nhầm.</li>
+</ul>
+<p><strong>Lab:</strong> Oracle có bản miễn phí chạy bằng container, kéo về bằng <code>docker pull container-registry.oracle.com/database/free</code>, còn lệnh <code>docker run</code> thì xem trên trang registry. Bản này giới hạn ở 2 core, 2 GB RAM và 12 GB dữ liệu người dùng, đủ để thử phần kiến trúc cơ bản, còn RAC và Data Guard thì mình chưa xác minh được có thử được không. Mình chưa chạy lab này. Hãy chạy trên máy hoặc VM đủ tài nguyên.</p>
+<h2 id="18-oracle-database--1-van-de">1. Vấn đề</h2><p>Hàng nghìn người cùng đọc và sửa một bảng. Mất điện giữa chừng không được mất giao dịch đã báo thành công. Người đang đọc không được thấy dữ liệu sửa dở. Hôm qua có người xoá nhầm thì phải quay lại được đúng thời điểm trước đó. Oracle Database được thiết kế để giải quyết các yêu cầu này, và phần lớn khái niệm dưới đây sinh ra từ chúng.</p>
+<p>Nếu đã quen PostgreSQL hay MySQL, đừng bỏ qua phần redo và undo, vì Oracle làm khác PostgreSQL ở đúng chỗ đó. Bảng so sánh nằm ở mục 10.</p>
+<h2 id="18-oracle-database--2-instance-va-database">2. Instance và database</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Instance và database</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Database là các file trên đĩa. Instance là bộ nhớ và các tiến trình đang chạy để làm việc với các file đó. Tắt máy thì instance mất, còn file vẫn nằm trên đĩa.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Database là tủ hồ sơ của công ty. Instance là phòng kế toán đang làm việc: bàn, người và những tờ giấy đang mở trên bàn.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Tủ hồ sơ thì ai cũng mở ra đọc được. File của Oracle thì hầu như chỉ đọc được thông qua instance. Và với RAC, nhiều instance trên nhiều máy cùng làm việc với một database, giống như nhiều phòng kế toán dùng chung một tủ.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Server vừa reboot đột ngột. Cái gì đã mất, cái gì còn, và cái gì phải dựng lại?</dd></div></dl></section>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TB
+    C[&quot;Ứng dụng&quot;] --&gt;|&quot;Xin kết nối&quot;| L[&quot;Listener&lt;br/&gt;cổng thường là 1521&quot;]
+    L --&gt;|&quot;Chuyển tiếp&quot;| SP
+    C -.-&gt;|&quot;Sau đó làm việc trực tiếp&quot;| SP
+    subgraph I[&quot;Instance&quot;]
+        SP[&quot;Server process&quot;]
+        SP --&gt; BC[&quot;Buffer cache&lt;br/&gt;trong SGA&quot;]
+        SP --&gt; RB[&quot;Redo log buffer&lt;br/&gt;trong SGA&quot;]
+        BC --&gt; DBW[&quot;DBWn&quot;]
+        RB --&gt; LGW[&quot;LGWR&quot;]
+    end
+    subgraph DB[&quot;Database: file trên đĩa&quot;]
+        DF[&quot;Data files&quot;]
+        RL[&quot;Online redo log&quot;]
+    end
+    DBW --&gt; DF
+    LGW --&gt; RL
+    RL --&gt;|&quot;ARCn chép ra&quot;| AL[&quot;Archived redo log&quot;]</pre></figure><h3 id="18-oracle-database--bo-nho">Bộ nhớ</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Để làm gì</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SGA</strong></td>
+<td>Bộ nhớ dùng chung của cả instance, cấp lúc khởi động</td>
+</tr>
+<tr>
+<td>Buffer cache</td>
+<td>Bản sao các block dữ liệu đang được dùng</td>
+</tr>
+<tr>
+<td>Shared pool</td>
+<td>SQL đã phân tích, mã PL/SQL, từ điển dữ liệu</td>
+</tr>
+<tr>
+<td>Redo log buffer</td>
+<td>Redo đang chờ ghi xuống đĩa</td>
+</tr>
+<tr>
+<td><strong>PGA</strong></td>
+<td>Bộ nhớ riêng của từng tiến trình, không dùng chung</td>
+</tr>
+</tbody></table></div>
+<h3 id="18-oracle-database--tien-trinh">Tiến trình</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tiến trình</th>
+<th>Việc chính</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Server process</strong></td>
+<td>Chạy SQL thay cho client, đọc block từ file vào buffer cache</td>
+</tr>
+<tr>
+<td><strong>DBWn</strong></td>
+<td>Ghi block đã sửa từ buffer cache xuống data file</td>
+</tr>
+<tr>
+<td><strong>LGWR</strong></td>
+<td>Ghi redo xuống online redo log</td>
+</tr>
+<tr>
+<td><strong>CKPT</strong></td>
+<td>Cập nhật thông tin checkpoint vào control file và đầu data file</td>
+</tr>
+<tr>
+<td><strong>SMON</strong></td>
+<td>Phục hồi instance khi khởi động nếu cần</td>
+</tr>
+<tr>
+<td><strong>PMON</strong></td>
+<td>Phát hiện tiến trình chết, giải phóng khoá và tài nguyên</td>
+</tr>
+<tr>
+<td><strong>ARCn</strong></td>
+<td>Chép redo log đã đầy ra archive, chỉ có ở chế độ ARCHIVELOG</td>
+</tr>
+<tr>
+<td><strong>LREG</strong></td>
+<td>Đăng ký instance và service với listener</td>
+</tr>
+</tbody></table></div>
+<h3 id="18-oracle-database--file">File</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Chứa gì</th>
+<th>Mất thì sao</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Data file</strong></td>
+<td>Dữ liệu</td>
+<td>Phục hồi từ backup và redo</td>
+</tr>
+<tr>
+<td><strong>Control file</strong></td>
+<td>Tên database, vị trí các file, checkpoint, lịch sử backup RMAN</td>
+<td>Mất hết bản sao thì instance dừng và phải phục hồi</td>
+</tr>
+<tr>
+<td><strong>Online redo log</strong></td>
+<td>Nhật ký thay đổi, ghi xoay vòng</td>
+<td>Có thể mất giao dịch, nên Oracle khuyên ghi nhiều bản</td>
+</tr>
+<tr>
+<td><strong>Archived redo log</strong></td>
+<td>Bản chép của redo log đã đầy</td>
+<td>Mất thì không phục hồi được tới thời điểm sau chỗ thiếu</td>
+</tr>
+<tr>
+<td><strong>SPFILE</strong> hoặc PFILE</td>
+<td>Tham số khởi động</td>
+<td>Không có cả hai thì instance không khởi động được</td>
+</tr>
+</tbody></table></div>
+<p>Oracle khuyên giữ nhiều bản control file và redo log, mỗi bản trên một đĩa khác nhau.</p>
+<h3 id="18-oracle-database--khoi-dong-va-dung">Khởi động và dừng</h3><p>Khởi động đi qua ba giai đoạn. Mỗi giai đoạn đọc thêm một loại file, nên database dừng ở đâu cho bạn biết nên nghi loại file nào.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Giai đoạn</th>
+<th>Việc xảy ra</th>
+<th>Không qua được thì nghi</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NOMOUNT</strong></td>
+<td>Đọc SPFILE, cấp SGA, chạy tiến trình nền, mở alert log</td>
+<td>Tham số sai, thiếu bộ nhớ</td>
+</tr>
+<tr>
+<td><strong>MOUNT</strong></td>
+<td>Mở control file, biết data file và redo log nằm đâu</td>
+<td>Control file</td>
+</tr>
+<tr>
+<td><strong>OPEN</strong></td>
+<td>Mở data file và redo log, người dùng vào được</td>
+<td>Data file, redo log</td>
+</tr>
+</tbody></table></div>
+<p>Ba giai đoạn theo tài liệu hãng. Cột cuối là suy luận từ việc mỗi giai đoạn đọc file gì.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Cách dừng</th>
+<th>Chờ session</th>
+<th>Chờ giao dịch</th>
+<th>Lần mở sau</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SHUTDOWN NORMAL</code></td>
+<td>Có</td>
+<td>Có</td>
+<td>Bình thường</td>
+</tr>
+<tr>
+<td><code>SHUTDOWN TRANSACTIONAL</code></td>
+<td>Không</td>
+<td>Có</td>
+<td>Bình thường</td>
+</tr>
+<tr>
+<td><code>SHUTDOWN IMMEDIATE</code></td>
+<td>Không</td>
+<td>Không, rollback giao dịch dở</td>
+<td>Bình thường</td>
+</tr>
+<tr>
+<td><code>SHUTDOWN ABORT</code></td>
+<td>Không</td>
+<td>Không, không ghi checkpoint</td>
+<td>Phải phục hồi instance, việc này tự động</td>
+</tr>
+</tbody></table></div>
+<p><code>IMMEDIATE</code> có thể chạy lâu nếu đang có giao dịch lớn phải rollback. Đừng vội đổi sang <code>ABORT</code> chỉ vì sốt ruột, vì lần mở sau vẫn phải làm phần việc đó.</p>
+<h2 id="18-oracle-database--3-redo-undo-va-commit">3. Redo, undo và commit</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Redo và undo</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Redo ghi &quot;đã đổi cái gì&quot; để làm lại được. Undo ghi &quot;trước đó là giá trị gì&quot; để quay lại được. Hai thứ giải quyết hai chiều ngược nhau.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Sửa sổ cái bằng bút chì. Sổ nhật ký ghi lại từng lần sửa, nên sổ cái cháy thì lấy bản sao cũ rồi làm lại theo nhật ký. Tờ giấy nháp giữ con số cũ, nên muốn huỷ thì chép lại con số đó.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Giấy nháp thường bỏ đi sau khi xong việc. Undo còn phục vụ người đọc khác đang cần thấy số cũ, nên không thể xoá ngay. Và thay đổi trên undo cũng được ghi vào redo, nên hai thứ không hoàn toàn tách biệt.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Ai cần undo khi không có ai rollback?</dd></div></dl></section>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>Redo</th>
+<th>Undo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ghi gì</td>
+<td>Thay đổi để làm lại</td>
+<td>Giá trị cũ để quay lại</td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Phục hồi sau sự cố, restore, đồng bộ sang standby</td>
+<td>Rollback, đọc nhất quán, phần lớn tính năng Flashback</td>
+</tr>
+<tr>
+<td>Nằm ở</td>
+<td>Online redo log, rồi archived redo log</td>
+<td>Undo tablespace</td>
+</tr>
+<tr>
+<td>Lỗi đặc trưng</td>
+<td><code>ORA-00257</code> khi không archive được</td>
+<td><code>ORA-01555</code> khi undo cần đọc đã bị ghi đè</td>
+</tr>
+</tbody></table></div>
+<h3 id="18-oracle-database--mot-lenh-commit-di-qua-dau">Một lệnh COMMIT đi qua đâu</h3><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">sequenceDiagram
+    participant A as Ứng dụng
+    participant S as Server process
+    participant L as LGWR
+    participant R as Online redo log
+    participant D as DBWn
+    participant F as Data file
+    A-&gt;&gt;S: UPDATE
+    S-&gt;&gt;S: Sửa block trong buffer cache, tạo undo và redo
+    A-&gt;&gt;S: COMMIT
+    S-&gt;&gt;L: Yêu cầu ghi redo
+    L-&gt;&gt;R: Ghi xuống đĩa
+    L--&gt;&gt;S: Xong
+    S--&gt;&gt;A: Commit thành công
+    Note over D,F: Một lúc sau
+    D-&gt;&gt;F: Ghi block đã sửa</pre></figure><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Vì sao commit không cần ghi data file</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Giao dịch được coi là xong đúng lúc redo chứa bản ghi commit xuống đĩa. Block dữ liệu ghi sau cũng được, vì mất điện thì đọc redo là làm lại được.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Quầy thu ngân ghi biên lai ngay khi khách trả tiền, còn sổ kho cuối ngày mới cập nhật. Sổ kho có cháy thì vẫn dựng lại được từ biên lai.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Sổ kho chỉ ghi việc đã xong. Data file có thể chứa cả thay đổi chưa commit, và redo cũng có thể chứa chúng. Vì vậy phục hồi có hai bước: làm lại mọi thứ theo redo, rồi dùng undo để huỷ phần chưa commit.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Nếu đĩa chứa redo rất chậm thì người dùng thấy gì khi commit, dù đĩa data file vẫn nhanh?</dd></div></dl></section>
+<p>Quá trình hai bước đó gọi là <strong>instance recovery</strong>: SMON tự làm khi mở lại database sau <code>SHUTDOWN ABORT</code> hoặc sau khi instance chết. <strong>Checkpoint</strong> đánh dấu điểm trong redo mà việc phục hồi phải bắt đầu từ đó, nên checkpoint càng gần thì phục hồi càng nhanh.</p>
+<p>Các lúc LGWR ghi redo gồm khi có commit, khi chuyển file log, sau mỗi 3 giây, và khi buffer đầy một phần ba. Nghĩa là redo của giao dịch chưa commit cũng có thể đã nằm trên đĩa, chuyện này bình thường.</p>
+<h3 id="18-oracle-database--doc-nhat-quan">Đọc nhất quán</h3><p>Theo tài liệu hãng: người đọc không chặn người ghi, người ghi không chặn người đọc, chỉ người ghi cùng một dòng mới chặn nhau. Mức cô lập mặc định là read committed, và Oracle không leo thang khoá.</p>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Đọc nhất quán và ORA-01555</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Câu <code>SELECT</code> thấy dữ liệu như lúc nó bắt đầu chạy, dù người khác đang sửa. Oracle lấy giá trị cũ từ undo để dựng lại block cho câu truy vấn đó.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bạn chụp ảnh bảng điểm lúc 9 giờ rồi ngồi cộng điểm theo ảnh. Người khác sửa bảng điểm thật cũng không ảnh hưởng gì tới phép cộng của bạn.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Không có ảnh nào được chụp sẵn. Oracle dựng lại theo từng block khi cần, từ undo. Nếu câu truy vấn chạy quá lâu và phần undo đó đã bị ghi đè thì không dựng lại được, và câu truy vấn hỏng với <code>ORA-01555: snapshot too old</code>.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao <code>ORA-01555</code> lại rơi vào một câu <code>SELECT</code> không hề sửa dữ liệu?</dd></div></dl></section>
+<h2 id="18-oracle-database--4-cau-truc-luu-tru">4. Cấu trúc lưu trữ</h2><p>Mỗi tầng nằm trong tầng lớn hơn:</p>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    T[&quot;Tablespace&lt;br/&gt;gồm một hoặc nhiều data file&quot;] --&gt; S[&quot;Segment&lt;br/&gt;một bảng hoặc một index&quot;]
+    S --&gt; E[&quot;Extent&lt;br/&gt;các block liền nhau&quot;]
+    E --&gt; B[&quot;Block&lt;br/&gt;đơn vị đọc ghi nhỏ nhất&quot;]</pre></figure><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tablespace</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SYSTEM</code></td>
+<td>Từ điển dữ liệu</td>
+</tr>
+<tr>
+<td><code>SYSAUX</code></td>
+<td>Tablespace phụ trợ, bắt buộc phải có</td>
+</tr>
+<tr>
+<td><code>UNDO</code></td>
+<td>Dữ liệu undo</td>
+</tr>
+<tr>
+<td><code>TEMP</code></td>
+<td>Sắp xếp và xử lý tạm, không ghi redo trừ phần quản lý không gian</td>
+</tr>
+</tbody></table></div>
+<p><strong>Schema</strong> trong Oracle gắn với user: mỗi user sở hữu một schema trùng tên. Bảng <code>HR.EMPLOYEES</code> là bảng <code>EMPLOYEES</code> của user <code>HR</code>.</p>
+<p>Tablespace đầy là sự cố vận hành rất hay gặp. <code>ORA-01653</code> là bảng không mở rộng được, <code>ORA-01652</code> là không còn chỗ trong tablespace, thường là <code>TEMP</code>. Cách xử lý là thêm hoặc mở rộng data file, hoặc tăng giới hạn tự mở rộng, nhưng trước đó hãy xem dữ liệu có đang tăng bất thường không.</p>
+<h2 id="18-oracle-database--5-ket-noi-listener-va-service">5. Kết nối: listener và service</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Listener</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Listener nhận yêu cầu kết nối, xem client muốn service nào, rồi chuyển cho một server process. Sau đó client nói chuyện thẳng với server process.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Lễ tân khách sạn dẫn bạn tới phòng họp rồi quay về quầy. Lễ tân nghỉ thì khách mới không vào được, còn người đang họp vẫn họp tiếp.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Lễ tân biết phòng nào đang mở là nhờ chính các phòng tự báo về, qua tiến trình LREG. Vừa khởi động lại database thì có một quãng ngắn lễ tân chưa biết gì, nên client nhận lỗi dù mọi thứ đang lên bình thường.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao tắt listener thường không làm rớt các session đang chạy?</dd></div></dl></section>
+<p>Việc session đang chạy không phụ thuộc vào listener là suy luận từ manual, vốn ghi rằng listener không còn tham gia sau khi đã chuyển kết nối. Hai lỗi kết nối hay gặp nhất cũng tách ra từ đây:</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Nghĩa</th>
+<th>Kiểm tra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ORA-12541</code></td>
+<td>Không có listener ở host và cổng đó</td>
+<td>Chuỗi kết nối, <code>lsnrctl status</code>, mạng</td>
+</tr>
+<tr>
+<td><code>ORA-12514</code></td>
+<td>Listener có chạy nhưng không biết service này</td>
+<td>Tên service, <code>lsnrctl services</code>, database hoặc PDB đã mở chưa</td>
+</tr>
+</tbody></table></div>
+<pre class="code" tabindex="0"><code>lsnrctl status      # listener có chạy không, nghe ở cổng nào
+lsnrctl services    # listener đang biết những service nào</code></pre><p>Client nên kết nối qua <strong>service name</strong>. Một service có thể nằm trên một hoặc nhiều instance, nhờ đó ứng dụng không cần biết đang vào instance nào.</p>
+<h3 id="18-oracle-database--cdb-va-pdb">CDB và PDB</h3><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">CDB và PDB</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>CDB là database chứa, PDB là các database con nằm trong đó. Với ứng dụng, mỗi PDB trông như một database riêng.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Một toà chung cư có nhiều căn hộ. Mỗi nhà có khoá và đồ đạc riêng, nhưng dùng chung thang máy và trạm điện.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Căn hộ thì cách âm tốt. Các PDB dùng chung instance, tức chung SGA, tiến trình nền và redo, nên một PDB chạy nặng có thể ảnh hưởng PDB khác. Tắt CDB là tắt tất cả.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Bạn khởi động lại CDB và ứng dụng báo <code>ORA-12514</code>. Vì sao có thể do PDB?</dd></div></dl></section>
+<p>Điểm cần nhớ khi vận hành:</p>
+<ul>
+<li>Ở 19c vẫn có kiểu non-CDB truyền thống. Từ 21c trở đi chỉ còn kiến trúc CDB, nên hãy hỏi dự án đang dùng kiểu nào.</li>
+<li>Sau khi CDB khởi động lại, PDB mặc định chỉ ở trạng thái <code>MOUNTED</code>. Muốn tự mở như trước thì phải chạy <code>ALTER PLUGGABLE DATABASE ... SAVE STATE</code>.</li>
+<li>Có thể tạo tới 3 PDB mà không cần license Multitenant, từ PDB thứ tư trở đi thì cần.</li>
+</ul>
+<h3 id="18-oracle-database--bang-ma">Bảng mã</h3><p>Dự án Nhật hay chuyển giữa Shift_JIS và UTF-8, nên phần này nối thẳng với <a href="#/01-encoding-csv-duong-dan">Bài 1</a>. Có hai bảng mã cần phân biệt: <strong>database character set</strong> là cách dữ liệu được lưu, còn phần sau dấu chấm của <code>NLS_LANG</code> khai báo client đang dùng bảng mã gì, ví dụ <code>JAPANESE_JAPAN.JA16SJIS</code>.</p>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">NLS_LANG</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd><code>NLS_LANG</code> không đổi dữ liệu, nó chỉ khai với Oracle rằng &quot;client của tôi dùng bảng mã này&quot; để Oracle biết có cần chuyển đổi không.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bạn báo cho phiên dịch biết mình nói tiếng gì. Báo sai thì phiên dịch dịch sai.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Phiên dịch nghe không hiểu sẽ hỏi lại. Nếu <code>NLS_LANG</code> khai trùng bảng mã của database, Oracle cho rằng không cần chuyển đổi và có thể bỏ qua cả bước kiểm tra. Khi client thực tế dùng bảng mã khác, dữ liệu hỏng đi thẳng vào database mà không báo lỗi gì.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao một client đọc thấy tiếng Nhật đúng, còn client khác đọc cùng dòng đó lại thấy chữ lỗi?</dd></div></dl></section>
+<p>Bẫy thứ hai là độ dài theo byte. Khi độ dài cột tính theo byte, một ký tự tiếng Nhật chiếm 2 byte ở Shift_JIS nhưng thường 3 byte ở UTF-8. Dữ liệu vừa khít ở database cũ sẽ gây <code>ORA-12899</code> ở database mới. Đây là cùng loại lỗi với cắt chuỗi trong <a href="#/04-datamagic">Bài 4</a>.</p>
+<h2 id="18-oracle-database--6-sao-luu-va-phuc-hoi">6. Sao lưu và phục hồi</h2><p>Theo tài liệu hãng, <strong>backup vật lý là nền tảng</strong>, còn backup logic chỉ là phần bổ sung.</p>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">RMAN và Data Pump</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>RMAN sao lưu các file của database, cộng với redo thì khôi phục được tới gần thời điểm mong muốn. Data Pump xuất nội dung như bảng và thủ tục ra file để nạp lại ở nơi khác.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>RMAN là photo cả cuốn sổ cái rồi giữ thêm sổ nhật ký. Data Pump là chép danh sách khách hàng sang một tờ giấy mới.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bản chép chỉ đúng tới lúc chép, sau đó mọi thay đổi đều mất, vì Data Pump không dùng redo để đi tiếp. Nhưng nó lại tiện khi chỉ cần lấy lại một bảng hoặc chuyển sang một Oracle Database khác.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao chỉ có <code>expdp</code> chạy mỗi đêm thì chưa gọi là có backup?</dd></div></dl></section>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>RMAN</th>
+<th>Data Pump</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Loại</td>
+<td>Vật lý</td>
+<td>Logic</td>
+</tr>
+<tr>
+<td>Khôi phục tới thời điểm bất kỳ</td>
+<td>Có, khi có đủ archive</td>
+<td>Không, chỉ tới lúc export</td>
+</tr>
+<tr>
+<td>Dùng tốt nhất cho</td>
+<td>Hỏng đĩa, mất file, khôi phục cả database</td>
+<td>Lấy lại một bảng, chuyển dữ liệu giữa các Oracle</td>
+</tr>
+</tbody></table></div>
+<p><strong>ARCHIVELOG là điều kiện quan trọng nhất.</strong> Có bật thì backup được khi database đang mở và khôi phục tới gần thời điểm mong muốn. Không bật thì chỉ có backup nhất quán khi database đã dừng và ở trạng thái mount. Vì vậy câu đầu tiên nên hỏi khi nhận bàn giao là database đang ở chế độ nào.</p>
+<pre class="code" tabindex="0"><code>SELECT name, open_mode, log_mode FROM v$database;</code></pre><pre class="code" tabindex="0"><code>RMAN&gt; BACKUP DATABASE PLUS ARCHIVELOG;
+RMAN&gt; LIST BACKUP OF DATABASE;
+RMAN&gt; REPORT NEED BACKUP DATABASE;
+RMAN&gt; BACKUP VALIDATE CHECK LOGICAL DATABASE ARCHIVELOG ALL;
+RMAN&gt; RESTORE DATABASE PREVIEW SUMMARY;</code></pre><p>Khôi phục cả database theo manual gồm các bước sau. Trên hệ thống thật hãy làm theo 手順書 đã duyệt:</p>
+<pre class="code" tabindex="0"><code>RMAN&gt; STARTUP FORCE MOUNT;
+RMAN&gt; RESTORE DATABASE;
+RMAN&gt; RECOVER DATABASE;
+RMAN&gt; ALTER DATABASE OPEN;</code></pre><p><strong>Flashback</strong> cho phép xem lại hoặc tua ngược dữ liệu mà không cần restore. Flashback Query và Flashback Table dựa vào undo, Flashback Drop dựa vào thùng rác, còn Flashback Database cần flashback log và mặc định không bật. Manual đánh giá các tính năng này thường nhanh hơn và ít gián đoạn hơn phục hồi từ backup, nếu áp dụng được.</p>
+<p>Theo manual, lỗi do con người được ước tính là nguyên nhân gây ngừng database nhiều nhất. Vì vậy cần có phương án cho cả việc xoá nhầm, không chỉ cho việc hỏng đĩa.</p>
+<h2 id="18-oracle-database--7-du-phong-rac-va-data-guard">7. Dự phòng: RAC và Data Guard</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">RAC và Data Guard</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>RAC là nhiều máy cùng chạy một database trên đĩa chung, một máy chết thì máy khác vẫn phục vụ. Data Guard là một database thứ hai, thường ở nơi khác, liên tục nhận redo để bám theo database chính.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>RAC là nhiều nhân viên cùng làm trên một cuốn sổ. Data Guard là chi nhánh ở tỉnh khác luôn được gửi bản sao các trang vừa ghi.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Nhân viên có thể chuyền sổ bằng tay. Các node RAC phải chuyển block cho nhau qua mạng riêng, và mạng này chậm thì cả hệ thống chậm. Còn RAC dùng chung đĩa, nên đĩa hỏng hoặc trung tâm dữ liệu cháy thì RAC không cứu được.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Nếu chỉ được chọn một thứ để chống cháy trung tâm dữ liệu thì chọn gì, và vì sao?</dd></div></dl></section>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>RAC</th>
+<th>Data Guard</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chống</td>
+<td>Máy hoặc instance hỏng</td>
+<td>Mất cả nơi đặt máy, hỏng storage</td>
+</tr>
+<tr>
+<td>Số bản dữ liệu</td>
+<td>Một, trên đĩa chung</td>
+<td>Hai trở lên</td>
+</tr>
+<tr>
+<td>Khoảng cách</td>
+<td>Thường cùng trung tâm dữ liệu</td>
+<td>Có thể xa</td>
+</tr>
+<tr>
+<td>Thêm năng lực xử lý</td>
+<td>Có</td>
+<td>Chỉ đọc, và cần thêm license</td>
+</tr>
+</tbody></table></div>
+<p>Oracle khuyên dùng Data Guard cùng với RAC nếu cần bảo vệ toàn diện trước thảm hoạ.</p>
+<h3 id="18-oracle-database--rac">RAC</h3><ul>
+<li><strong>Clusterware</strong> là phần bắt buộc, quản lý VIP, listener, database và service.</li>
+<li><strong>Interconnect</strong> là mạng riêng giữa các node, không dùng cho người dùng.</li>
+<li><strong>Cache Fusion</strong> chuyển block giữa buffer cache của các instance qua interconnect.</li>
+<li><strong>SCAN</strong> là một tên mạng phân giải ra ba địa chỉ. Oracle khuyên mọi client dùng tên này trong chuỗi kết nối.</li>
+<li><strong>VIP</strong> chuyển sang node khác khi node hỏng, giúp client nhận lỗi ngay thay vì chờ hết thời gian TCP.</li>
+<li><strong>Voting file</strong> và <strong>OCR</strong> nằm trên đĩa chung: voting file xác định node nào thuộc cluster, OCR giữ cấu hình.</li>
+</ul>
+<p>Nguy cơ split brain ở đây cùng loại với <a href="#/16-clusterpro">Bài 16</a>, và voting file cùng cơ chế fencing là cách Clusterware xử lý. Công cụ thường gặp là <code>srvctl</code> cho tài nguyên của database và <code>crsctl</code> cho Clusterware.</p>
+<h3 id="18-oracle-database--data-guard">Data Guard</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Chế độ</th>
+<th>Commit có chờ standby không</th>
+<th>Mất dữ liệu</th>
+<th>Standby không liên lạc được</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Maximum Performance</strong>, mặc định</td>
+<td>Không</td>
+<td>Có thể mất giao dịch chưa gửi kịp</td>
+<td>Primary không bị ảnh hưởng</td>
+</tr>
+<tr>
+<td><strong>Maximum Availability</strong></td>
+<td>Có</td>
+<td>Không, nếu còn standby đồng bộ</td>
+<td>Primary tạm chạy như Maximum Performance</td>
+</tr>
+<tr>
+<td><strong>Maximum Protection</strong></td>
+<td>Có</td>
+<td>Không</td>
+<td>Primary tự dừng, Oracle khuyên có ít nhất hai standby</td>
+</tr>
+</tbody></table></div>
+<p>Chế độ mặc định <strong>có thể mất dữ liệu</strong> khi failover. Nếu yêu cầu là không mất dữ liệu, hãy kiểm tra thực tế đang chạy chế độ nào, đừng chỉ tin vì &quot;có Data Guard&quot;.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Thao tác</th>
+<th>Khi nào</th>
+<th>Mất dữ liệu</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Switchover</strong></td>
+<td>Có kế hoạch, như bảo trì</td>
+<td>Không</td>
+</tr>
+<tr>
+<td><strong>Failover</strong></td>
+<td>Primary hỏng</td>
+<td>Tuỳ chế độ bảo vệ</td>
+</tr>
+</tbody></table></div>
+<p>Data Guard không chép lỗi vật lý từ primary sang, nhưng một lệnh <code>DELETE</code> sai vẫn là giao dịch hợp lệ và sẽ được áp dụng. Muốn chống xoá nhầm thì phải trễ việc áp redo, dùng Flashback Database trên standby, hoặc dùng backup. Do đó Data Guard không thay thế được backup.</p>
+<h2 id="18-oracle-database--8-tinh-nang-ton-them-license">8. Tính năng tốn thêm license</h2><p>Đây là phần dễ gây rắc rối nhất cho người mới, vì nhiều tính năng cài sẵn và chạy được dù chưa mua. Mọi thông tin dưới đây lấy từ Licensing Information User Manual 19c. Khi vào dự án hãy hỏi người giữ hợp đồng.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tính năng</th>
+<th>Tình trạng license</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AWR, ASH, ADDM</strong></td>
+<td>Thuộc Diagnostics Pack, trả thêm trên Enterprise Edition, không có trên Standard Edition 2</td>
+</tr>
+<tr>
+<td>View <code>DBA_HIST_*</code> và <code>V$ACTIVE_SESSION_HISTORY</code></td>
+<td>Cũng cần Diagnostics Pack, trừ một vài ngoại lệ</td>
+</tr>
+<tr>
+<td><strong>Tuning Pack</strong></td>
+<td>Trả thêm, và cần có Diagnostics Pack</td>
+</tr>
+<tr>
+<td><strong>Data Guard</strong></td>
+<td>Có trong Enterprise Edition, không có trên Standard Edition 2</td>
+</tr>
+<tr>
+<td><strong>Active Data Guard</strong></td>
+<td>Trả thêm, cần cho Real-Time Query, tức đọc trên physical standby</td>
+</tr>
+<tr>
+<td><strong>RAC, Partitioning</strong></td>
+<td>Trả thêm trên Enterprise Edition</td>
+</tr>
+<tr>
+<td><strong>Multitenant</strong></td>
+<td>Cần khi có từ 4 PDB trở lên</td>
+</tr>
+</tbody></table></div>
+<p>Tham số <code>CONTROL_MANAGEMENT_PACK_ACCESS</code> điều khiển việc bật hai pack chẩn đoán và tinh chỉnh. Thói quen an toàn là hỏi dự án có Diagnostics Pack không <strong>trước khi</strong> chạy báo cáo AWR hay truy vấn <code>DBA_HIST_*</code>, kể cả khi chỉ để chẩn đoán.</p>
+<h2 id="18-oracle-database--9-chan-doan-va-van-hanh">9. Chẩn đoán và vận hành</h2><p><strong>Alert log là nơi đầu tiên cần đọc.</strong> Đây là nhật ký theo thời gian của các thông báo và lỗi, kèm theo trace file ở cùng khu vực ADR. Tìm đường dẫn bằng:</p>
+<pre class="code" tabindex="0"><code>SELECT name, value FROM v$diag_info WHERE name IN ('Diag Alert', 'Diag Trace');</code></pre><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Nghĩa</th>
+<th>Việc đầu tiên</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ORA-12541</code>, <code>ORA-12514</code></td>
+<td>Lỗi kết nối, xem mục 5</td>
+<td>Kiểm tra listener và service</td>
+</tr>
+<tr>
+<td><code>ORA-28000</code></td>
+<td>Tài khoản bị khoá</td>
+<td>Tìm nơi đang dùng mật khẩu cũ trước khi mở khoá</td>
+</tr>
+<tr>
+<td><code>ORA-00060</code></td>
+<td>Deadlock, Oracle tự rollback một câu lệnh</td>
+<td>Đọc trace, sửa thứ tự cập nhật ở ứng dụng</td>
+</tr>
+<tr>
+<td><code>ORA-01555</code></td>
+<td>Undo cần đọc đã bị ghi đè</td>
+<td>Xem câu truy vấn dài, <code>UNDO_RETENTION</code>, kích thước undo</td>
+</tr>
+<tr>
+<td><code>ORA-01653</code>, <code>ORA-01652</code></td>
+<td>Hết chỗ trong tablespace</td>
+<td>Mở rộng, đồng thời xem vì sao tăng</td>
+</tr>
+<tr>
+<td><code>ORA-00257</code></td>
+<td>Archiver lỗi, thường do đầy đĩa. Không xử lý sớm thì database ngừng chạy giao dịch</td>
+<td>Alert log, dung lượng nơi chứa archive</td>
+</tr>
+<tr>
+<td><code>ORA-04031</code></td>
+<td>Thiếu shared memory</td>
+<td>Xem pool nào thiếu, không phải cứ restart</td>
+</tr>
+<tr>
+<td><code>ORA-12899</code></td>
+<td>Giá trị dài hơn cột</td>
+<td>Xem độ dài theo byte hay ký tự</td>
+</tr>
+<tr>
+<td><code>ORA-00600</code></td>
+<td>Lỗi nội bộ của Oracle</td>
+<td>Không tự sửa, đóng gói bằng ADRCI rồi mở SR</td>
+</tr>
+</tbody></table></div>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart TD
+    A[&quot;Người dùng báo database chậm hoặc treo&quot;] --&gt; B[&quot;Đọc alert log&quot;]
+    B --&gt; C{&quot;Có lỗi không?&quot;}
+    C --&gt;|&quot;ORA-00257&quot;| D[&quot;Xử lý chỗ chứa archive&quot;]
+    C --&gt;|&quot;Lỗi khác&quot;| E[&quot;Tra bảng lỗi&quot;]
+    C --&gt;|&quot;Không&quot;| F[&quot;Xem session đang chờ gì&quot;]
+    F --&gt; G{&quot;Có session bị chặn?&quot;}
+    G --&gt;|&quot;Có&quot;| H[&quot;Tìm session gây chặn,&lt;br/&gt;xác nhận trước khi kill&quot;]
+    G --&gt;|&quot;Không&quot;| I[&quot;Xem CPU, I/O của OS,&lt;br/&gt;AWR nếu có license&quot;]</pre></figure><pre class="code" tabindex="0"><code>-- Trạng thái instance và database
+SELECT instance_name, status FROM v$instance;
+
+-- Session đang bị chặn và session chặn nó
+SELECT sid, serial#, blocking_session, event, seconds_in_wait
+  FROM v$session
+ WHERE blocking_session IS NOT NULL;
+
+-- Tablespace nào sắp đầy
+SELECT tablespace_name, ROUND(used_percent, 1) AS used_pct
+  FROM dba_tablespace_usage_metrics
+ ORDER BY used_percent DESC;</code></pre><p><strong>Quy tắc khi vận hành (suy luận vận hành chung):</strong></p>
+<ul>
+<li><strong>Không xoá archive hay backup bằng <code>rm</code>.</strong> RMAN sẽ tưởng file vẫn còn. Xoá qua RMAN theo chính sách, và nếu đã lỡ xoá thì chạy <code>CROSSCHECK</code> rồi <code>DELETE EXPIRED</code>. Trước khi xoá phải chắc rằng archive đã được backup và standby đã nhận đủ.</li>
+<li><strong>Kill session cần cân nhắc.</strong> Hãy xác nhận đúng session và ghi lại lý do. Giao dịch lớn sẽ phải rollback nên việc kill không xong ngay.</li>
+<li><strong>Sao lưu tham số trước khi sửa.</strong> SPFILE sai có thể làm instance không khởi động được, nên hãy giữ một bản bằng <code>CREATE PFILE FROM SPFILE</code> trước khi đổi.</li>
+<li><strong>Thử restore định kỳ.</strong> <code>BACKUP VALIDATE</code> kiểm tra file, nhưng chỉ có restore thật mới chứng minh được đủ thời gian và đủ bước.</li>
+<li><strong>Lưu bằng chứng khi thao tác.</strong> Dùng <code>SPOOL</code> trong SQL*Plus để ghi lại lệnh và kết quả, phục vụ 証跡 như trong <a href="#/02-van-hanh-theo-yeu-cau">Bài 2</a>.</li>
+</ul>
+<h2 id="18-oracle-database--10-neu-ban-da-quen-postgresql">10. Nếu bạn đã quen PostgreSQL</h2><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>Oracle</th>
+<th>PostgreSQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Giữ phiên bản cũ của dòng</td>
+<td>Trong undo, dựng lại khi cần</td>
+<td>Ngay trong bảng, dọn bằng <code>VACUUM</code></td>
+</tr>
+<tr>
+<td>Sự cố đặc trưng</td>
+<td><code>ORA-01555</code>, undo không đủ</td>
+<td>Bảng phình, transaction ID wraparound</td>
+</tr>
+<tr>
+<td>Nhiều máy cùng ghi trên đĩa chung</td>
+<td>RAC</td>
+<td>Không có trong bản lõi</td>
+</tr>
+<tr>
+<td>Chuỗi rỗng</td>
+<td><code>&#39;&#39;</code> hiện được coi là NULL</td>
+<td><code>&#39;&#39;</code> khác NULL</td>
+</tr>
+<tr>
+<td>Gom hàm</td>
+<td>Package</td>
+<td>Không có package, dùng schema</td>
+</tr>
+<tr>
+<td>Biến mức package</td>
+<td>Có</td>
+<td>Không có, thường thay bằng bảng tạm</td>
+</tr>
+<tr>
+<td>Kiểu dữ liệu</td>
+<td><code>VARCHAR2</code>, <code>NUMBER</code></td>
+<td><code>varchar</code> hoặc <code>text</code>, <code>numeric</code></td>
+</tr>
+<tr>
+<td>Tên cột trùng tên biến trong hàm</td>
+<td>Hiểu là cột</td>
+<td>Báo lỗi nhập nhằng theo mặc định</td>
+</tr>
+<tr>
+<td><code>EXCEPTION</code> bắt được lỗi</td>
+<td>Thường tự dùng <code>SAVEPOINT</code></td>
+<td>Tự rollback mọi thay đổi từ đầu khối</td>
+</tr>
+</tbody></table></div>
+<p>Chuỗi rỗng là bẫy dễ làm sai logic mà không báo lỗi khi chuyển đổi: câu <code>WHERE col IS NULL</code> cho kết quả khác nhau ở hai bên. Manual Oracle cũng khuyên đừng dựa vào việc coi chuỗi rỗng là NULL.</p>
+<p>Dòng về nhiều máy cùng ghi và dòng chuỗi rỗng phía PostgreSQL là kiến thức chung, mình chưa đối chiếu với một trang manual cụ thể. Riêng <code>expdp</code> không dùng được để chuyển sang PostgreSQL, vì file dump chỉ nạp lại được bằng <code>impdp</code>.</p>
+<h2 id="18-oracle-database--11-tu-kiem-tra">11. Tự kiểm tra</h2><p><strong>Câu 1.</strong> Sau khi khởi động lại server database, ứng dụng báo <code>ORA-12514</code> suốt 10 phút. Listener đang chạy. Bạn kiểm tra gì, theo thứ tự nào?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Lỗi này có nghĩa listener sống nhưng không biết service đó, nên đừng restart listener vội. Trình tự:</p>
+<ol>
+<li><code>lsnrctl services</code> để xem listener đang biết service nào.</li>
+<li>So với tên service trong chuỗi kết nối của ứng dụng.</li>
+<li>Kiểm tra instance đã <code>OPEN</code> chưa bằng <code>v$instance</code> và <code>v$database</code>.</li>
+<li>Nếu dùng CDB, kiểm tra PDB bằng <code>SHOW PDBS</code>. Mặc định PDB chỉ ở <code>MOUNTED</code> sau khi CDB khởi động lại, nên đây là nghi phạm hàng đầu. Mở PDB rồi cân nhắc <code>SAVE STATE</code> để lần sau không lặp lại.</li>
+</ol>
+<p>Nếu chỉ mới khởi động được vài chục giây thì có thể instance chưa kịp đăng ký, nhưng 10 phút thì không còn là lý do đó nữa.</p>
+</details>
+
+<p><strong>Câu 2.</strong> 02:00 batch đêm báo <code>ORA-00257</code>, người dùng không ghi được dữ liệu. Đồng nghiệp đề xuất vào thư mục archive và <code>rm</code> các file cũ cho nhanh. Bạn trả lời thế nào và làm gì?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Không nên dùng <code>rm</code>. Các file này có thể chưa được backup, và nếu xoá thì mất khả năng khôi phục tới thời điểm sau đó. Nếu có Data Guard, standby có thể chưa nhận đủ. RMAN cũng sẽ giữ thông tin sai về các file đã biến mất.</p>
+<p>Làm theo thứ tự:</p>
+<ol>
+<li>Đọc alert log để xác nhận nguyên nhân là đầy đĩa, không phải lỗi đích <code>MANDATORY</code>.</li>
+<li>Xem dung lượng nơi chứa archive.</li>
+<li>Backup archive rồi xoá qua RMAN, ví dụ <code>BACKUP ARCHIVELOG ALL DELETE INPUT</code>, hoặc tăng dung lượng nếu có thể.</li>
+<li>Xác nhận database chạy lại, batch được tiếp tục hoặc chạy lại đúng cách.</li>
+<li>Sau sự cố: vì sao đầy? Có thể batch tạo nhiều redo hơn bình thường, hoặc job backup archive đã hỏng từ trước. Thêm cảnh báo dung lượng trước khi đầy.</li>
+</ol>
+<p>Việc làm trên 本番 cần theo đúng quy trình phê duyệt khẩn cấp của dự án.</p>
+</details>
+
+<p><strong>Câu 3.</strong> 14:05 có người chạy nhầm <code>DELETE</code> không có <code>WHERE</code> trên một bảng và đã commit, 14:30 mới phát hiện. Hệ thống có Data Guard ở Maximum Availability. Standby có cứu được không? Bạn cân nhắc những cách nào, theo thứ tự nào?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Standby không tự cứu được, vì <code>DELETE</code> đã commit là giao dịch hợp lệ và đã được áp dụng sang đó, trừ khi có cấu hình trễ việc áp redo.</p>
+<p>Đi từ cách ít ảnh hưởng tới nhiều ảnh hưởng:</p>
+<ol>
+<li><strong>Flashback Query</strong>: đọc dữ liệu tại thời điểm 14:04 nếu undo còn, rồi chèn lại. Không ảnh hưởng dữ liệu khác.</li>
+<li><strong>Flashback Table</strong>: đưa cả bảng về trước đó, nếu điều kiện cho phép.</li>
+<li><strong>Bản Data Pump gần nhất</strong>: chỉ dùng được nếu chấp nhận mất phần thay đổi sau lúc export.</li>
+<li><strong>Flashback Database hoặc phục hồi tới thời điểm</strong> cho cả database: mọi giao dịch hợp lệ sau 14:05 trên toàn database sẽ mất. Đây là lựa chọn cuối, cần nghiệp vụ duyệt.</li>
+</ol>
+<p>Quan trọng nhất là hành động nhanh, vì undo có thể bị ghi đè theo thời gian. Việc này cần DBA và chủ nghiệp vụ cùng quyết định.</p>
+</details>
+
+<p><strong>Câu 4.</strong> Khách hàng yêu cầu: &quot;Một server hỏng thì dịch vụ vẫn chạy, và cháy trung tâm dữ liệu thì không được mất giao dịch.&quot; Bạn đề xuất gì? Cần hỏi thêm điều gì?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Yêu cầu thứ nhất phù hợp với RAC, hoặc với failover kiểu <a href="#/16-clusterpro">CLUSTERPRO</a> nếu chấp nhận một quãng ngừng ngắn. Yêu cầu thứ hai cần Data Guard ở trung tâm khác với redo đồng bộ, tức Maximum Availability trở lên, vì chế độ mặc định có thể mất dữ liệu.</p>
+<p>Cần hỏi thêm:</p>
+<ul>
+<li><strong>Khoảng cách và độ trễ mạng:</strong> commit phải chờ standby, nên mạng xa làm mọi commit chậm đi.</li>
+<li><strong>Khi đứt mạng thì ưu tiên gì:</strong> Maximum Availability tiếp tục chạy và tạm mất bảo vệ, còn Maximum Protection thà dừng primary.</li>
+<li><strong>Edition và ngân sách license:</strong> RAC là option trả thêm, và cả hai đều cần xem Enterprise Edition.</li>
+<li><strong>RPO và RTO đo bằng con số cụ thể:</strong> &quot;không được mất&quot; thường có giá rất cao khi tính ra chi phí.</li>
+<li><strong>Có diễn tập không:</strong> failover chưa từng thử thì chưa thể coi là có.</li>
+</ul>
+<p>Dù chọn gì vẫn phải có backup, vì cả hai đều không chống được xoá nhầm một cách mặc định.</p>
+</details>
+
+<p><strong>Câu 5.</strong> Một báo cáo chạy 3 tiếng thường bị <code>ORA-01555</code>. Đồng nghiệp bảo: &quot;Lỗi ở <code>SELECT</code> nên chắc do câu query sai cú pháp hoặc bảng hỏng.&quot; Bạn giải thích và đề xuất thế nào?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Không phải lỗi cú pháp. Câu <code>SELECT</code> cần thấy dữ liệu như lúc bắt đầu, nên phải đọc undo để dựng lại các block đã bị người khác sửa. Sau 3 tiếng, phần undo đó đã bị ghi đè nên không dựng lại được.</p>
+<p>Đề xuất: xem <code>UNDO_RETENTION</code> và kích thước undo có đủ cho câu truy vấn dài nhất không, vì tăng retention mà undo tablespace không đủ chỗ thì chưa chắc có hiệu quả. Tối ưu để báo cáo chạy ngắn lại. Tránh chạy cùng lúc với batch sửa nhiều dữ liệu trên cùng bảng. Có thể đưa báo cáo sang standby nếu đã có Active Data Guard.</p>
+</details>
+
+<h2 id="18-oracle-database--tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</h2><p>インスタンス (instance), 起動 (khởi động), 停止 (dừng), マウント (mount), 制御ファイル (control file), データファイル (data file), オンラインREDOログ (online redo log), アーカイブREDOログ (archived redo log), UNDO表領域 (undo tablespace), 表領域 (tablespace), チェックポイント (checkpoint), インスタンス・リカバリ (instance recovery), アラート・ログ (alert log), トレース・ファイル (trace file), パラメータ・ファイル (parameter file), バックグラウンド・プロセス (tiến trình nền), リスナー (listener), バックアップ (backup), リストア (restore), リカバリ (phục hồi), 文字コード (bảng mã), 文字化け (lỗi chữ).</p>
+<h2 id="18-oracle-database--nguon">Nguồn</h2><p><strong>Oracle Database 19c:</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/oracle-database-instance.html" target="_blank" rel="noopener">Database Instance: khởi động, dừng, checkpoint, instance recovery, alert log</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/introduction-to-oracle-database.html" target="_blank" rel="noopener">Introduction to Oracle Database: database, instance, schema, multitenant</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/memory-architecture.html" target="_blank" rel="noopener">Memory Architecture</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/process-architecture.html" target="_blank" rel="noopener">Process Architecture: tiến trình nền, fast commit</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/application-and-networking-architecture.html" target="_blank" rel="noopener">Application and Networking Architecture: listener, service</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html" target="_blank" rel="noopener">Data Concurrency and Consistency</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/physical-storage-structures.html" target="_blank" rel="noopener">Physical Storage Structures</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/logical-storage-structures.html" target="_blank" rel="noopener">Logical Storage Structures</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-PLUGGABLE-DATABASE.html" target="_blank" rel="noopener">ALTER PLUGGABLE DATABASE: SAVE STATE</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/multi/administering-a-cdb-with-sql-plus.html" target="_blank" rel="noopener">Administering a CDB, 19c</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/cncpt/CDBs-and-PDBs.html" target="_blank" rel="noopener">Database Concepts 21c: CDB và PDB, non-CDB không còn được hỗ trợ</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/nlspg/setting-up-globalization-support-environment.html" target="_blank" rel="noopener">Globalization: NLS_LANG</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/introduction-backup-recovery.html" target="_blank" rel="noopener">Introduction to Backup and Recovery</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/getting-started-rman.html" target="_blank" rel="noopener">Getting Started with RMAN</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/maintaining-rman-backups.html" target="_blank" rel="noopener">Maintaining RMAN Backups: CROSSCHECK, DELETE</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/introduction-to-oracle-data-guard-concepts.html" target="_blank" rel="noopener">Introduction to Oracle Data Guard</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html" target="_blank" rel="noopener">Data Guard Protection Modes</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/racad/introduction-to-oracle-rac.html" target="_blank" rel="noopener">Introduction to Oracle RAC</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/cwadd/introduction-to-oracle-clusterware.html" target="_blank" rel="noopener">Introduction to Oracle Clusterware: voting file, OCR</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/dblic/Licensing-Information.html" target="_blank" rel="noopener">Licensing Information User Manual 19c</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html" target="_blank" rel="noopener">SQL Language Reference: Nulls</a></li>
+</ul>
+<p><strong>Lỗi:</strong> <a href="https://docs.oracle.com/en/error-help/db/ora-00257/" target="_blank" rel="noopener">ORA-00257</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-00600/" target="_blank" rel="noopener">ORA-00600</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-01555/" target="_blank" rel="noopener">ORA-01555</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-01652/" target="_blank" rel="noopener">ORA-01652</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-01653/" target="_blank" rel="noopener">ORA-01653</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-04031/" target="_blank" rel="noopener">ORA-04031</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-12514/" target="_blank" rel="noopener">ORA-12514</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-12541/" target="_blank" rel="noopener">ORA-12541</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-12899/" target="_blank" rel="noopener">ORA-12899</a>, <a href="https://docs.oracle.com/en/error-help/db/ora-28000/" target="_blank" rel="noopener">ORA-28000</a>.</p>
+<p><strong>Khác:</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/xeinw/licensing-restrictions.html" target="_blank" rel="noopener">Oracle AI Database Free: giới hạn</a></li>
+<li><a href="https://container-registry.oracle.com/ords/ocr/ba/database/free" target="_blank" rel="noopener">Oracle Container Registry: database/free</a></li>
+<li><a href="https://www.theregister.com/software/2025/02/18/oracle-extends-19c-database-support-to-2032/1472429" target="_blank" rel="noopener">The Register: Oracle gia hạn hỗ trợ 19c</a>. Mình chưa đọc được trực tiếp bảng Lifetime Support của Oracle, hãy kiểm tra lại trước khi dùng con số này cho kế hoạch.</li>
+<li><a href="https://www.postgresql.org/docs/current/plpgsql-porting.html" target="_blank" rel="noopener">PostgreSQL: Porting from Oracle PL/SQL</a></li>
+<li><a href="https://www.postgresql.org/docs/current/routine-vacuuming.html" target="_blank" rel="noopener">PostgreSQL: Routine Vacuuming</a></li>
+</ul>
+<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="18-oracle-database">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="18-oracle-database" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/17-aws-cli-s3"><small>Bài trước</small><span>AWS CLI và S3</span></a><a class="pager-link" href="#/19-oracle-web-app-server"><small>Bài sau</small><span>OHS, WebLogic, Tuxedo</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/18-oracle-database/1-van-de">1. Vấn đề</a></li><li><a href="#/18-oracle-database/2-instance-va-database">2. Instance và database</a></li><li><a href="#/18-oracle-database/3-redo-undo-va-commit">3. Redo, undo và commit</a></li><li><a href="#/18-oracle-database/4-cau-truc-luu-tru">4. Cấu trúc lưu trữ</a></li><li><a href="#/18-oracle-database/5-ket-noi-listener-va-service">5. Kết nối: listener và service</a></li><li><a href="#/18-oracle-database/6-sao-luu-va-phuc-hoi">6. Sao lưu và phục hồi</a></li><li><a href="#/18-oracle-database/7-du-phong-rac-va-data-guard">7. Dự phòng: RAC và Data Guard</a></li><li><a href="#/18-oracle-database/8-tinh-nang-ton-them-license">8. Tính năng tốn thêm license</a></li><li><a href="#/18-oracle-database/9-chan-doan-va-van-hanh">9. Chẩn đoán và vận hành</a></li><li><a href="#/18-oracle-database/10-neu-ban-da-quen-postgresql">10. Nếu bạn đã quen PostgreSQL</a></li><li><a href="#/18-oracle-database/11-tu-kiem-tra">11. Tự kiểm tra</a></li><li><a href="#/18-oracle-database/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/18-oracle-database/nguon">Nguồn</a></li></ol></details></div></article>
+<article class="page" data-page="19-oracle-web-app-server" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 19. Oracle HTTP Server, WebLogic và Tuxedo</h1><span class="seal seal-lg" data-state-page="19-oracle-web-app-server" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-a" title="Mức A: cần dùng được khi đi làm">Mức A</span></div></header><p>Bài này nói về tầng nằm giữa người dùng và <a href="#/18-oracle-database">database</a>: <strong>Oracle HTTP Server (OHS)</strong> là web server, <strong>WebLogic Server</strong> là app server chạy ứng dụng Java, còn <strong>Tuxedo</strong> là app server cho ứng dụng C và COBOL.</p>
+<blockquote>
+<p>Bài viết theo manual <strong>WebLogic và OHS 14.1.2</strong>, <strong>Tuxedo 22c</strong>, có dùng thêm vài trang của bản cũ hơn khi bản mới không có. Nhiều hệ thống đang chạy bản khác, hãy hỏi đúng phiên bản. Mình không có bản cài nên <strong>các lệnh và cấu hình trong bài chưa được chạy thử</strong>.</p>
+</blockquote>
+<p><strong>Học xong bạn làm được</strong></p>
+<ul>
+<li>Vẽ luồng request từ trình duyệt tới database và nói mỗi tầng hỏng thì người dùng thấy gì.</li>
+<li>Phân biệt domain, Admin Server, Managed Server, cluster và Node Manager.</li>
+<li>Giải thích session được giữ thế nào khi một server chết.</li>
+<li>Khoanh vùng 503, stuck thread và lỗi hết connection pool.</li>
+<li>Nhận ra một hệ thống Tuxedo và biết các thành phần làm gì.</li>
+</ul>
+<p><strong>Lab:</strong> bài này không có lab. Phần tự kiểm tra cuối bài là bài tập đọc triệu chứng và ra quyết định, làm được mà không cần cài đặt.</p>
+<h2 id="19-oracle-web-app-server--1-van-de">1. Vấn đề</h2><p>Dự án Nhật hay gọi kiểu này là <strong>Web/AP/DB 3層構成</strong>: ba tầng web, ứng dụng và database, thường tách máy riêng. Tách ra để mỗi tầng scale và bảo vệ riêng được, nhưng đổi lại một lỗi có thể đi qua nhiều tầng rồi mới hiện ra ở trình duyệt.</p>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Web server và app server</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Web server nhận request HTTP, tự trả nội dung tĩnh như ảnh và CSS, còn phần cần xử lý thì chuyển vào trong. App server chạy code nghiệp vụ, giữ session và mượn kết nối tới database.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Nhân viên phục vụ tiếp khách, đưa thực đơn, rồi chuyển order vào bếp. Bếp mới là nơi nấu món ăn.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bếp không tự ra tiếp khách được, còn WebLogic thì nhận được HTTP trực tiếp. Do đó OHS không phải bắt buộc về mặt kỹ thuật. Người ta đặt nó ở trước vì lý do thiết kế: tách lớp mạng, xử lý TLS, phục vụ nội dung tĩnh và phân tải.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Nếu WebLogic tự nhận được HTTP thì vì sao nhiều hệ thống vẫn đặt OHS phía trước?</dd></div></dl></section>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    U[&quot;Trình duyệt&quot;] --&gt; LB[&quot;Load balancer&quot;]
+    LB --&gt; O1[&quot;OHS 1&lt;br/&gt;mod_wl_ohs&quot;]
+    LB --&gt; O2[&quot;OHS 2&lt;br/&gt;mod_wl_ohs&quot;]
+    O1 --&gt; M1[&quot;Managed Server 1&quot;]
+    O1 --&gt; M2[&quot;Managed Server 2&quot;]
+    O2 --&gt; M1
+    O2 --&gt; M2
+    M1 --&gt;|&quot;Connection pool&quot;| DB[&quot;Oracle Database&quot;]
+    M2 --&gt;|&quot;Connection pool&quot;| DB
+    AS[&quot;Admin Server&lt;br/&gt;chỉ quản trị&quot;] -.-&gt;|&quot;Phát cấu hình&quot;| M1
+    AS -.-&gt;|&quot;Phát cấu hình&quot;| M2</pre></figure><h2 id="19-oracle-web-app-server--2-oracle-http-server">2. Oracle HTTP Server</h2><p>Theo tài liệu hãng, OHS dựa trên Apache HTTP Server và thêm các module riêng của Oracle.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Việc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>mod_wl_ohs</strong></td>
+<td>Plug-in chuyển request từ OHS sang WebLogic, đi kèm sẵn OHS</td>
+</tr>
+<tr>
+<td><strong>mod_ossl</strong></td>
+<td>Tương tự <code>mod_ssl</code> của Apache nhưng dùng Oracle Wallet để giữ chứng chỉ</td>
+</tr>
+<tr>
+<td><strong>WebGate</strong></td>
+<td>Kết nối với hệ thống đăng nhập một lần</td>
+</tr>
+</tbody></table></div>
+<h3 id="19-oracle-web-app-server--hai-kieu-trien-khai">Hai kiểu triển khai</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>Standalone domain</th>
+<th>WebLogic Server domain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Có Admin Server</td>
+<td>Không</td>
+<td>Có</td>
+</tr>
+<tr>
+<td>Quản lý bằng</td>
+<td>Node Manager, WLST</td>
+<td>Fusion Middleware Control, WLST</td>
+</tr>
+<tr>
+<td>Sửa cấu hình</td>
+<td>Sửa thư mục staging bất cứ lúc nào</td>
+<td>Dùng Fusion Middleware Control. Sửa tay chỉ khi Admin Server đang dừng</td>
+</tr>
+<tr>
+<td>Hợp với</td>
+<td>DMZ, không muốn mở cổng quản trị</td>
+<td>Muốn quản trị tập trung</td>
+</tr>
+</tbody></table></div>
+<h3 id="19-oracle-web-app-server--hai-thu-muc-cau-hinh">Hai thư mục cấu hình</h3><p>Đây là bẫy hay gặp với người quen Apache thường. Mỗi instance có hai thư mục, mỗi thư mục đều chứa đủ <code>httpd.conf</code>, <code>ssl.conf</code>:</p>
+<pre class="code" tabindex="0"><code>DOMAIN_HOME/config/fmwconfig/components/OHS/&lt;tên&gt;             # staging, sửa ở đây
+DOMAIN_HOME/config/fmwconfig/components/OHS/instances/&lt;tên&gt;   # run-time</code></pre><p>Manual ghi rằng mọi thay đổi phải làm ở <strong>staging</strong> và sẽ được đẩy sang <strong>run-time</strong> khi start, restart hoặc stop. Vì vậy sửa thẳng file run-time sẽ bị ghi đè ở lần sau, đây là suy luận từ cơ chế đó.</p>
+<pre class="code" tabindex="0"><code>$DOMAIN_HOME/bin/startComponent.sh ohs1     # cần Node Manager đang chạy
+$DOMAIN_HOME/bin/stopComponent.sh ohs1
+$DOMAIN_HOME/bin/restartComponent.sh ohs1</code></pre><p>Log nằm ở <code>DOMAIN_HOME/servers/&lt;tên&gt;/logs/</code>: error log là <code>&lt;tên&gt;.log</code>, access log là <code>access_log</code>.</p>
+<h3 id="19-oracle-web-app-server--chuyen-request-sang-weblogic">Chuyển request sang WebLogic</h3><p>Cấu hình nằm trong <code>mod_wl_ohs.conf</code>, trong khối <code>&lt;IfModule weblogic_module&gt;</code>:</p>
+<pre class="code" tabindex="0"><code>&lt;IfModule weblogic_module&gt;
+  &lt;Location /myapp&gt;
+    WLSRequest On
+    WebLogicCluster ap1.example.com:8001,ap2.example.com:8001
+  &lt;/Location&gt;
+&lt;/IfModule&gt;</code></pre><p><code>WebLogicHost</code> và <code>WebLogicPort</code> dùng khi chỉ có một server, <code>WebLogicCluster</code> dùng khi có nhiều. Sửa xong phải khởi động lại OHS.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Mặc định ở 14.1.2</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ConnectTimeoutSecs</code></td>
+<td>10</td>
+<td>Tổng thời gian thử kết nối tới WebLogic. Hết giờ thì trả <strong>503</strong></td>
+</tr>
+<tr>
+<td><code>ConnectRetrySecs</code></td>
+<td>2</td>
+<td>Khoảng thử lại, phải nhỏ hơn tham số trên</td>
+</tr>
+<tr>
+<td><code>WLIOTimeoutSecs</code></td>
+<td>120</td>
+<td>Thời gian chờ phản hồi trước khi coi server là chết và failover</td>
+</tr>
+<tr>
+<td><code>MaxSkipTime</code></td>
+<td>10</td>
+<td>Sau bao lâu thì thử lại server đã bị đánh dấu hỏng</td>
+</tr>
+<tr>
+<td><code>DynamicServerList</code></td>
+<td>ON</td>
+<td>Tự cập nhật danh sách server trong cluster. Manual khuyên để nguyên</td>
+</tr>
+<tr>
+<td><code>Idempotent</code></td>
+<td>ON</td>
+<td>Cho phép failover khi lỗi, chỉ với request không gây hại khi gửi lại</td>
+</tr>
+</tbody></table></div>
+<p><strong>Bẫy với request chạy lâu:</strong> nếu <code>WLIOTimeoutSecs</code> nhỏ hơn thời gian xử lý thật, plug-in sẽ coi server là chết dù nó vẫn đang làm việc, rồi có thể gửi lại request sang server khác. Manual khuyên đặt giá trị lớn vì lý do này. Request <code>POST</code> thì không được gửi lại.</p>
+<p><strong>Log của plug-in:</strong> từ 14.1.2, <code>Debug</code> và <code>WLLogFile</code> bị bỏ qua, thông báo của plug-in nằm chung trong error log của OHS với tên module là <code>weblogic</code>. Tài liệu cũ vẫn nhắc hai tham số đó, nên đừng ngạc nhiên nếu đặt vào mà không có tác dụng.</p>
+<h2 id="19-oracle-web-app-server--3-cau-truc-weblogic">3. Cấu trúc WebLogic</h2><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Nghĩa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Domain</strong></td>
+<td>Đơn vị quản trị, gồm các server và tài nguyên liên quan</td>
+</tr>
+<tr>
+<td><strong>Admin Server</strong></td>
+<td>Mỗi domain có đúng một, giữ và phát cấu hình</td>
+</tr>
+<tr>
+<td><strong>Managed Server</strong></td>
+<td>Server chạy ứng dụng. Manual khuyên chỉ deploy ứng dụng lên đây</td>
+</tr>
+<tr>
+<td><strong>Cluster</strong></td>
+<td>Nhóm Managed Server cùng domain, cho phép failover và phân tải</td>
+</tr>
+<tr>
+<td><strong>Machine</strong></td>
+<td>Định nghĩa máy vật lý hoặc VM chứa các server</td>
+</tr>
+<tr>
+<td><strong>Node Manager</strong></td>
+<td>Tiện ích trên từng máy để bật, tắt và khởi động lại server từ xa</td>
+</tr>
+<tr>
+<td><strong>Data source</strong></td>
+<td>Cấu hình kết nối database và connection pool</td>
+</tr>
+<tr>
+<td><strong>Work Manager</strong></td>
+<td>Quy tắc chia thread cho từng loại request</td>
+</tr>
+</tbody></table></div>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Admin Server và Managed Server</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Admin Server là nơi giữ và thay đổi cấu hình. Managed Server chạy ứng dụng phục vụ người dùng. Admin Server chết thì ứng dụng vẫn chạy, chỉ là không đổi được cấu hình.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Trụ sở ban hành quy định, các chi nhánh giữ một bản photo và bán hàng theo đó. Trụ sở mất điện thì chi nhánh vẫn mở cửa, nhưng không ai ra được quy định mới.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Chi nhánh mới mở mà chưa từng có bản photo thì không thể hoạt động. Managed Server cũng vậy: lần đầu khởi động qua <code>nmEnroll</code> phải có Admin Server để lấy cấu hình. Các lần sau mới chạy được bằng bản sao cục bộ, gọi là <strong>Managed Server Independence</strong>.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>2 giờ sáng Admin Server chết, ứng dụng vẫn chạy. Có cần gọi người dậy không, và việc gì sẽ không làm được?</dd></div></dl></section>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Node Manager</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Một tiến trình chạy trên từng máy, nhận lệnh bật tắt server và tự khởi động lại server đã chết.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bảo vệ toà nhà giữ chìa khoá. Trụ sở gọi điện bảo mở cửa phòng nào thì bảo vệ mở, thấy phòng nào mất điện thì tự bật lại.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bảo vệ không biết phòng đó vì sao mất điện. Server chết liên tục vì lỗi thật sẽ bị khởi động lại tới khi chạm giới hạn <code>RestartMax</code>, rồi chuyển sang <code>FAILED_NOT_RESTARTABLE</code>. Node Manager cũng không tự tắt server êm được, nó chỉ kill tiến trình.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Node Manager dừng thì server đang chạy có chết không? Và điều gì sẽ không còn xảy ra?</dd></div></dl></section>
+<p>Manual khuyên chạy Node Manager như dịch vụ của hệ điều hành, khởi động Admin Server qua Node Manager, và khởi động Managed Server qua Admin Server.</p>
+<h3 id="19-oracle-web-app-server--thay-doi-cau-hinh">Thay đổi cấu hình</h3><p>Cấu hình trung tâm là <code>DOMAIN_NAME/config/config.xml</code>. Manual ghi rõ <strong>không sửa file này khi domain đang chạy</strong>, vì WebLogic ghi đè định kỳ và có thể gây lỗi. Thay đổi đi qua một phiên chỉnh sửa:</p>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    A[&quot;Bắt đầu phiên sửa&lt;br/&gt;giữ edit lock&quot;] --&gt; B[&quot;Thay đổi được lưu ở&lt;br/&gt;thư mục pending&quot;]
+    B --&gt; C[&quot;Activate&quot;]
+    C --&gt; D[&quot;Cấu hình cũ lưu vào configArchive&quot;]
+    D --&gt; E[&quot;Áp dụng và phát tới Managed Server&quot;]</pre></figure><p>Công cụ gồm WebLogic Remote Console, Fusion Middleware Control và WLST. Một số thay đổi chỉ có hiệu lực sau khi khởi động lại server.</p>
+<p><strong>Console tuỳ theo phiên bản:</strong> Administration Console đã bị gỡ khỏi 14.1.2 và được thay bằng WebLogic Remote Console. Tài liệu hoặc 手順書 của bản 12c và 14.1.1 sẽ nói về màn hình cũ, nên đừng áp nguyên cho bản mới.</p>
+<h3 id="19-oracle-web-app-server--trang-thai-server">Trạng thái server</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Trạng thái</th>
+<th>Nghĩa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>RUNNING</code></td>
+<td>Phục vụ bình thường</td>
+</tr>
+<tr>
+<td><code>ADMIN</code></td>
+<td>Chỉ nhận yêu cầu quản trị</td>
+</tr>
+<tr>
+<td><code>STANDBY</code></td>
+<td>Cổng thường đóng, chờ lệnh chuyển sang chạy</td>
+</tr>
+<tr>
+<td><code>SHUTDOWN</code></td>
+<td>Đã dừng</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Tự phát hiện mất ổn định, ví dụ hết bộ nhớ hoặc stuck thread</td>
+</tr>
+<tr>
+<td><code>FAILED_NOT_RESTARTABLE</code></td>
+<td>Đã hỏng và Node Manager sẽ không khởi động lại</td>
+</tr>
+</tbody></table></div>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Cách dừng</th>
+<th>Hành vi</th>
+<th>Lưu ý</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Graceful</strong></td>
+<td>Làm xong việc đang dở rồi dừng</td>
+<td>Có thể lâu, không xong nếu kết nối JDBC vẫn đang được dùng</td>
+</tr>
+<tr>
+<td><strong>Force</strong></td>
+<td>Dừng ngay, bỏ việc đang dở</td>
+<td>Session chưa được sao chép sẽ mất</td>
+</tr>
+</tbody></table></div>
+<h2 id="19-oracle-web-app-server--4-giu-session-khi-server-chet">4. Giữ session khi server chết</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Bản chính và bản sao của session</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Session của một người dùng có bản chính ở một server và bản sao ở server khác. Cookie của trình duyệt ghi cả hai địa chỉ. Bản chính chết thì request sau đi tới chỗ có bản sao.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bệnh nhân có bác sĩ chính và bác sĩ phụ, thẻ khám ghi tên cả hai. Bác sĩ chính nghỉ đột ngột thì bệnh nhân gặp bác sĩ phụ, không phải kể lại từ đầu.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Bác sĩ phụ tự đọc được mọi trang bệnh án, còn WebLogic chỉ sao chép khi ứng dụng gọi <code>setAttribute</code>, và đối tượng phải serializable. Sửa trực tiếp bên trong một object thì bản sao không biết gì. Cluster chỉ có hai server thì sau khi một server chết, sẽ không còn nơi giữ bản sao mới.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Kiểm thử failover thấy giỏ hàng mất một phần sản phẩm. Bạn nghi điều gì trong code?</dd></div></dl></section>
+<p>Bạn cần nhớ các điều kiện theo tài liệu hãng:</p>
+<ul>
+<li>Dùng in-memory replication thì phải đi qua các web server có cùng cấu hình plug-in, hoặc qua load balancer.</li>
+<li>Ứng dụng phải được deploy đồng nhất trên mọi node trong cluster.</li>
+<li>WebLogic ưu tiên đặt bản sao ở <strong>máy khác</strong> với bản chính, nên định nghĩa Machine cho đúng là quan trọng.</li>
+<li>Plug-in gắn người dùng với server tạo session qua cookie, mặc định là <code>JSESSIONID</code>.</li>
+</ul>
+<p>Load balancer phía trước OHS cũng cần được xem lại. Nếu nó có timeout hoặc cookie riêng thì đó là thêm một chỗ có thể gây mất phiên, đây là suy luận vận hành chung.</p>
+<h2 id="19-oracle-web-app-server--5-connection-pool">5. Connection pool</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Connection pool</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Mở sẵn một nhóm kết nối tới database. Ứng dụng mượn một kết nối khi cần rồi trả lại, không phải mở mới mỗi lần.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Xe đẩy ở siêu thị. Lấy ở cửa, mua xong trả lại. Hết xe thì khách phải đứng đợi.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Xe đẩy không tự hỏng khi nằm yên. Kết nối có thể chết âm thầm khi database khởi động lại hoặc firewall cắt kết nối nhàn rỗi, mà pool vẫn tưởng nó tốt. Và một người lấy xe không trả, tức code quên đóng kết nối, thì cuối cùng cả siêu thị hết xe.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Database đã khởi động lại xong, nhưng ứng dụng vẫn báo lỗi kết nối. Vì sao?</dd></div></dl></section>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Thiết lập</th>
+<th>Mặc định</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Test Connections On Reserve</strong></td>
+<td>Tắt</td>
+<td>Kiểm tra kết nối trước khi giao cho ứng dụng</td>
+</tr>
+<tr>
+<td><strong>Connection Reserve Timeout</strong></td>
+<td>10 giây</td>
+<td>Chờ kết nối rảnh tối đa bao lâu. Hết giờ thì <code>PoolLimitSQLException</code></td>
+</tr>
+<tr>
+<td><strong>Inactive Connection Timeout</strong></td>
+<td>0, tức tắt</td>
+<td>Thu hồi kết nối bị giữ mà không dùng, hữu ích khi có rò rỉ</td>
+</tr>
+<tr>
+<td><strong>Statement Timeout</strong></td>
+<td>-1, tức không giới hạn</td>
+<td>Giới hạn thời gian một câu SQL</td>
+</tr>
+<tr>
+<td><strong>Count of Test Failures Till Flush</strong></td>
+<td>2</td>
+<td>Sau bao nhiêu lần test hỏng thì đóng hết kết nối trong pool</td>
+</tr>
+<tr>
+<td><strong>Maximum Capacity</strong></td>
+<td>Xem cấu hình dự án</td>
+<td>Số kết nối tối đa của pool</td>
+</tr>
+</tbody></table></div>
+<p>Test Connections On Reserve mặc định <strong>tắt</strong>, nên hãy kiểm tra dự án đã bật chưa. Nó làm mỗi lần mượn chậm đi chút ít, nhưng nếu tắt thì kết nối chết sẽ đi thẳng vào ứng dụng thành lỗi. Khi database mất hẳn, pool có thể bị tạm ngưng và trả <code>PoolDisabledSQLException</code>.</p>
+<p><strong>Tính cả hai đầu (suy luận vận hành chung):</strong> tổng số kết nối bằng <code>Maximum Capacity</code> nhân với số Managed Server, cộng với các nguồn khác. Con số này phải nằm trong giới hạn <code>PROCESSES</code> và <code>SESSIONS</code> của database. Tăng pool để chữa lỗi &quot;hết kết nối&quot; có thể chỉ chuyển nút thắt sang database.</p>
+<h2 id="19-oracle-web-app-server--6-khi-he-thong-cham-stuck-thread-va-chuoi-loi">6. Khi hệ thống chậm: stuck thread và chuỗi lỗi</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Stuck thread</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Một thread chạy liên tục quá một ngưỡng thời gian thì WebLogic ghi nhận là stuck. Đây là một cảnh báo, không phải chứng minh rằng code đang treo.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Nhân viên quầy làm cho một khách quá lâu nên quản lý ghi vào sổ để xem xét. Có thể khách đang gây khó, cũng có thể đó đơn giản là một hồ sơ rất dày.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Quản lý có thể mời khách đi. Việc đánh dấu stuck không làm thread dừng lại. Nhưng nếu quá nhiều thread bị stuck, WebLogic có thể tắt Work Manager liên quan, đưa ứng dụng về chế độ admin, hoặc tự chuyển server sang <code>FAILED</code>.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Thấy stuck thread trong log có nghĩa là phải restart ngay không? Bạn cần xem gì trước?</dd></div></dl></section>
+<p>Ngưỡng này là <strong>Stuck Thread Max Time</strong>. Manual dùng ví dụ 600 giây, hãy xem giá trị thật trong dự án. Một báo cáo chạy dài hợp lệ cũng có thể gây cảnh báo này.</p>
+<p>Sự cố thường đi thành chuỗi, và nơi người dùng thấy lỗi lại nằm xa nơi gây ra lỗi. Chuỗi dưới đây là mẫu suy luận chung:</p>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    A[&quot;Database chậm&lt;br/&gt;hoặc bị khoá&quot;] --&gt; B[&quot;Kết nối bị giữ lâu&quot;]
+    B --&gt; C[&quot;Pool hết kết nối&quot;]
+    C --&gt; D[&quot;Thread xếp hàng&lt;br/&gt;chờ kết nối&quot;]
+    D --&gt; E[&quot;Hết thread,&lt;br/&gt;stuck thread&quot;]
+    E --&gt; F[&quot;Server quá tải&lt;br/&gt;trả 503 hoặc rất chậm&quot;]
+    F --&gt; G[&quot;Người dùng&lt;br/&gt;báo web lỗi&quot;]</pre></figure><p>Vì vậy đừng dừng ở tầng thấy lỗi đầu tiên.</p>
+<h3 id="19-oracle-web-app-server--thu-thap-gi-truoc-khi-khoi-dong-lai">Thu thập gì trước khi khởi động lại</h3><p>Khởi động lại làm mất bằng chứng. Hãy lấy <strong>thread dump</strong> trước, nếu tình hình cho phép.</p>
+<pre class="code" tabindex="0"><code># WLST, kết nối vào Admin Server
+connect()                        # công cụ sẽ hỏi tài khoản
+threadDump(serverName='ms1')     # ghi ra file Thread_Dump_ms1 trong thư mục đang chạy WLST</code></pre><p>Từ Admin Server có thể lấy dump của bất kỳ Managed Server nào đang chạy. Nếu không vào được WLST thì dùng công cụ của JVM như <code>jstack</code> hoặc <code>kill -3</code>.</p>
+<p>Cách đọc (suy luận vận hành chung): lấy khoảng 3 lần, cách nhau vài chục giây, rồi so sánh. Thread đứng yên ở cùng một chỗ qua cả ba lần mới đáng nghi. Nhiều thread cùng chờ lấy kết nối thì nghi pool hoặc database. Nhiều thread chờ đọc socket tới database thì nghi câu SQL chậm hoặc bị khoá, và nên xem tiếp phần session bị chặn ở <a href="#/18-oracle-database">Bài 18</a>.</p>
+<h3 id="19-oracle-web-app-server--log-va-trieu-chung">Log và triệu chứng</h3><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Log</th>
+<th>Vị trí ví dụ theo manual</th>
+<th>Dùng để</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Server log</strong></td>
+<td><code>DOMAIN/servers/&lt;server&gt;/logs/&lt;server&gt;.log</code></td>
+<td>Lỗi của từng server, stuck thread, trạng thái</td>
+</tr>
+<tr>
+<td><strong>Domain log</strong></td>
+<td>Trong thư mục log của Admin Server</td>
+<td>Sự kiện quan trọng của cả domain</td>
+</tr>
+<tr>
+<td><strong>HTTP access log</strong></td>
+<td>Cấu hình theo từng server, hãy kiểm tra trong dự án</td>
+<td>Request nào, mã trả về, thời gian</td>
+</tr>
+<tr>
+<td><strong>OHS error log</strong></td>
+<td><code>DOMAIN_HOME/servers/&lt;ohs&gt;/logs/&lt;ohs&gt;.log</code></td>
+<td>Plug-in không nối được WebLogic</td>
+</tr>
+</tbody></table></div>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Triệu chứng</th>
+<th>Nghi ở đâu</th>
+<th>Xem gì</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>503</strong> từ OHS, tất cả người dùng</td>
+<td>Không có Managed Server nào nhận được</td>
+<td>OHS error log với module <code>weblogic</code>, trạng thái server, cổng, mạng</td>
+</tr>
+<tr>
+<td><strong>503</strong> từ một số request</td>
+<td>Một server <code>FAILED</code> hoặc quá tải</td>
+<td>Trạng thái từng server, heap, stuck thread</td>
+</tr>
+<tr>
+<td><strong>404</strong> ở OHS, WebLogic vẫn tốt</td>
+<td><code>Location</code> trong <code>mod_wl_ohs.conf</code> không khớp đường dẫn</td>
+<td>Access log của OHS và của WebLogic</td>
+</tr>
+<tr>
+<td><code>PoolLimitSQLException</code></td>
+<td>Hết connection pool</td>
+<td>Thread dump, số kết nối đang dùng, câu SQL chậm, rò rỉ</td>
+</tr>
+<tr>
+<td><code>PoolDisabledSQLException</code></td>
+<td>Database mất kết nối, pool bị tạm ngưng</td>
+<td>Database, mạng, sau đó trạng thái data source</td>
+</tr>
+<tr>
+<td><code>OutOfMemoryError</code></td>
+<td>Heap</td>
+<td>Log GC, heap dump, sắp có <code>FAILED</code></td>
+</tr>
+<tr>
+<td>Không đổi được cấu hình</td>
+<td>Admin Server chết, hoặc có người giữ edit lock</td>
+<td>Trạng thái Admin Server, phiên sửa đang mở</td>
+</tr>
+</tbody></table></div>
+<p>Khi hết bộ nhớ, có thể cấu hình <code>panic-action</code> là <code>system-exit</code> để server tự thoát cho Node Manager khởi động lại, thay vì nằm trong trạng thái nửa sống nửa chết.</p>
+<h2 id="19-oracle-web-app-server--7-deploy-va-khoi-dong-lai">7. Deploy và khởi động lại</h2><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Cách</th>
+<th>Hành vi</th>
+<th>Khi dùng</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Production redeployment</strong></td>
+<td>Bản mới nhận client mới, bản cũ phục vụ nốt client đang dở rồi nghỉ</td>
+<td>Cần cập nhật mà không ngừng. Ứng dụng phải có version identifier và không vi phạm các hạn chế</td>
+</tr>
+<tr>
+<td><strong>In-place redeployment</strong></td>
+<td>Thay ngay, client có thể mất việc đang dở</td>
+<td>Trong khung giờ dừng, hoặc ứng dụng không dùng được cách trên</td>
+</tr>
+<tr>
+<td><strong>Partial redeployment</strong></td>
+<td>Chỉ thay file tĩnh hoặc một module</td>
+<td>File tĩnh thì nhẹ, module thì ảnh hưởng như in-place</td>
+</tr>
+</tbody></table></div>
+<p>Một domain giữ tối đa hai phiên bản của một ứng dụng cùng lúc. Deploy cần Admin Server, nên Admin Server chết cũng làm kẹt việc deploy.</p>
+<p><strong>Khởi động lại lần lượt (suy luận vận hành chung):</strong></p>
+<ol>
+<li>Đưa server ra khỏi luồng nhận request, 閉塞 trên OHS hoặc load balancer nếu quy trình dự án có bước này.</li>
+<li>Dừng theo kiểu graceful, có giới hạn thời gian.</li>
+<li>Khởi động lại và kiểm tra trạng thái <code>RUNNING</code>.</li>
+<li>Kiểm tra bằng request thật, không chỉ nhìn tiến trình.</li>
+<li>Đưa trở lại rồi mới làm server tiếp theo.</li>
+</ol>
+<p>Trong lúc đó hệ thống chạy với ít server hơn, nên phải chắc rằng phần còn lại chịu được tải, và nên tránh giờ cao điểm.</p>
+<p><strong>Phiên bản ảnh hưởng tới ứng dụng:</strong> WebLogic 14.1.2 chứng nhận với JDK 17 và 21, hỗ trợ Jakarta EE 8. WebLogic 15.1.1 hỗ trợ Jakarta EE 9.1, nên đây không phải một lần nâng cấp đơn giản với ứng dụng cũ, hãy đọc hướng dẫn tương thích trước.</p>
+<h2 id="19-oracle-web-app-server--8-tuxedo">8. Tuxedo</h2><p>Tuxedo là middleware chạy ứng dụng phân tán, thường viết bằng C hoặc COBOL, và có điều phối giao dịch phân tán. Mức bài này là đủ để nhận ra các thành phần và đọc được 手順書, chưa đủ để lập trình.</p>
+<section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Service và bulletin board</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Client không gọi một server cụ thể, mà gọi một tên service như <code>DEPOSIT</code>. Tuxedo tra bảng để biết server nào đang cung cấp service đó và đưa request vào hàng đợi của server ấy.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Bạn gọi tổng đài và xin gặp &quot;phòng kế toán&quot;. Tổng đài tra danh bạ rồi nối tới một nhân viên phù hợp, bạn không cần biết tên người đó.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Tổng đài là một điểm trung tâm. Bulletin board thì có trên từng server machine, xây từ cấu hình, nằm trong bộ nhớ dùng chung và được đồng bộ giữa các máy. Vì vậy khi có sự cố thì phải xem trên từng máy.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao có thể chuyển server sang máy khác mà không phải sửa code client?</dd></div></dl></section>
+<figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    C[&quot;Client&quot;] --&gt;|&quot;Gọi tên service&quot;| BB[&quot;Bulletin board&lt;br/&gt;service nào, server nào&quot;]
+    BB --&gt; Q[&quot;Hàng đợi của server&quot;]
+    Q --&gt; S[&quot;Server process&quot;]
+    S --&gt; DB[&quot;Database&quot;]
+    BBL[&quot;BBL trên mỗi máy&quot;] -.-&gt;|&quot;Theo dõi&quot;| BB
+    DBBL[&quot;DBBL trên máy master&quot;] -.-&gt;|&quot;Kiểm tra, khởi động lại&quot;| BBL
+    WS[&quot;Client từ xa&quot;] --&gt; WSL[&quot;WSL, WSH&quot;]
+    WSL --&gt; BB</pre></figure><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Việc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Server, service</strong></td>
+<td>Server là tiến trình, service là từng chức năng nghiệp vụ trong đó</td>
+</tr>
+<tr>
+<td><strong>BBL</strong></td>
+<td>Mỗi server machine có đúng một, quản lý bulletin board và kiểm tra các tiến trình trên máy đó</td>
+</tr>
+<tr>
+<td><strong>DBBL</strong></td>
+<td>Chạy trên máy master khi <code>MODEL=MP</code>, kiểm tra và khởi động lại BBL</td>
+</tr>
+<tr>
+<td><strong>BRIDGE</strong></td>
+<td>Chuyển request giữa các máy</td>
+</tr>
+<tr>
+<td><strong>WSL, WSH</strong></td>
+<td>Nhận và xử lý kết nối từ client ở xa</td>
+</tr>
+<tr>
+<td><strong>TMS, TLOG</strong></td>
+<td>Điều phối giao dịch hai pha, TLOG lưu giao dịch toàn cục đã commit</td>
+</tr>
+<tr>
+<td><strong>ULOG</strong></td>
+<td>Nhật ký lỗi và cảnh báo, mỗi server machine một file</td>
+</tr>
+</tbody></table></div>
+<p>Tên file ULOG gồm tiền tố <code>ULOGPFX</code>, mặc định là <code>APPDIR/ULOG</code>, cộng với ngày dạng <code>mmddyy</code>.</p>
+<h3 id="19-oracle-web-app-server--cau-hinh-va-lenh">Cấu hình và lệnh</h3><figure class="diagram" tabindex="0"><div class="diagram-out"></div><pre class="diagram-src">flowchart LR
+    U[&quot;UBBCONFIG&lt;br/&gt;file text, sửa tay&quot;] --&gt;|&quot;tmloadcf&quot;| T[&quot;TUXCONFIG&lt;br/&gt;file nhị phân&quot;]
+    T --&gt;|&quot;tmboot&quot;| BB[&quot;Bulletin board&lt;br/&gt;trong bộ nhớ&quot;]
+    T --&gt;|&quot;tmunloadcf&quot;| U</pre></figure><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Việc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tmloadcf</code></td>
+<td>Biên dịch <code>UBBCONFIG</code> thành <code>TUXCONFIG</code>. Không chạy được khi ứng dụng đang chạy, trừ <code>-n</code> và <code>-c</code></td>
+</tr>
+<tr>
+<td><code>tmloadcf -n</code></td>
+<td>Chỉ kiểm tra cú pháp, không ghi gì</td>
+</tr>
+<tr>
+<td><code>tmboot</code>, <code>tmshutdown</code></td>
+<td>Khởi động và dừng toàn bộ ứng dụng từ máy master</td>
+</tr>
+<tr>
+<td><code>tmadmin</code></td>
+<td>Cấu hình, theo dõi và điều chỉnh, dùng được cả trước khi khởi động. Dễ dùng hơn <code>tmconfig</code></td>
+</tr>
+<tr>
+<td><code>tmconfig</code></td>
+<td>Đổi cấu hình trong lúc ứng dụng đang chạy, mạnh hơn nhưng khó dùng hơn. Một số mục vẫn không đổi được khi đang chạy</td>
+</tr>
+<tr>
+<td><code>tmunloadcf</code></td>
+<td>Xuất <code>TUXCONFIG</code> trở lại dạng text</td>
+</tr>
+</tbody></table></div>
+<p><strong>Bẫy chính:</strong> đổi bằng <code>tmconfig</code> chỉ cập nhật file nhị phân, không cập nhật <code>UBBCONFIG</code>. Sau đó nếu ai đó nạp lại file text cũ thì thay đổi sẽ mất. Sau mỗi lần đổi hãy <code>tmunloadcf</code> để đồng bộ lại file text.</p>
+<p>Nếu hệ thống có cả WebLogic và Tuxedo thì <strong>WebLogic Tuxedo Connector (WTC)</strong> cho hai bên gọi lẫn nhau. Bạn cần kiểm tra bảng chứng nhận vì không phải tổ hợp phiên bản nào cũng được hỗ trợ.</p>
+<h2 id="19-oracle-web-app-server--9-quy-tac-van-hanh">9. Quy tắc vận hành</h2><p><strong>Suy luận vận hành chung:</strong></p>
+<ul>
+<li><strong>Lấy bằng chứng trước khi restart:</strong> thread dump, log, trạng thái pool. Restart xong mà không có những thứ đó thì sự cố sẽ lặp lại mà vẫn không biết vì sao.</li>
+<li><strong>Đừng restart Admin Server để &quot;chữa&quot; lỗi ứng dụng.</strong> Hai thứ này tách nhau.</li>
+<li><strong>Giữ 手順書 theo đúng phiên bản,</strong> nhất là khi nâng cấp qua 14.1.2 và đổi console.</li>
+<li><strong>Kiểm tra từ phía người dùng,</strong> vì tiến trình <code>RUNNING</code> không có nghĩa là ứng dụng đang phục vụ tốt.</li>
+<li><strong>Thử failover trước khi cần,</strong> gồm cả tình huống hai server với một server chết.</li>
+<li><strong>Sao lưu cấu hình trước khi đổi.</strong> WebLogic có <code>configArchive</code>, nhưng file OHS sửa tay thì không được giữ tự động.</li>
+</ul>
+<h2 id="19-oracle-web-app-server--10-tu-kiem-tra">10. Tự kiểm tra</h2><p><strong>Câu 1.</strong> Toàn bộ người dùng nhận 503 lúc 10:00. Bạn vào máy OHS thấy tiến trình vẫn chạy. Cả hai Managed Server đều báo <code>RUNNING</code>. Bạn kiểm tra gì tiếp?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Trình tự:</p>
+<ol>
+<li>Đọc OHS error log, tìm thông báo của module <code>weblogic</code> để biết lỗi nối hay lỗi chờ phản hồi.</li>
+<li>Đứng trên máy OHS thử nối tới cổng Managed Server. Vấn đề có thể nằm ở mạng hoặc firewall giữa hai tầng.</li>
+<li>Xem <code>Location</code> và danh sách <code>WebLogicCluster</code> có đúng cổng không, có ai vừa đổi không.</li>
+<li><code>RUNNING</code> chưa đủ: xem server có <code>OVERLOADED</code> không vì server quá tải cũng trả 503. Đọc server log tìm stuck thread, lỗi bộ nhớ.</li>
+<li>Nếu thấy dấu hiệu chuỗi lỗi, lấy thread dump và xem connection pool rồi tới database.</li>
+</ol>
+<p>Không restart gì trước khi có bằng chứng, trừ khi nghiệp vụ yêu cầu khôi phục ngay. Khi đó hãy lấy dump nhanh rồi mới restart.</p>
+</details>
+
+<p><strong>Câu 2.</strong> Admin Server đã chết, ứng dụng vẫn chạy. Sếp yêu cầu tăng Maximum Capacity của pool ngay. Đồng nghiệp đề xuất sửa <code>config.xml</code> bằng tay và khởi động lại Managed Server. Bạn trả lời thế nào?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Không làm vậy. Manual cấm sửa <code>config.xml</code> khi domain đang chạy, và WebLogic có thể ghi đè hoặc gặp lỗi. Sửa tay chỉ có thể làm khi đã dừng các server trong domain, có backup và kiểm thử.</p>
+<p>Cách đúng là khởi động lại Admin Server trước, qua Node Manager nếu có, rồi đổi qua Remote Console hoặc WLST với phiên sửa và activate. Việc này không làm rớt ứng dụng, vì Managed Server không phụ thuộc vào Admin Server để chạy.</p>
+<p>Đồng thời hỏi lại vì sao cần tăng pool. Nếu do database chậm hay rò rỉ kết nối thì tăng pool chỉ làm chuỗi lỗi tới muộn hơn, và có thể đẩy database quá giới hạn <code>PROCESSES</code>.</p>
+</details>
+
+<p><strong>Câu 3.</strong> Sau khi database restart theo kế hoạch lúc 02:00, sáng ra người dùng vẫn gặp lỗi kết nối một phần. Database hoàn toàn khoẻ. Giải thích khả năng và đề xuất.</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Pool có thể vẫn giữ các kết nối đã chết từ trước lúc restart. Test Connections On Reserve mặc định tắt, nên ứng dụng được giao kết nối hỏng và lỗi. Một số server có thể khác nhau, đó là lý do chỉ lỗi &quot;một phần&quot;.</p>
+<p>Cũng cần kiểm tra data source có đang bị suspended không, tức <code>PoolDisabledSQLException</code>.</p>
+<p>Xử lý trước mắt: reset hoặc khởi động lại data source theo quy trình của dự án. Lâu dài: bật Test Connections On Reserve, chấp nhận thêm chút chi phí mỗi lần mượn. Thêm vào 手順書 restart database một bước kiểm tra data source. Nếu có firewall giữa AP và DB thì xem thêm timeout cắt kết nối nhàn rỗi.</p>
+</details>
+
+<p><strong>Câu 4.</strong> Một màn hình báo cáo dạng <code>GET</code> chạy mất khoảng 5 phút. Người dùng phản ánh báo cáo đôi khi bị chạy hai lần, và trong log thấy server bị đánh dấu hỏng dù vẫn tốt. <code>WLIOTimeoutSecs</code> đang là mặc định. Giải thích.</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p><code>WLIOTimeoutSecs</code> mặc định 120 giây, nhỏ hơn thời gian báo cáo 5 phút. Plug-in chờ hết 120 giây thì coi server là chết, đánh dấu hỏng, và với request được coi là idempotent như <code>GET</code> thì có thể gửi lại sang server khác. Vì vậy báo cáo chạy song song hai lần, thêm tải vào database, và cả server khoẻ cũng bị đánh dấu hỏng tạm thời.</p>
+<p>Lưu ý thêm: hành vi failover khi timeout có khác nhau theo phiên bản. Từ 14.1.2 nó được điều khiển bằng <code>WLRetryOnTimeout</code>, nên phải đọc đúng manual.</p>
+<p>Đề xuất: lâu dài nên đổi báo cáo chạy dài sang xử lý bất đồng bộ, người dùng nhận kết quả sau. Nếu chưa đổi được thì tăng <code>WLIOTimeoutSecs</code> trong phạm vi hẹp nhất mà manual cho phép, ví dụ riêng <code>Location</code> đó, không phải cho toàn hệ thống, và đi kèm giới hạn ở tầng dưới như <code>Statement Timeout</code>. Cũng xem các timeout của load balancer phía trước để chúng không cắt trước.</p>
+</details>
+
+<p><strong>Câu 5.</strong> Bạn thêm một server vào <code>UBBCONFIG</code> của Tuxedo rồi chạy <code>tmboot</code>, nhưng không thấy server mới. Trong khi đó <code>tmloadcf</code> báo không chạy được lúc ứng dụng đang hoạt động. Vì sao và làm thế nào?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p>Tuxedo chạy theo file nhị phân <code>TUXCONFIG</code>, không đọc trực tiếp <code>UBBCONFIG</code>. Chỉ sửa file text thì chưa có gì thay đổi. <code>tmloadcf</code> không chạy được khi ứng dụng đang hoạt động, trừ các tuỳ chọn chỉ kiểm tra.</p>
+<p>Hai hướng:</p>
+<ul>
+<li><strong>Có khung giờ dừng:</strong> kiểm tra bằng <code>tmloadcf -n</code>, <code>tmshutdown</code>, chạy <code>tmloadcf</code> trên máy master, rồi <code>tmboot</code>.</li>
+<li><strong>Không được dừng:</strong> dùng <code>tmconfig</code> để thêm trong lúc chạy nếu mục đó cho phép, rồi <code>tmunloadcf</code> để đồng bộ về file text, tránh lần sau nạp lại bản cũ.</li>
+</ul>
+<p>Nhớ kiểm tra biến môi trường <code>TUXCONFIG</code> trùng khít với đường dẫn trong phần <code>MACHINES</code>, kể cả chữ hoa chữ thường. Sau đó xem ULOG trên các máy liên quan.</p>
+</details>
+
+<p><strong>Câu 6.</strong> Kiểm thử failover: tắt Managed Server 1, người dùng không bị đăng xuất nhưng giỏ hàng thiếu sản phẩm thêm gần đây. Trong cùng đợt, khi đã tắt Managed Server 1, tắt tiếp Managed Server 2 rồi bật lại thì mất hết session. Cái nào là lỗi, cái nào là giới hạn thiết kế?</p>
+<details class="answer">
+<summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
+
+<p><strong>Giỏ hàng thiếu là lỗi ứng dụng.</strong> Nhiều khả năng code sửa trực tiếp vào danh sách trong session mà không gọi lại <code>setAttribute</code>, hoặc có đối tượng không serializable, nên thay đổi không được sao chép.</p>
+<p><strong>Mất session khi cả hai server đều tắt là giới hạn thiết kế.</strong> In-memory replication chỉ giữ dữ liệu trong bộ nhớ của các server, tắt hết thì không còn bản nào. Đó cũng là lý do cluster hai server sau khi mất một server thì không còn nơi để giữ bản sao mới.</p>
+<p>Nếu nghiệp vụ không chấp nhận được thì phải chọn cách lưu session bền hơn như JDBC persistence hoặc Coherence*Web, đổi lại là thêm độ phức tạp và chi phí hiệu năng. Đây là quyết định cần nói rõ với chủ hệ thống.</p>
+</details>
+
+<h2 id="19-oracle-web-app-server--tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</h2><p>Web/AP/DB 3層構成 (kiến trúc ba tầng), Webサーバー (web server), APサーバー (app server), ドメイン (domain), 管理サーバー (Admin Server), 管理対象サーバー (Managed Server), クラスタ (cluster), ノード・マネージャ (Node Manager), データ・ソース (data source), 接続プール (connection pool), スレッド・プール (thread pool), スタック・スレッド (stuck thread), スレッド・ダンプ (thread dump), ワーク・マネージャ (Work Manager), セッション (session), 過負荷 (quá tải), メモリー不足 (thiếu bộ nhớ), ヘルス状態 (trạng thái sức khoẻ), デプロイ (deploy), 閉塞 (đưa server ra khỏi luồng), 縮退運転 (chạy với ít thiết bị hơn), 負荷分散 (phân tải).</p>
+<h2 id="19-oracle-web-app-server--nguon">Nguồn</h2><p><strong>Oracle HTTP Server và plug-in, 14.1.2:</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/web-tier/14.1.2/administer-ohs/intro_ohs.html" target="_blank" rel="noopener">Introduction to Oracle HTTP Server</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/web-tier/14.1.2/administer-ohs/administering-oracle-http-server.pdf" target="_blank" rel="noopener">Administering Oracle HTTP Server (PDF): thư mục staging và run-time, lệnh, log</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/web-tier/14.1.2/develop-plugin/oracle.html" target="_blank" rel="noopener">Configuring the Plug-In for Oracle HTTP Server</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/web-tier/14.1.2/develop-plugin/plugin_params.html" target="_blank" rel="noopener">Parameters for WebLogic Server Proxy Plug-Ins</a></li>
+</ul>
+<p><strong>WebLogic Server:</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/domcf/understand_domains.html" target="_blank" rel="noopener">Understanding Domains</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/domcf/config_files.html" target="_blank" rel="noopener">Domain Configuration Files: config.xml</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/nodem/overview.html" target="_blank" rel="noopener">Node Manager Overview</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/start/server_life.html" target="_blank" rel="noopener">Server Life Cycle</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/clust/failover.html" target="_blank" rel="noopener">Failover and Replication in a Cluster</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/jdbca/ds_tuning.html" target="_blank" rel="noopener">Tuning Data Source Connection Pools</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/cnfgd/overload.html" target="_blank" rel="noopener">Avoiding and Managing Overload</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/fmwch/pagehelp/Corecoreserverserverconfigtuningtitle.html" target="_blank" rel="noopener">Server Tuning: Stuck Thread Max Time</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/wlstc/reference.html" target="_blank" rel="noopener">WLST Command Reference: threadDump</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/wllog/config_logs.html" target="_blank" rel="noopener">Configuring Log Files, 14.1.2</a> và <a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/wllog/configuring-log-files-and-filtering-log-messages-oracle-weblogic-server.pdf" target="_blank" rel="noopener">bản PDF 14.1.1 có đường dẫn ví dụ</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/depgd/redeploy.html" target="_blank" rel="noopener">Redeploying Applications</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html" target="_blank" rel="noopener">What&#39;s New in 14.1.2</a></li>
+<li><a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html" target="_blank" rel="noopener">What&#39;s New in 15.1.1</a> và <a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/wlupg/compat.html" target="_blank" rel="noopener">hướng dẫn tương thích</a></li>
+<li><a href="https://docs.oracle.com/cd/F32751_01/weblogic-server/14.1.1.0/nodem/overview.html" target="_blank" rel="noopener">Tiếng Nhật: Node Manager</a> và <a href="https://docs.oracle.com/cd/F32751_01/weblogic-server/14.1.1.0/cnfgd/overload.html" target="_blank" rel="noopener">quá tải, stuck thread</a></li>
+</ul>
+<p><strong>Tuxedo:</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/en/database/oracle/tuxedo/22/atmii/oracle-tuxedo-system-fundamentals1.html" target="_blank" rel="noopener">Oracle Tuxedo System Fundamentals, 22c</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/tuxedo/22/otxpo/oracle-tuxedo-atmi-core-components.html" target="_blank" rel="noopener">ATMI Core Components, 22c</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/tuxedo/22/otxcg/administrative-tasks-and-tools.html" target="_blank" rel="noopener">Administrative Tasks and Tools, 22c</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/tuxedo/22/otxcr/oracle-tuxedo-command-reference.pdf" target="_blank" rel="noopener">Command Reference, 22c (PDF)</a></li>
+<li><a href="https://docs.oracle.com/cd/E13161_01/tuxedo/docs10gr3/int/intarch.html" target="_blank" rel="noopener">System Administration and Server Processes</a>: BBL, DBBL, BRIDGE, WSL và WSH lấy từ trang của bản cũ này</li>
+<li><a href="https://docs.oracle.com/cd/E72452_01/tuxedo/docs1222/int/intman.html" target="_blank" rel="noopener">Management Tools, 12.2.2</a></li>
+<li><a href="https://docs.oracle.com/cd/E53645_01/tuxedo/docs12cr2/ads/adfig.html" target="_blank" rel="noopener">Creating the Configuration File, 12cR2</a>: <code>tmloadcf</code> và <code>ULOGPFX</code></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/tuxedo/22/otxio/weblogic-tuxedo-connector.html" target="_blank" rel="noopener">WebLogic Tuxedo Connector, 22c</a></li>
+</ul>
+<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="19-oracle-web-app-server">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="19-oracle-web-app-server" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/18-oracle-database"><small>Bài trước</small><span>Oracle Database</span></a><span></span></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/19-oracle-web-app-server/1-van-de">1. Vấn đề</a></li><li><a href="#/19-oracle-web-app-server/2-oracle-http-server">2. Oracle HTTP Server</a></li><li><a href="#/19-oracle-web-app-server/3-cau-truc-weblogic">3. Cấu trúc WebLogic</a></li><li><a href="#/19-oracle-web-app-server/4-giu-session-khi-server-chet">4. Giữ session khi server chết</a></li><li><a href="#/19-oracle-web-app-server/5-connection-pool">5. Connection pool</a></li><li><a href="#/19-oracle-web-app-server/6-khi-he-thong-cham-stuck-thread-va-chuoi-loi">6. Khi hệ thống chậm: stuck thread và chuỗi lỗi</a></li><li><a href="#/19-oracle-web-app-server/7-deploy-va-khoi-dong-lai">7. Deploy và khởi động lại</a></li><li><a href="#/19-oracle-web-app-server/8-tuxedo">8. Tuxedo</a></li><li><a href="#/19-oracle-web-app-server/9-quy-tac-van-hanh">9. Quy tắc vận hành</a></li><li><a href="#/19-oracle-web-app-server/10-tu-kiem-tra">10. Tự kiểm tra</a></li><li><a href="#/19-oracle-web-app-server/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/19-oracle-web-app-server/nguon">Nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="lab-encoding" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Lab: encoding và dữ liệu độ dài cố định</h1></header><p>Dùng cho <a href="#/01-encoding-csv-duong-dan">Bài 1</a> và <a href="#/04-datamagic">Bài 4</a>. Chỉ cần Python 3, không phải cài thêm gì.</p>
 <pre class="code" tabindex="0"><code>python make_samples.py                  # tạo samples/ gồm nhiều biến thể của cùng một CSV
 python inspect_file.py samples/cp932.csv
@@ -5200,7 +6592,7 @@ CMD [&quot;smbd&quot;, &quot;--foreground&quot;, &quot;--no-process-group&quot;,
 </code></pre></details><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/lab-linux-acl"><small>Bài trước</small><span>Quyền Linux và POSIX ACL</span></a><span></span></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/lab-samba/bai-tap">Bài tập</a></li><li><a href="#/lab-samba/ma-nguon">Mã nguồn</a></li></ol></details></div></article>
   </main>
 </div>
-<script type="application/json" id="site-data">{"lessonCount":18,"pages":[{"id":"home","short":"Trang chủ","num":"","isLesson":false},{"id":"00-cach-hoc-feynman","short":"Cách học Feynman","num":"0","isLesson":true},{"id":"01-encoding-csv-duong-dan","short":"Encoding, BOM, CSV, đường dẫn","num":"1","isLesson":true},{"id":"02-van-hanh-theo-yeu-cau","short":"Vận hành theo yêu cầu","num":"2","isLesson":true},{"id":"tu-vung-tieng-nhat","short":"Từ vựng tiếng Nhật","num":"","isLesson":false},{"id":"03-hulft","short":"HULFT","num":"3","isLesson":true},{"id":"04-datamagic","short":"DataMagic","num":"4","isLesson":true},{"id":"05-vba","short":"VBA","num":"5","isLesson":true},{"id":"06-excel-pivot-chart","short":"Pivot và Chart","num":"6","isLesson":true},{"id":"07-access-gateway","short":"Gateway đặc quyền","num":"7","isLesson":true},{"id":"08-ess-rec","short":"ESS REC","num":"8","isLesson":true},{"id":"09-slm","short":"JP1/SLM","num":"9","isLesson":true},{"id":"10-rhel","short":"RHEL","num":"10","isLesson":true},{"id":"11-linux-shell-acl","short":"Linux shell và ACL","num":"11","isLesson":true},{"id":"12-windows-server","short":"Windows Server","num":"12","isLesson":true},{"id":"13-windows-file-server","short":"Windows File Server","num":"13","isLesson":true},{"id":"14-samba","short":"Samba","num":"14","isLesson":true},{"id":"15-servicenow","short":"ServiceNow","num":"15","isLesson":true},{"id":"16-clusterpro","short":"CLUSTERPRO","num":"16","isLesson":true},{"id":"17-aws-cli-s3","short":"AWS CLI và S3","num":"17","isLesson":true},{"id":"lab-encoding","short":"Encoding và dữ liệu độ dài cố định","num":"","isLesson":false},{"id":"lab-vba","short":"VBA","num":"","isLesson":false},{"id":"lab-linux-acl","short":"Quyền Linux và POSIX ACL","num":"","isLesson":false},{"id":"lab-samba","short":"Samba","num":"","isLesson":false}]}</script>
+<script type="application/json" id="site-data">{"lessonCount":20,"pages":[{"id":"home","short":"Trang chủ","num":"","isLesson":false},{"id":"00-cach-hoc-feynman","short":"Cách học Feynman","num":"0","isLesson":true},{"id":"01-encoding-csv-duong-dan","short":"Encoding, BOM, CSV, đường dẫn","num":"1","isLesson":true},{"id":"02-van-hanh-theo-yeu-cau","short":"Vận hành theo yêu cầu","num":"2","isLesson":true},{"id":"tu-vung-tieng-nhat","short":"Từ vựng tiếng Nhật","num":"","isLesson":false},{"id":"03-hulft","short":"HULFT","num":"3","isLesson":true},{"id":"04-datamagic","short":"DataMagic","num":"4","isLesson":true},{"id":"05-vba","short":"VBA","num":"5","isLesson":true},{"id":"06-excel-pivot-chart","short":"Pivot và Chart","num":"6","isLesson":true},{"id":"07-access-gateway","short":"Gateway đặc quyền","num":"7","isLesson":true},{"id":"08-ess-rec","short":"ESS REC","num":"8","isLesson":true},{"id":"09-slm","short":"JP1/SLM","num":"9","isLesson":true},{"id":"10-rhel","short":"RHEL","num":"10","isLesson":true},{"id":"11-linux-shell-acl","short":"Linux shell và ACL","num":"11","isLesson":true},{"id":"12-windows-server","short":"Windows Server","num":"12","isLesson":true},{"id":"13-windows-file-server","short":"Windows File Server","num":"13","isLesson":true},{"id":"14-samba","short":"Samba","num":"14","isLesson":true},{"id":"15-servicenow","short":"ServiceNow","num":"15","isLesson":true},{"id":"16-clusterpro","short":"CLUSTERPRO","num":"16","isLesson":true},{"id":"17-aws-cli-s3","short":"AWS CLI và S3","num":"17","isLesson":true},{"id":"18-oracle-database","short":"Oracle Database","num":"18","isLesson":true},{"id":"19-oracle-web-app-server","short":"OHS, WebLogic, Tuxedo","num":"19","isLesson":true},{"id":"lab-encoding","short":"Encoding và dữ liệu độ dài cố định","num":"","isLesson":false},{"id":"lab-vba","short":"VBA","num":"","isLesson":false},{"id":"lab-linux-acl","short":"Quyền Linux và POSIX ACL","num":"","isLesson":false},{"id":"lab-samba","short":"Samba","num":"","isLesson":false}]}</script>
 <script>
 (() => {
   'use strict';
@@ -5373,6 +6765,32 @@ CMD [&quot;smbd&quot;, &quot;--foreground&quot;, &quot;--no-process-group&quot;,
     return mermaidLoading;
   }
 
+  // Shrinking a wide diagram to fit the column makes its labels unreadable. Labels are
+  // drawn at 14px, so this keeps them near 12px and lets the figure scroll sideways.
+  const DIAGRAM_MIN_SCALE = 0.85;
+  const naturalWidth = (svg) => Number(svg.match(/viewBox="\S+ \S+ ([\d.]+)/)?.[1]) || 0;
+
+  async function renderDiagram(mermaid, source, room) {
+    diagramSeq += 1;
+    const { svg } = await mermaid.render(`diagram-${diagramSeq}`, source);
+    const tooWide = room && naturalWidth(svg) * DIAGRAM_MIN_SCALE > room;
+    if (!tooWide || !/^\s*flowchart\s+LR/.test(source)) return svg;
+    diagramSeq += 1;
+    const stacked = await mermaid.render(`diagram-${diagramSeq}`, source.replace(/flowchart\s+LR/, 'flowchart TB'));
+    // A chain reads best left to right, so only stack when it fits or is much narrower.
+    const tall = naturalWidth(stacked.svg);
+    return tall * DIAGRAM_MIN_SCALE <= room || tall < naturalWidth(svg) * 0.6 ? stacked.svg : svg;
+  }
+
+  function markWideDiagrams(root) {
+    root.querySelectorAll('.diagram[data-drawn]').forEach((figure) => {
+      figure.classList.toggle('is-wide', figure.scrollWidth > figure.clientWidth);
+    });
+  }
+  window.addEventListener('resize', () => {
+    if (currentPage) markWideDiagrams(articles.get(currentPage));
+  });
+
   function configureMermaid(mermaid) {
     const styles = getComputedStyle(document.documentElement);
     const token = (name) => styles.getPropertyValue(name).trim();
@@ -5381,6 +6799,7 @@ CMD [&quot;smbd&quot;, &quot;--foreground&quot;, &quot;--no-process-group&quot;,
       securityLevel: 'strict',
       theme: 'base',
       fontFamily: token('--font-body'),
+      sequence: { width: 120, actorMargin: 24 },
       themeVariables: {
         fontFamily: token('--font-body'),
         fontSize: '14px',
@@ -5415,16 +6834,18 @@ CMD [&quot;smbd&quot;, &quot;--foreground&quot;, &quot;--no-process-group&quot;,
     for (const figure of figures) {
       if (figure.dataset.drawn) continue;
       try {
-        diagramSeq += 1;
+        const out = figure.querySelector('.diagram-out');
         const source = figure.querySelector('.diagram-src').textContent;
-        const { svg } = await mermaid.render(`diagram-${diagramSeq}`, source);
-        figure.querySelector('.diagram-out').innerHTML = svg;
+        out.innerHTML = await renderDiagram(mermaid, source, out.clientWidth);
+        const drawn = out.querySelector('svg');
+        drawn.style.minWidth = `${Math.round(drawn.viewBox.baseVal.width * DIAGRAM_MIN_SCALE)}px`;
         figure.dataset.drawn = '1';
         figure.classList.remove('is-failed');
       } catch (error) {
         figure.classList.add('is-failed');
       }
     }
+    markWideDiagrams(root);
   }
 
   function redrawForTheme() {
