@@ -572,7 +572,7 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 <li><strong>Oracle</strong> viết theo manual Database 19c, WebLogic và OHS 14.1.2, Tuxedo 22c. Chưa có bản cài nên lệnh và cấu hình chưa được chạy thử, và Tuxedo chỉ ở mức khái niệm.</li>
 <li><strong>Dùng thử:</strong> khoá CLUSTERPRO bản Nhật không đăng ký được ngoài Nhật, nhưng bản quốc tế EXPRESSCLUSTER X có trial riêng. HULFT dùng thử qua cổng myHULFT dành cho khách hàng, nên bài HULFT có bài tập giấy thay thế.</li>
 </ul>
-<p>Mỗi bài phân biệt <strong>Theo tài liệu hãng</strong> và <strong>Suy luận vận hành chung</strong>. Khi vào dự án thật, hãy ưu tiên manual đúng phiên bản và thiết kế của dự án.</p>
+<p>Lý thuyết lấy từ tài liệu chính thức của hãng hoặc tổ chức chuẩn; chỗ nào chỉ có nguồn khác hoặc kết quả tự thử thì ghi rõ. Mỗi bài phân biệt <strong>Theo tài liệu hãng</strong> và <strong>Suy luận vận hành chung</strong>. Khi vào dự án thật, hãy ưu tiên manual đúng phiên bản và thiết kế của dự án.</p>
 </div></div></article>
 <article class="page" data-page="00-cach-hoc-feynman" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 0. Cách học theo phương pháp Feynman</h1><span class="seal seal-lg" data-state-page="00-cach-hoc-feynman" role="img" aria-label="Đã học">済</span></header><p>Phương pháp mang tên nhà vật lý Richard Feynman. Ý chính rất ngắn: <strong>nếu bạn không giải thích được một thứ bằng lời đơn giản, nghĩa là bạn chưa hiểu nó.</strong> Thuộc thuật ngữ không chứng minh được gì cả.</p>
 <h2 id="00-cach-hoc-feynman--bon-buoc">Bốn bước</h2><ol>
@@ -596,7 +596,9 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 </ul>
 <h2 id="00-cach-hoc-feynman--ky-hieu-do-tin-cay">Ký hiệu độ tin cậy</h2><p>Nhiều sản phẩm ở đây là phần mềm thương mại Nhật, tài liệu công khai có hạn và mình không có bản cài để thử. Vì vậy mỗi bài phân biệt rõ:</p>
 <ul>
-<li><strong>Theo tài liệu hãng:</strong> có link ở mục Nguồn.</li>
+<li><strong>Theo tài liệu hãng:</strong> lấy từ tài liệu chính thức của hãng hoặc tổ chức chuẩn, có link ở mục Nguồn. Phần lý thuyết ưu tiên loại nguồn này.</li>
+<li><strong>Nguồn đáng tin cậy khác:</strong> báo chuyên ngành hoặc blog của chính hãng, chỉ dùng khi không đọc được tài liệu chính thức, và ghi rõ trong bài.</li>
+<li><strong>Kết quả tự thử:</strong> ghi rõ phiên bản và môi trường. Kết quả này bổ sung cho tài liệu chứ không thay thế, vì có thể khác ở máy khác.</li>
 <li><strong>Suy luận vận hành chung:</strong> kinh nghiệm áp dụng cho loại tool đó, chưa đối chiếu với tài liệu của đúng sản phẩm.</li>
 <li><strong>Chưa xác minh được:</strong> ghi thẳng ra, kèm câu nên hỏi người bàn giao.</li>
 </ul>
@@ -678,7 +680,7 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 ～    U+FF5E    81 60        KHÔNG MÃ HOÁ ĐƯỢC   dấu sóng toàn khổ
 〜    U+301C    81 60        81 60               dấu sóng của JIS</code></pre><p>Hậu quả thực tế: dữ liệu nhập từ Windows chứa <code>①</code> hoặc <code>髙</code> đi qua một hệ thống dùng Shift_JIS chuẩn sẽ lỗi hoặc thành <code>?</code>. Tên riêng người Nhật thường dính lỗi này, và đó không phải loại lỗi có thể bỏ qua vì sai tên khách hàng.</p>
 <p>Hai dòng cuối là ca nổi tiếng: cùng byte <code>81 60</code> nhưng đổi sang Unicode theo hai bảng lại ra hai ký tự khác nhau. So sánh chuỗi sau khi đi qua các hệ thống có thể trả về &quot;khác nhau&quot; dù mắt nhìn gần như giống hệt.</p>
-<h2 id="01-encoding-csv-duong-dan--3-bom">3. BOM</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">BOM</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>BOM là vài byte đặc biệt đặt ở đầu file để báo &quot;tôi dùng bảng mã này&quot;. UTF-8 BOM là <code>EF BB BF</code>.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Tờ giấy dán đầu thùng hàng ghi &quot;hàng từ Nhật&quot;. Người hiểu thì biết cách mở. Người không hiểu thì tưởng tờ giấy cũng là một món hàng.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>BOM không phải giấy dán rời mà nằm luôn trong nội dung file. Công cụ không biết BOM sẽ coi nó là dữ liệu, tức là nó dính vào đúng ô đầu tiên chứ không nằm ngoài.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Cùng một file CSV có BOM, vì sao Excel mở ra đúng chữ mà script Linux lại đọc sai?</dd></div></dl></section>
+<h2 id="01-encoding-csv-duong-dan--3-bom">3. BOM</h2><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">BOM</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>BOM là vài byte đặc biệt đặt ở đầu file để báo &quot;tôi dùng bảng mã này&quot;. UTF-8 BOM là <code>EF BB BF</code>.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Tờ giấy dán đầu thùng hàng ghi &quot;hàng từ Nhật&quot;. Người hiểu thì biết cách mở. Người không hiểu thì tưởng tờ giấy cũng là một món hàng.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>BOM không phải giấy dán rời mà nằm luôn trong nội dung file. Công cụ không biết BOM sẽ coi nó là dữ liệu, tức là nó dính vào đúng ô đầu tiên chứ không nằm ngoài.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Cùng một file CSV có BOM, vì sao Excel mở ra đúng chữ mà một số script Linux lại đọc sai?</dd></div></dl></section>
 <p>Excel và script Linux cần hai điều ngược nhau:</p>
 <div class="table-wrap" tabindex="0"><table>
 <thead>
@@ -690,18 +692,18 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 </thead>
 <tbody><tr>
 <td>Excel khi nhấp đúp mở CSV</td>
-<td>Đọc theo bảng mã hệ thống, dễ ra chữ lỗi</td>
-<td>Đọc đúng</td>
+<td>Dễ ra chữ lỗi. Microsoft hướng dẫn nhập qua From Text/CSV</td>
+<td>Mở bình thường, theo Microsoft</td>
 </tr>
 <tr>
-<td>Script Linux, <code>awk</code>, nhiều trình nhập dữ liệu</td>
+<td>Script Linux, <code>awk</code>, trình nhập dữ liệu</td>
 <td>Đọc đúng</td>
-<td>Tên cột đầu thành <code>\ufeffid</code>, không khớp được</td>
+<td>Tuỳ chương trình. Microsoft ghi nhiều ứng dụng Linux xử lý được BOM, nhưng một số thì không. Khi đó tên cột đầu thành <code>\ufeffid</code> và không khớp được</td>
 </tr>
 <tr>
 <td><code>#!/bin/bash</code> ở dòng đầu</td>
 <td>Chạy được</td>
-<td>Không chạy được</td>
+<td><code>#!</code> không còn ở đầu file. Unicode FAQ nêu đúng trường hợp này là BOM gây cản trở</td>
 </tr>
 </tbody></table></div>
 <p>Kết quả khi thử cùng một nội dung trên Microsoft Excel 16.0, máy Windows dùng bảng mã 1252:</p>
@@ -729,8 +731,54 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 <td><code>Tokyo</code></td>
 </tr>
 </tbody></table></div>
-<p>Excel vẫn mở được file và chỉ làm lỗi các ký tự ngoài ASCII. File trên đĩa không đổi vì chưa lưu lại. Trên Windows tiếng Nhật, chữ lỗi sẽ khác vì bảng mã hệ thống khác. WPS Office 12.1 đọc đúng cả file không BOM, nên máy mở <code>.csv</code> bằng WPS sẽ không thấy lỗi này.</p>
-<p>Không có lựa chọn đúng cho mọi trường hợp. <strong>Câu hỏi đúng là: ai đọc file này ở bước sau cùng?</strong> Nếu một file phải phục vụ cả hai bên, hãy tạo hai bản hoặc mở trong Excel bằng chức năng nhập dữ liệu thay vì nhấp đúp.</p>
+<p>Đây là kết quả tự thử, không phải tài liệu của Microsoft. Từ kết quả này có thể thấy:</p>
+<ul>
+<li>Excel vẫn mở được file và chỉ làm lỗi các ký tự ngoài ASCII. File trên đĩa không đổi vì chưa lưu lại.</li>
+<li>Chuỗi <code>æ—¥æœ¬èªž</code> đúng bằng các byte UTF-8 của <code>日本語</code> khi đọc theo Windows-1252, là bảng mã của máy thử. Có thể suy ra Excel đã đọc theo bảng mã của Windows, nhưng hai trang Microsoft mình đọc không ghi thẳng điều này. Trên Windows tiếng Nhật, chữ lỗi có thể khác.</li>
+<li>Lưu bằng định dạng CSV UTF-8 trong Excel 16.0 tạo ra file bắt đầu bằng <code>EF BB BF</code>, nên file đã đi qua Excel có thể mang BOM dù file gốc không có.</li>
+<li>WPS Office 12.1 đọc đúng cả file không BOM, nên máy mở <code>.csv</code> bằng WPS sẽ không thấy lỗi này.</li>
+</ul>
+<h3 id="01-encoding-csv-duong-dan--khi-nao-dung-bom">Khi nào dùng BOM</h3><p>Unicode Standard 18.0 ghi rằng BOM không bắt buộc với UTF-8, và chuẩn <strong>không khuyến nghị dùng hay không dùng</strong>. Vì vậy <strong>câu hỏi đúng là: ai đọc file này ở bước sau cùng?</strong></p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Trường hợp</th>
+<th>Nên làm</th>
+<th>Nguồn</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSV mở trực tiếp bằng Excel</td>
+<td>Có BOM, hoặc nhập qua From Text/CSV</td>
+<td>Microsoft, trang về CSV UTF-8</td>
+</tr>
+<tr>
+<td>Script <code>.ps1</code> có ký tự ngoài ASCII, chạy bằng Windows PowerShell 5.1</td>
+<td>Có BOM. Không có BOM thì bản 5.1 trên Windows en-US đọc theo Windows-1252</td>
+<td>Microsoft, trang về file encoding</td>
+</tr>
+<tr>
+<td>Script PowerShell dùng trên nhiều nền tảng</td>
+<td>UTF-8 có BOM</td>
+<td>Microsoft, trang về file encoding</td>
+</tr>
+<tr>
+<td>Script PowerShell làm chủ yếu trong môi trường Linux</td>
+<td>UTF-8 không BOM</td>
+<td>Microsoft, trang về file encoding</td>
+</tr>
+<tr>
+<td>File cần ký tự ASCII cụ thể ở đầu, như <code>#!</code></td>
+<td>Không BOM</td>
+<td>Unicode FAQ</td>
+</tr>
+<tr>
+<td>JSON gửi qua mạng</td>
+<td>Không BOM. Bên gửi không được thêm, còn bên đọc được phép bỏ qua BOM thay vì báo lỗi</td>
+<td>RFC 8259, mục 8.1</td>
+</tr>
+</tbody></table></div>
+<p>Nếu một file phải phục vụ cả Excel và chương trình không xử lý BOM, hãy tạo hai bản hoặc mở trong Excel bằng chức năng nhập dữ liệu thay vì nhấp đúp.</p>
 <h2 id="01-encoding-csv-duong-dan--4-xuong-dong">4. Xuống dòng</h2><div class="table-wrap" tabindex="0"><table>
 <thead>
 <tr>
@@ -823,7 +871,7 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
 <details class="answer">
 <summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
 
-<p>(a) Không có BOM, Excel đọc theo bảng mã hệ thống. Trên Windows Nhật đó là cp932, trong khi file là UTF-8.</p>
+<p>(a) Microsoft chỉ hướng dẫn mở trực tiếp khi file có BOM. Không có BOM, phép thử ở mục 3 cho thấy Excel đọc theo bảng mã của Windows. Trên Windows Nhật bảng mã đó thường là cp932, trong khi file là UTF-8.</p>
 <p>(b) Có thể sửa được phía Excel nhưng dễ làm hỏng batch: tên cột đầu dính BOM, không khớp khi tra cột. Phải xác minh batch có chịu được BOM không trước khi đổi.</p>
 <p>(c) Nếu batch không đổi được: giữ nguyên file cho batch, hướng dẫn người dùng mở bằng chức năng nhập dữ liệu, hoặc tạo thêm một bản có BOM dành riêng cho người xem. Đánh đổi là thêm một file phải quản lý. Không nên sửa bản gốc mà chưa kiểm tra mọi nơi đọc nó.</p>
 </details>
@@ -884,10 +932,13 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
 </tbody></table></div>
 <h2 id="01-encoding-csv-duong-dan--nguon">Nguồn</h2><ul>
 <li><a href="https://www.rfc-editor.org/rfc/rfc4180" target="_blank" rel="noopener">RFC 4180: định dạng CSV</a></li>
+<li><a href="https://www.unicode.org/versions/Unicode18.0.0/core-spec/chapter-2/" target="_blank" rel="noopener">Unicode Standard 18.0, mục 2.6: Encoding Schemes</a></li>
 <li><a href="https://www.unicode.org/faq/utf_bom.html" target="_blank" rel="noopener">Unicode FAQ: UTF và BOM</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8259" target="_blank" rel="noopener">RFC 8259: JSON, mục 8.1</a></li>
 <li><a href="https://support.microsoft.com/en-us/office/opening-csv-utf-8-files-correctly-in-excel-8a935af5-3416-4edd-ba7e-3dfd2bc4a032" target="_blank" rel="noopener">Microsoft: mở CSV UTF-8 đúng cách trong Excel</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/vscode/understanding-file-encoding" target="_blank" rel="noopener">Microsoft: file encoding trong VS Code và PowerShell</a></li>
 <li><a href="https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation" target="_blank" rel="noopener">Microsoft: giới hạn độ dài đường dẫn</a></li>
-<li>Kết quả byte trong bài lấy từ lab trong repo này.</li>
+<li>Kết quả byte trong bài lấy từ lab trong repo này. Kết quả mở và lưu file trong Excel, WPS là phép thử riêng, không phải tài liệu của hãng.</li>
 </ul>
 <div class="done-bar"><button type="button" class="done-btn" data-done-toggle="01-encoding-csv-duong-dan">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="01-encoding-csv-duong-dan" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/00-cach-hoc-feynman"><small>Bài trước</small><span>Cách học Feynman</span></a><a class="pager-link" href="#/02-van-hanh-theo-yeu-cau"><small>Bài sau</small><span>Vận hành theo yêu cầu</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/01-encoding-csv-duong-dan/1-van-de">1. Vấn đề</a></li><li><a href="#/01-encoding-csv-duong-dan/2-cac-encoding-se-gap">2. Các encoding sẽ gặp</a></li><li><a href="#/01-encoding-csv-duong-dan/3-bom">3. BOM</a></li><li><a href="#/01-encoding-csv-duong-dan/4-xuong-dong">4. Xuống dòng</a></li><li><a href="#/01-encoding-csv-duong-dan/5-csv-khong-don-gian-nhu-ten-goi">5. CSV không đơn giản như tên gọi</a></li><li><a href="#/01-encoding-csv-duong-dan/6-duong-dan">6. Đường dẫn</a></li><li><a href="#/01-encoding-csv-duong-dan/7-quy-trinh-chan-doan">7. Quy trình chẩn đoán</a></li><li><a href="#/01-encoding-csv-duong-dan/8-tu-kiem-tra">8. Tự kiểm tra</a></li><li><a href="#/01-encoding-csv-duong-dan/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/01-encoding-csv-duong-dan/nguon">Nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="02-van-hanh-theo-yeu-cau" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 2. Vận hành theo yêu cầu (依頼ベースの運用)</h1><span class="seal seal-lg" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-b" title="Mức B: biết thêm thì tốt">Mức B</span></div></header><p>Đây là kỹ năng, không phải tool, nhưng công việc hằng ngày với HULFT, DataMagic hay file server đều xoay quanh nó: <strong>đọc yêu cầu, đối chiếu với spec của sản phẩm, rồi đăng ký, sửa hoặc xoá định nghĩa.</strong></p>
@@ -897,7 +948,7 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
 <li>Đánh giá ảnh hưởng của việc xoá hay sửa một định nghĩa.</li>
 <li>Lập bộ hồ sơ: hỏi lại, thủ tục, kiểm chứng, phương án quay lui.</li>
 </ul>
-<p>Phần lớn bài này là <strong>suy luận vận hành chung</strong>. Mỗi dự án có quy trình riêng, hãy đọc quy trình của dự án trước.</p>
+<p>Các nguyên tắc kiểm soát thay đổi trong bài được đối chiếu với <strong>NIST SP 800-128</strong>. Tài liệu này viết cho hệ thống của chính phủ Mỹ và tập trung vào bảo mật, nên chỉ để tham khảo chứ không phải quy định của dự án. Cách áp dụng với từng tool, mẫu phiếu và mẫu câu là <strong>suy luận vận hành chung</strong>. Mỗi dự án có quy trình riêng, hãy đọc quy trình của dự án trước.</p>
 <h2 id="02-van-hanh-theo-yeu-cau--1-van-de">1. Vấn đề</h2><p>Trong môi trường vận hành doanh nghiệp, người làm thường không phải người thiết kế hệ thống. Bạn nhận yêu cầu dạng &quot;thêm truyền file X sang hệ thống Y&quot;, và một sai sót nhỏ có thể làm hỏng lô xử lý đêm, ảnh hưởng tới công việc của nhiều bộ phận vào sáng hôm sau. Vì vậy cách làm được chuẩn hoá thành quy trình nhiều lớp kiểm tra.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">&quot;định nghĩa&quot; là gì</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Định nghĩa là bản ghi cấu hình nói cho tool biết phải làm gì. Bạn không viết code; bạn thêm, sửa, xoá các bản ghi đó.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Danh bạ và lịch trong điện thoại. Đổi một số trong danh bạ thì các lịch gọi đang trỏ tới số đó đổi theo. Xoá một liên hệ thì mọi thứ dùng liên hệ đó bị ảnh hưởng dù bạn không hề sửa lịch.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Điện thoại lưu một bản. Ở đây định nghĩa thường nằm ở nhiều máy và phải khớp nhau, như File ID của HULFT ở cả bên gửi lẫn bên nhận.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao xoá một định nghĩa có thể nguy hiểm hơn thêm một định nghĩa?</dd></div></dl></section>
 <p>Nếu đã quen DevOps, hãy coi đây là GitOps do con người thực hiện: có khai báo, có review, có áp dụng và có kiểm chứng. Chỉ khác là bản khai báo nằm trong tool thương mại và người làm phải tự ghi lại bằng chứng.</p>
@@ -913,7 +964,8 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
     G --&gt;|&quot;Đạt&quot;| H[&quot;Thực hiện trong khung giờ được duyệt&quot;]
     H --&gt; I[&quot;Kiểm chứng và lưu bằng chứng&quot;]
     I --&gt;|&quot;Không đạt&quot;| J[&quot;Quay lui và báo cáo&quot;]
-    I --&gt;|&quot;Đạt&quot;| K[&quot;Báo cáo và đóng yêu cầu&quot;]</pre></figure><h2 id="02-van-hanh-theo-yeu-cau--3-doc-yeu-cau">3. Đọc yêu cầu</h2><p>Đọc với câu hỏi &quot;nếu chỉ dựa vào tờ này, tôi có làm được mà không phải đoán không?&quot;. Mỗi chỗ phải đoán là một câu cần hỏi lại.</p>
+    I --&gt;|&quot;Đạt&quot;| K[&quot;Báo cáo và đóng yêu cầu&quot;]</pre></figure><p>Chương 3 của NIST SP 800-128 cũng liệt kê các phần tương ứng trong quy trình kiểm soát thay đổi: yêu cầu và phê duyệt, phân tích ảnh hưởng, thử trước khi áp dụng, quay lui khi có sự cố, và xem lại sau khi thực hiện.</p>
+<h2 id="02-van-hanh-theo-yeu-cau--3-doc-yeu-cau">3. Đọc yêu cầu</h2><p>Đọc với câu hỏi &quot;nếu chỉ dựa vào tờ này, tôi có làm được mà không phải đoán không?&quot;. Mỗi chỗ phải đoán là một câu cần hỏi lại.</p>
 <div class="table-wrap" tabindex="0"><table>
 <thead>
 <tr>
@@ -960,10 +1012,10 @@ grep -c $'\r' file.csv</code></pre><p>Trên Windows: <code>Format-Hex file.csv |
 <li>Ưu tiên vô hiệu hoá trước nếu tool cho phép, rồi xoá sau một chu kỳ nghiệp vụ.</li>
 <li>Xoá, rồi xác nhận không có lỗi ở lần chạy định kỳ kế tiếp.</li>
 </ol>
-<h2 id="02-van-hanh-theo-yeu-cau--5-bang-chung-証跡-va-kiem-tra-cheo-再鑑">5. Bằng chứng (証跡) và kiểm tra chéo (再鑑)</h2><p>Ở môi trường yêu cầu kiểm toán, <strong>việc không có bằng chứng được coi là chưa làm.</strong></p>
+<h2 id="02-van-hanh-theo-yeu-cau--5-bang-chung-証跡-va-kiem-tra-cheo-再鑑">5. Bằng chứng (証跡) và kiểm tra chéo (再鑑)</h2><p>Ở môi trường có kiểm toán, <strong>thay đổi phải để lại hồ sơ để người khác kiểm tra lại được.</strong></p>
 <ul>
-<li><strong>証跡 (shōseki):</strong> bằng chứng đã làm gì, như ảnh màn hình, log, file xuất trước và sau khi đổi.</li>
-<li><strong>再鑑 (saikan):</strong> người thứ hai xác nhận độc lập, ở bước xem thủ tục và cả khi thực hiện. Mục đích không phải là không tin bạn, mà là con người ai cũng có lúc gõ sai.</li>
+<li><strong>証跡 (shōseki):</strong> bằng chứng đã làm gì, như ảnh màn hình, log, file xuất trước và sau khi đổi. NIST SP 800-128 cũng yêu cầu ghi việc xem xét thay đổi vào hồ sơ có thể lưu trữ.</li>
+<li><strong>再鑑 (saikan):</strong> người thứ hai xác nhận độc lập, ở bước xem thủ tục và cả khi thực hiện. NIST SP 800-128 nêu nguyên tắc tương tự: thay đổi phải được ít nhất một người có thẩm quyền, độc lập với người yêu cầu, xem xét. Mục đích không phải là không tin bạn, mà là một người không tự đề xuất rồi tự duyệt.</li>
 </ul>
 <p>Đó cũng là lý do có những tool như <a href="#/08-ess-rec">ESS REC</a> và <a href="#/07-access-gateway">gateway truy cập</a>.</p>
 <h2 id="02-van-hanh-theo-yeu-cau--6-mau-phieu-phan-tich-yeu-cau">6. Mẫu phiếu phân tích yêu cầu</h2><pre class="code" tabindex="0"><code>Mã yêu cầu       :
@@ -1021,9 +1073,14 @@ Người xem lại    :</code></pre><h2 id="02-van-hanh-theo-yeu-cau--7-mau-cau-
 <details class="answer">
 <summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
 
-<p>Hỏi hậu quả cụ thể nếu dời sang mai để biết độ khẩn thật. Nếu thật sự khẩn, dùng quy trình khẩn cấp của dự án thay vì bỏ qua quy trình: ghi lại ai phê duyệt, làm tối thiểu, chuẩn bị quay lui, nhờ ít nhất một người xem cùng, rồi xem lại sau sự việc. Điểm cốt lõi là ngoại lệ phải được người có quyền chấp nhận, không phải do bạn tự quyết âm thầm.</p>
+<p>Hỏi hậu quả cụ thể nếu dời sang mai để biết độ khẩn thật. Nếu thật sự khẩn, dùng quy trình khẩn cấp của dự án thay vì bỏ qua quy trình: ghi lại ai phê duyệt, làm tối thiểu, chuẩn bị quay lui, nhờ ít nhất một người xem cùng, rồi xem lại sau sự việc. Điểm cốt lõi là ngoại lệ phải được người có quyền chấp nhận, không phải do bạn tự quyết âm thầm. NIST SP 800-128 cũng tách riêng thay đổi ngoài kế hoạch: được xem xét và phê duyệt nhanh hơn, còn thay đổi đã làm ngoài quy trình thì phải phân tích, kiểm thử và phê duyệt bổ sung sau đó.</p>
 </details>
-<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="02-van-hanh-theo-yeu-cau">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/01-encoding-csv-duong-dan"><small>Bài trước</small><span>Encoding, BOM, CSV, đường dẫn</span></a><a class="pager-link" href="#/tu-vung-tieng-nhat"><small>Bài sau</small><span>Từ vựng tiếng Nhật</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/02-van-hanh-theo-yeu-cau/1-van-de">1. Vấn đề</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/2-luong-mot-yeu-cau">2. Luồng một yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/3-doc-yeu-cau">3. Đọc yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/4-danh-gia-anh-huong-khi-xoa-hoac-sua">4. Đánh giá ảnh hưởng khi xoá hoặc sửa</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/5-bang-chung-証跡-va-kiem-tra-cheo-再鑑">5. Bằng chứng (証跡) và kiểm tra chéo (再鑑)</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/6-mau-phieu-phan-tich-yeu-cau">6. Mẫu phiếu phân tích yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/7-mau-cau-hoi-lai-bang-tieng-nhat">7. Mẫu câu hỏi lại bằng tiếng Nhật</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/8-tu-kiem-tra">8. Tự kiểm tra</a></li></ol></details></div></article>
+
+<h2 id="02-van-hanh-theo-yeu-cau--nguon">Nguồn</h2><ul>
+<li><a href="https://doi.org/10.6028/NIST.SP.800-128" target="_blank" rel="noopener">NIST SP 800-128: Guide for Security-Focused Configuration Management of Information Systems</a>, chương 3 (quy trình kiểm soát thay đổi, người xem xét độc lập, phân tích ảnh hưởng).</li>
+<li>証跡 và 再鑑 là thuật ngữ thường dùng trong vận hành ở Nhật. Mình chưa có tài liệu chuẩn công khai định nghĩa hai từ này, nên hãy xem quy định của dự án.</li>
+</ul>
+<div class="done-bar"><button type="button" class="done-btn" data-done-toggle="02-van-hanh-theo-yeu-cau">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="02-van-hanh-theo-yeu-cau" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/01-encoding-csv-duong-dan"><small>Bài trước</small><span>Encoding, BOM, CSV, đường dẫn</span></a><a class="pager-link" href="#/tu-vung-tieng-nhat"><small>Bài sau</small><span>Từ vựng tiếng Nhật</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/02-van-hanh-theo-yeu-cau/1-van-de">1. Vấn đề</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/2-luong-mot-yeu-cau">2. Luồng một yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/3-doc-yeu-cau">3. Đọc yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/4-danh-gia-anh-huong-khi-xoa-hoac-sua">4. Đánh giá ảnh hưởng khi xoá hoặc sửa</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/5-bang-chung-証跡-va-kiem-tra-cheo-再鑑">5. Bằng chứng (証跡) và kiểm tra chéo (再鑑)</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/6-mau-phieu-phan-tich-yeu-cau">6. Mẫu phiếu phân tích yêu cầu</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/7-mau-cau-hoi-lai-bang-tieng-nhat">7. Mẫu câu hỏi lại bằng tiếng Nhật</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/8-tu-kiem-tra">8. Tự kiểm tra</a></li><li><a href="#/02-van-hanh-theo-yeu-cau/nguon">Nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="tu-vung-tieng-nhat" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Từ vựng tiếng Nhật trong vận hành</h1><div class="page-meta"><span class="lv lv-b" title="Mức B: biết thêm thì tốt">Mức B</span></div></header><p>Tra khi đọc tài liệu và ticket. Không cần học thuộc một lúc: học theo bài, từ nào gặp nhiều sẽ tự nhớ.</p>
 <h2 id="tu-vung-tieng-nhat--quy-trinh">Quy trình</h2><div class="table-wrap" tabindex="0"><table>
 <thead>
@@ -2262,6 +2319,7 @@ base = ThisWorkbook.Path &amp; Application.PathSeparator &amp; &quot;input&quot;
 <pre class="code" tabindex="0"><code>Dim rows As Variant
 rows = ParseCsv(ReadAllText(&quot;C:\lab\a.csv&quot;, &quot;utf-8&quot;))
 Debug.Print rows(1)(2)   ' dòng dữ liệu đầu, cột thứ ba</code></pre><section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Vì sao ghi UTF-8 không BOM lại rắc rối</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd><code>ADODB.Stream</code> luôn tự thêm BOM khi ghi UTF-8. Muốn bỏ, phải đổi sang chế độ nhị phân, bỏ qua 3 byte đầu rồi mới lưu.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Máy in tự in logo ở đầu mọi trang. Muốn trang trắng phần đầu thì phải cắt phần đó sau khi in.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Cắt giấy ai cũng thấy. Việc bỏ BOM thì không nhìn được bằng mắt, nên muốn biết đã đúng hay chưa phải xem byte thật của file.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Làm sao biết chắc file đầu ra không còn BOM?</dd></div></dl></section>
+<p>Trang về <code>Charset</code> của Microsoft không nhắc tới BOM. Việc <code>ADODB.Stream</code> tự thêm BOM được xác nhận bằng test <code>WriteUtf8 co BOM</code> trong lab, nên đây là kết quả tự thử chứ không phải tài liệu của hãng.</p>
 <h3 id="05-vba--gom-nhieu-workbook">Gom nhiều workbook</h3><p><a href="#/lab-vba/src-mergeworkbooks-bas"><code>MergeWorkbooks.bas</code></a> minh hoạ các nguyên tắc sau, và nên đọc code song song với danh sách này:</p>
 <ul>
 <li>Mở file nguồn ở chế độ chỉ đọc, không cập nhật liên kết.</li>
@@ -2316,7 +2374,7 @@ Debug.Print rows(1)(2)   ' dòng dữ liệu đầu, cột thứ ba</code></pre>
 <li><a href="https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/on-error-statement" target="_blank" rel="noopener">Microsoft: câu lệnh <code>On Error</code></a></li>
 <li><a href="https://learn.microsoft.com/en-us/sql/ado/reference/ado-api/stream-object-ado" target="_blank" rel="noopener">Microsoft: đối tượng ADO <code>Stream</code></a></li>
 <li><a href="https://learn.microsoft.com/en-us/deployoffice/security/internet-macros-blocked" target="_blank" rel="noopener">Microsoft: macro từ Internet bị chặn</a></li>
-<li><a href="https://www.ne.jp/asahi/hishidama/home/tech/excel/file.html" target="_blank" rel="noopener">Ghi chú kỹ thuật về xuất UTF-8 không BOM bằng ADODB</a></li>
+<li><a href="https://learn.microsoft.com/en-us/previous-versions/sql/ado/reference/ado-api/charset-property-ado" target="_blank" rel="noopener">Microsoft: thuộc tính ADO <code>Charset</code></a></li>
 </ul>
 <div class="done-bar"><button type="button" class="done-btn" data-done-toggle="05-vba">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="05-vba" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/04-datamagic"><small>Bài trước</small><span>DataMagic</span></a><a class="pager-link" href="#/06-excel-pivot-chart"><small>Bài sau</small><span>Pivot và Chart</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/05-vba/1-van-de">1. Vấn đề</a></li><li><a href="#/05-vba/2-moi-truong">2. Môi trường</a></li><li><a href="#/05-vba/3-cach-doc-mot-macro-la">3. Cách đọc một macro lạ</a></li><li><a href="#/05-vba/4-mo-hinh-doi-tuong">4. Mô hình đối tượng</a></li><li><a href="#/05-vba/5-cac-mau-can-thuoc-y-tuong">5. Các mẫu cần thuộc ý tưởng</a></li><li><a href="#/05-vba/6-file-thu-muc-va-csv">6. File, thư mục và CSV</a></li><li><a href="#/05-vba/7-kiem-thu-truoc-khi-giao">7. Kiểm thử trước khi giao</a></li><li><a href="#/05-vba/8-bao-mat-macro">8. Bảo mật macro</a></li><li><a href="#/05-vba/9-tu-kiem-tra">9. Tự kiểm tra</a></li><li><a href="#/05-vba/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/05-vba/nguon">Nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="06-excel-pivot-chart" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 6. Excel: Pivot và Chart</h1><span class="seal seal-lg" data-state-page="06-excel-pivot-chart" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-b" title="Mức B: biết thêm thì tốt">Mức B</span></div></header><p>Báo cáo vận hành ở môi trường doanh nghiệp vẫn thường kết thúc bằng một file Excel. Bài này giúp bạn tạo báo cáo đúng và làm được bằng code khi cần lặp lại.</p>
@@ -4035,7 +4093,7 @@ restorecon -Rv /srv/samba/reports</code></pre><p>Nếu share dùng chung với d
 <li>Tránh lỗi đáng xấu hổ nhất: gửi nhầm ghi chú nội bộ cho khách.</li>
 <li>Biết cách tạo môi trường học miễn phí.</li>
 </ul>
-<p><strong>Lab:</strong> ServiceNow có Personal Developer Instance (PDI) miễn phí tại Developer Program. Theo tài liệu hãng, PDI ngủ sau 10 ngày không hoạt động. Một bài cộng đồng cho biết từ 11/07/2026, PDI từ 90 ngày tuổi trở lên có thể bị thu hồi nếu 10 ngày không đăng nhập trực tiếp. Đừng lưu việc quan trọng trong đó, và hãy kiểm tra quy định hiện hành.</p>
+<p><strong>Lab:</strong> ServiceNow có Personal Developer Instance (PDI) miễn phí tại Developer Program. Theo tài liệu hãng, PDI ngủ sau 10 ngày không hoạt động. Blog Developer của ServiceNow (07/2026) ghi rằng PDI từ 90 ngày tuổi trở lên có thể bị thu hồi nếu 10 ngày không đăng nhập trực tiếp vào PDI, và việc đăng nhập trang Developer không được tính. Đừng lưu việc quan trọng trong đó, và hãy kiểm tra quy định hiện hành.</p>
 <h2 id="15-servicenow--1-van-de">1. Vấn đề</h2><p>Không có hệ thống ticket thì yêu cầu nằm rải rác ở email và chat: quên việc, không biết ai đang làm, không đo được thời gian xử lý, và không có gì để đưa cho kiểm toán.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">ServiceNow là gì về bản chất</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>Bên dưới là một cơ sở dữ liệu nhiều bảng. Mỗi ticket là một dòng, mỗi màn hình là một form trên dòng đó. Phần còn lại là quy tắc tự động: giao cho ai, gửi thông báo gì, đếm giờ thế nào.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Một bảng Excel khổng lồ dùng chung, có người gác ngăn không cho sửa bậy, tự nhắc việc và tự gửi mail khi trạng thái đổi.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Excel để ai sửa gì cũng được. ServiceNow có quyền theo vai trò, lưu lịch sử từng thay đổi và ràng buộc luồng trạng thái, nên không phải muốn đổi sao cũng được.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>&quot;incident&quot; trong ServiceNow là bảng, là dòng, hay là form?</dd></div></dl></section>
 <p>Vì mọi thứ là bảng và dòng nên có thể lọc, báo cáo và tích hợp qua API. Nếu đã quen Jira Service Management thì khái niệm khá gần.</p>
@@ -4089,11 +4147,11 @@ restorecon -Rv /srv/samba/reports</code></pre><p>Nếu share dùng chung với d
 </ul>
 <p>Với Change có ba loại chính, và loại quyết định luồng trạng thái:</p>
 <ul>
-<li><strong>Standard:</strong> rủi ro thấp, lặp lại, đã duyệt sẵn nên bỏ qua bước duyệt của nhóm và CAB.</li>
-<li><strong>Normal:</strong> phải qua đánh giá và phê duyệt đầy đủ, gồm cả CAB (hội đồng phê duyệt thay đổi).</li>
-<li><strong>Emergency:</strong> khẩn cấp, bỏ qua bước đánh giá và đi thẳng tới phê duyệt.</li>
+<li><strong>Standard:</strong> rủi ro thấp, đã có lịch sử thành công và được duyệt sẵn, nên bỏ qua trạng thái Assess và Authorize.</li>
+<li><strong>Normal:</strong> mọi thay đổi không thuộc hai loại kia, đi qua tất cả các trạng thái.</li>
+<li><strong>Emergency:</strong> khẩn cấp, không đi hết vòng đời mà chuyển thẳng tới Authorize để nhóm CAB Approval duyệt. CAB là hội đồng phê duyệt thay đổi.</li>
 </ul>
-<p>Luồng Normal mặc định thường đi qua New, Assess, Authorize, Scheduled, Implement, Review, Closed. Danh sách này mình chưa đối chiếu được với tài liệu chính hãng, và mỗi công ty có thể tuỳ biến.</p>
+<p>Các trạng thái gồm New, Assess, Authorize, Scheduled, Implement, Review, Closed. Trang Change Management bản Zurich vẫn ghi ba loại này và việc loại quyết định luồng trạng thái, nhưng định nghĩa chi tiết và bảng trạng thái ở trên lấy từ tài liệu bản Kingston (2018) vì mình chưa đọc được phần tương ứng của bản mới. Mỗi công ty cũng có thể tuỳ biến.</p>
 <h2 id="15-servicenow--4-mot-ticket-viet-tot">4. Một ticket viết tốt</h2><p>Các trường cần chú ý:</p>
 <div class="table-wrap" tabindex="0"><table>
 <thead>
@@ -4194,9 +4252,10 @@ Tiếp theo  : ... (ai, khi nào)</code></pre><section class="feynman"><div clas
 <h2 id="15-servicenow--tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</h2><p>インシデント (incident), 問題管理 (quản lý vấn đề), 変更管理 (quản lý thay đổi), サービス要求 (yêu cầu dịch vụ), 構成管理 (quản lý cấu hình), 暫定対応 (cách tạm), 恒久対応 (cách lâu dài), エスカレーション (leo thang).</p>
 <h2 id="15-servicenow--nguon">Nguồn</h2><ul>
 <li><a href="https://www.servicenow.com/docs/r/zurich/application-development/building-applications/understanding_pdis.html" target="_blank" rel="noopener">ServiceNow: Understanding PDIs</a></li>
-<li><a href="https://www.servicenow.com/community/developer-articles/servicenow-pdi-reclamation-rules-avoid-losing-access/ta-p/3572371" target="_blank" rel="noopener">ServiceNow Community: quy tắc thu hồi PDI</a></li>
+<li><a href="https://www.servicenow.com/community/developer-blog/keeping-pdis-available-for-active-builders-upcoming-pdi/ba-p/3572058" target="_blank" rel="noopener">ServiceNow Developer Blog: thay đổi về thu hồi PDI</a></li>
 <li><a href="https://www.servicenow.com/docs/r/QykF2iRSIs6VXztArCSo3w/wx13CEpLt~8B1elAmArNyw" target="_blank" rel="noopener">ServiceNow: Life cycle of an Incident</a></li>
-<li><a href="https://www.servicenow.com/community/itsm-forum/difference-between-normal-standard-and-emergency-change/m-p/3311235" target="_blank" rel="noopener">ServiceNow Community: phân biệt Normal, Standard, Emergency</a> (bài cộng đồng, không phải tài liệu chính thức)</li>
+<li><a href="https://www.servicenow.com/docs/r/zurich/it-service-management/change-management/c_ITILChangeManagement.html" target="_blank" rel="noopener">ServiceNow: Change Management, bản Zurich</a></li>
+<li><a href="https://www.servicenow.com/community/s/cgfwn76974/attachments/cgfwn76974/it-service-management-forum/254880/3/Change%20Management.pdf" target="_blank" rel="noopener">ServiceNow: tài liệu IT Service Management bản Kingston (PDF, 2018)</a>. Đây là tài liệu của hãng nhưng đã cũ và được đăng lại trên trang cộng đồng.</li>
 </ul>
 <div class="done-bar"><button type="button" class="done-btn" data-done-toggle="15-servicenow">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="15-servicenow" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/14-samba"><small>Bài trước</small><span>Samba</span></a><a class="pager-link" href="#/16-clusterpro"><small>Bài sau</small><span>CLUSTERPRO</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/15-servicenow/1-van-de">1. Vấn đề</a></li><li><a href="#/15-servicenow/2-bon-loai-viec-chinh">2. Bốn loại việc chính</a></li><li><a href="#/15-servicenow/3-vong-doi">3. Vòng đời</a></li><li><a href="#/15-servicenow/4-mot-ticket-viet-tot">4. Một ticket viết tốt</a></li><li><a href="#/15-servicenow/5-cac-khai-niem-nen-tang-khac">5. Các khái niệm nền tảng khác</a></li><li><a href="#/15-servicenow/6-tu-kiem-tra">6. Tự kiểm tra</a></li><li><a href="#/15-servicenow/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/15-servicenow/nguon">Nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="16-clusterpro" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Bài 16. CLUSTERPRO</h1><span class="seal seal-lg" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span><div class="page-meta"><span class="lv lv-b" title="Mức B: biết thêm thì tốt">Mức B</span></div></header><p>CLUSTERPRO là phần mềm cluster sẵn sàng cao (HA) của NEC. Ở thị trường quốc tế sản phẩm này mang tên <strong>EXPRESSCLUSTER</strong>, nên khi tìm tài liệu tiếng Anh hãy dùng tên này.</p>
@@ -4315,16 +4374,16 @@ Tiếp theo  : ... (ai, khi nào)</code></pre><section class="feynman"><div clas
 </tr>
 <tr>
 <td><strong>Majority</strong></td>
-<td>Xét theo đa số, cần từ ba máy</td>
+<td>Xét theo đa số. Reference Guide cho Windows có mục riêng, nhưng mình chưa đọc được chi tiết nên hãy tra đúng phiên bản</td>
 </tr>
 </tbody></table></div>
 <p>Có ba điểm cần nhớ:</p>
 <ul>
-<li>Các loại được hỗ trợ khác nhau theo hệ điều hành và phiên bản, nên phải xem Reference Guide đúng bản. Ví dụ, Reference Guide 5.2 cho Windows liệt kê Disk, Ping, HTTP và Majority.</li>
+<li>Các loại được hỗ trợ khác nhau theo hệ điều hành và phiên bản, nên phải xem Reference Guide đúng bản. Ví dụ, Reference Guide 5.2 cho Windows liệt kê Disk, Ping, HTTP và Majority, còn phần mình tra được trong bản Linux 5.2 chỉ thấy Ping và HTTP.</li>
 <li>Heartbeat nên đi qua <strong>nhiều đường khác nhau</strong>, vì chỉ khi tất cả đều mất mới coi là lỗi.</li>
-<li><strong>Có ràng buộc thời gian:</strong> thời gian chờ heartbeat phải lớn hơn khoảng ping nhân với số lần thử, nếu không việc xử lý có thể không hoạt động đúng.</li>
+<li><strong>Có ràng buộc thời gian, khác nhau theo bản:</strong> bản Windows 5.2 ghi <code>Heartbeat timeout &gt; interval x retry count</code>. Bản Linux 5.2 cộng thêm <code>Ping NP Timeout</code> vào vế phải. NEC ghi rằng nếu không thoả điều kiện này thì việc xử lý không chạy bình thường.</li>
 </ul>
-<p>Với phương pháp Ping, chọn đích cũng quan trọng. Thiết bị đó phải tượng trưng cho &quot;đường người dùng đi tới dịch vụ&quot;. Nếu chọn sai, máy còn sống vẫn có thể tự dừng do đích ping bị hỏng.</p>
+<p>Với phương pháp Ping, chọn đích cũng quan trọng (suy luận vận hành chung). Thiết bị đó phải tượng trưng cho &quot;đường người dùng đi tới dịch vụ&quot;. Nếu chọn sai, máy còn sống vẫn có thể tự dừng do đích ping bị hỏng.</p>
 <h2 id="16-clusterpro--5-chay-tren-aws">5. Chạy trên AWS</h2><p><strong>Theo hướng dẫn của NEC và các bài viết kỹ thuật:</strong></p>
 <ul>
 <li>Floating IP thông thường không dùng được; dùng các tài nguyên riêng cho AWS như gán lại Elastic IP hoặc đổi route table.</li>
@@ -4377,7 +4436,7 @@ clplogcc                   # thu thập log gửi hãng</code></pre><p>Bạn ch�
 <li><a href="https://www.nec.com/en/global/prod/expresscluster/en/doc/guide/HOWTO_AWS_X53_Windows_EN_01.pdf" target="_blank" rel="noopener">EXPRESSCLUSTER X 5.3 on AWS (PDF)</a></li>
 <li><a href="https://jpn.nec.com/clusterpro/clpx/trial.html" target="_blank" rel="noopener">NEC: điều khoản bản dùng thử CLUSTERPRO X</a></li>
 <li><a href="https://www.nec.com/en/global/prod/expresscluster/en/trial/evaluation.html" target="_blank" rel="noopener">NEC: tải bản dùng thử EXPRESSCLUSTER X</a></li>
-<li><a href="https://dev.classmethod.jp/articles/clusterpro-np/" target="_blank" rel="noopener">Classmethod: xử lý chia cắt mạng</a></li>
+<li>Máy chủ NEC chặn công cụ đọc PDF trực tiếp, nên phần xử lý chia cắt mạng được đối chiếu qua trích đoạn của công cụ tìm kiếm từ chính các Reference Guide ở trên. Hãy mở PDF đúng phiên bản để xác nhận trước khi cấu hình.</li>
 <li>Danh mục lệnh <code>clpstat</code>, <code>clpgrp</code>, <code>clpcl</code>, <code>clplogcc</code> lấy từ mục lục <a href="https://www.nec.com/en/global/prod/expresscluster/en/doc/manuals/L53_SSS_OG_EN_01.pdf" target="_blank" rel="noopener">Operation Guide</a>. Chưa có điều kiện chạy thử nên hãy tra cú pháp trước khi dùng.</li>
 </ul>
 <div class="done-bar"><button type="button" class="done-btn" data-done-toggle="16-clusterpro">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="16-clusterpro" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/15-servicenow"><small>Bài trước</small><span>ServiceNow</span></a><a class="pager-link" href="#/17-aws-cli-s3"><small>Bài sau</small><span>AWS CLI và S3</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/16-clusterpro/1-van-de">1. Vấn đề</a></li><li><a href="#/16-clusterpro/2-cac-khai-niem">2. Các khái niệm</a></li><li><a href="#/16-clusterpro/3-phat-hien-loi-va-hanh-dong">3. Phát hiện lỗi và hành động</a></li><li><a href="#/16-clusterpro/4-split-brain">4. Split brain</a></li><li><a href="#/16-clusterpro/5-chay-tren-aws">5. Chạy trên AWS</a></li><li><a href="#/16-clusterpro/6-van-hanh">6. Vận hành</a></li><li><a href="#/16-clusterpro/7-tu-kiem-tra">7. Tự kiểm tra</a></li><li><a href="#/16-clusterpro/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/16-clusterpro/nguon">Nguồn</a></li></ol></details></div></article>
@@ -5107,7 +5166,7 @@ SELECT tablespace_name, ROUND(used_percent, 1) AS used_pct
 </tr>
 </tbody></table></div>
 <p>Chuỗi rỗng là bẫy dễ làm sai logic mà không báo lỗi khi chuyển đổi: câu <code>WHERE col IS NULL</code> cho kết quả khác nhau ở hai bên. Manual Oracle cũng khuyên đừng dựa vào việc coi chuỗi rỗng là NULL.</p>
-<p>Dòng về nhiều máy cùng ghi và dòng chuỗi rỗng phía PostgreSQL là kiến thức chung, mình chưa đối chiếu với một trang manual cụ thể. Riêng <code>expdp</code> không dùng được để chuyển sang PostgreSQL, vì file dump chỉ nạp lại được bằng <code>impdp</code>.</p>
+<p>Dòng về nhiều máy cùng ghi dựa trên <a href="https://www.postgresql.org/docs/current/different-replication-solutions.html" target="_blank" rel="noopener">trang so sánh giải pháp nhân bản của PostgreSQL</a>: máy dự phòng không được truy cập đĩa chung khi máy chính đang chạy, và PostgreSQL không có sẵn nhân bản đa chủ đồng bộ. Dòng chuỗi rỗng dựa trên <a href="https://wiki.postgresql.org/wiki/Oracle_to_Postgres_Conversion" target="_blank" rel="noopener">wiki của dự án PostgreSQL</a>. Riêng <code>expdp</code> không dùng được để chuyển sang PostgreSQL, vì file dump chỉ nạp lại được bằng <code>impdp</code>.</p>
 <h2 id="18-oracle-database--11-tu-kiem-tra">11. Tự kiểm tra</h2><p><strong>Câu 1.</strong> Sau khi khởi động lại server database, ứng dụng báo <code>ORA-12514</code> suốt 10 phút. Listener đang chạy. Bạn kiểm tra gì, theo thứ tự nào?</p>
 <details class="answer">
 <summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
@@ -5207,7 +5266,9 @@ SELECT tablespace_name, ROUND(used_percent, 1) AS used_pct
 <ul>
 <li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/xeinw/licensing-restrictions.html" target="_blank" rel="noopener">Oracle AI Database Free: giới hạn</a></li>
 <li><a href="https://container-registry.oracle.com/ords/ocr/ba/database/free" target="_blank" rel="noopener">Oracle Container Registry: database/free</a></li>
-<li><a href="https://www.theregister.com/software/2025/02/18/oracle-extends-19c-database-support-to-2032/1472429" target="_blank" rel="noopener">The Register: Oracle gia hạn hỗ trợ 19c</a>. Mình chưa đọc được trực tiếp bảng Lifetime Support của Oracle, hãy kiểm tra lại trước khi dùng con số này cho kế hoạch.</li>
+<li><a href="https://www.oracle.com/assets/lifetime-support-technology-069183.pdf" target="_blank" rel="noopener">Oracle Lifetime Support Policy: Technology Products (PDF)</a>, bản hiệu lực 02/10/2026. 19c có Premier Support tới 12/2029 và Extended Support tới 12/2032. Từ 01/05/2027 phần hỗ trợ này loại trừ phần mềm bên thứ ba liên quan tới Java 8, xem chú thích 3 của tài liệu.</li>
+<li><a href="https://www.postgresql.org/docs/current/different-replication-solutions.html" target="_blank" rel="noopener">PostgreSQL: so sánh các giải pháp nhân bản</a></li>
+<li><a href="https://wiki.postgresql.org/wiki/Oracle_to_Postgres_Conversion" target="_blank" rel="noopener">PostgreSQL Wiki: Oracle to Postgres Conversion</a></li>
 <li><a href="https://www.postgresql.org/docs/current/plpgsql-porting.html" target="_blank" rel="noopener">PostgreSQL: Porting from Oracle PL/SQL</a></li>
 <li><a href="https://www.postgresql.org/docs/current/routine-vacuuming.html" target="_blank" rel="noopener">PostgreSQL: Routine Vacuuming</a></li>
 </ul>
