@@ -551,7 +551,7 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 <tr>
 <td><a href="#/lab-vba"><code>labs/vba</code></a></td>
 <td>Excel</td>
-<td>21/21 test logic đạt qua VBScript và Excel COM; chưa import vào VBE thật</td>
+<td>21/21 test logic đạt qua VBScript, trong đó 7 test gom file chạy trên WPS Office, chưa chạy trên Microsoft Excel; chưa import vào VBE thật</td>
 </tr>
 <tr>
 <td><a href="#/lab-linux-acl"><code>labs/linux-acl</code></a></td>
@@ -704,6 +704,32 @@ details.toc a:hover { color: var(--ai); text-decoration: underline; }
 <td>Không chạy được</td>
 </tr>
 </tbody></table></div>
+<p>Kết quả khi thử cùng một nội dung trên Microsoft Excel 16.0, máy Windows dùng bảng mã 1252:</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Cách mở</th>
+<th>Ô <code>日本語</code> hiện thành</th>
+<th>Ô <code>Tokyo</code> hiện thành</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mở trực tiếp, không BOM</td>
+<td><code>æ—¥æœ¬èªž</code></td>
+<td><code>Tokyo</code></td>
+</tr>
+<tr>
+<td>Mở trực tiếp, có BOM</td>
+<td><code>日本語</code></td>
+<td><code>Tokyo</code></td>
+</tr>
+<tr>
+<td>Không BOM, chỉ định UTF-8 khi nhập</td>
+<td><code>日本語</code></td>
+<td><code>Tokyo</code></td>
+</tr>
+</tbody></table></div>
+<p>Excel vẫn mở được file và chỉ làm lỗi các ký tự ngoài ASCII. File trên đĩa không đổi vì chưa lưu lại. Trên Windows tiếng Nhật, chữ lỗi sẽ khác vì bảng mã hệ thống khác. WPS Office 12.1 đọc đúng cả file không BOM, nên máy mở <code>.csv</code> bằng WPS sẽ không thấy lỗi này.</p>
 <p>Không có lựa chọn đúng cho mọi trường hợp. <strong>Câu hỏi đúng là: ai đọc file này ở bước sau cùng?</strong> Nếu một file phải phục vụ cả hai bên, hãy tạo hai bản hoặc mở trong Excel bằng chức năng nhập dữ liệu thay vì nhấp đúp.</p>
 <h2 id="01-encoding-csv-duong-dan--4-xuong-dong">4. Xuống dòng</h2><div class="table-wrap" tabindex="0"><table>
 <thead>
@@ -5792,7 +5818,7 @@ python inspect_file.py samples/cp932.csv
 python charset_gotchas.py               # mojibake, cp932 khác shift_jis
 python fixed_length.py                  # EBCDIC, packed, zoned</code></pre><p>Trên Windows, nếu màn hình báo lỗi <code>UnicodeEncodeError</code> khi in, hãy chạy với <code>python -X utf8 ...</code>.</p>
 <h2 id="lab-encoding--bai-tap">Bài tập</h2><ol>
-<li>Mở <code>samples/utf8.csv</code> và <code>samples/utf8_bom.csv</code> bằng cách nhấp đúp trong Excel. Khác nhau thế nào?</li>
+<li>Mở <code>samples/utf8.csv</code> và <code>samples/utf8_bom.csv</code> bằng cách nhấp đúp trong Microsoft Excel. Khác nhau thế nào? Nếu máy đang mở <code>.csv</code> bằng WPS Office thì có thể cả hai file đều đúng chữ, nên hãy kiểm tra chương trình đang mở file.</li>
 <li>Chạy <code>inspect_file.py</code> cho từng file mẫu. Trả lời trước khi chạy: file nào giải mã được bằng <code>shift_jis</code>?</li>
 <li>Đổi <code>fixed_length.py</code>: số dư thành <code>-250</code>. Byte packed mới là gì?</li>
 <li>Đọc <code>samples/utf8_crlf.csv</code> bằng <code>cut -d, -f3</code>. Vì sao ra kết quả sai ở dòng có dấu phẩy trong ô?</li>
@@ -5995,13 +6021,14 @@ if __name__ == &quot;__main__&quot;:
 ? TextFile.ReadAllText(&quot;C:\lab\no-bom.txt&quot;, &quot;utf-8&quot;)
 ? UBound(CsvText.ParseCsv(&quot;a,&quot;&quot;b,c&quot;&quot;&quot;)(0))
 ? MergeWorkbooks.MergeFolder(&quot;C:\lab\in&quot;, ThisWorkbook.Worksheets(1))</code></pre><p>Các file <code>.bas</code> chỉ dùng ký tự ASCII và xuống dòng CRLF để không bị lỗi chữ khi import.</p>
-<h2 id="lab-vba--muc-do-da-kiem-chung">Mức độ đã kiểm chứng</h2><p><code>tests/run_vbs_tests.py</code> chuyển <code>.bas</code> thành VBScript rồi chạy với <code>cscript</code> và Excel COM thật:</p>
-<pre class="code" tabindex="0"><code>python tests/run_vbs_tests.py</code></pre><p>Lần chạy gần nhất: <strong>21/21 đạt</strong>. Nhưng cần hiểu rõ phạm vi:</p>
+<h2 id="lab-vba--muc-do-da-kiem-chung">Mức độ đã kiểm chứng</h2><p><code>tests/run_vbs_tests.py</code> chuyển <code>.bas</code> thành VBScript rồi chạy với <code>cscript</code> và đối tượng COM <code>Excel.Application</code>:</p>
+<pre class="code" tabindex="0"><code>python tests/run_vbs_tests.py</code></pre><p>Lần chạy gần nhất: <strong>21/21 đạt, nhưng trên WPS Office chứ không phải Microsoft Excel</strong>. Trên máy kiểm thử, <code>Excel.Application</code> trỏ tới WPS, và WPS còn tự xưng tên là &quot;Microsoft Excel&quot;. Bộ test giờ in đường dẫn của chương trình đang chạy và cảnh báo nếu đó không phải Microsoft Excel.</p>
 <ul>
-<li><strong>Đã kiểm chứng:</strong> logic đọc ghi byte, phân tích CSV, gom file, chặn tiêu đề lệch, không để file nguồn mở.</li>
-<li><strong>Chưa kiểm chứng:</strong> chưa import vào trình biên dịch VBA thật, vì máy kiểm thử không bật &quot;Trust access to the VBA project object model&quot; và mình không đổi thiết lập bảo mật đó. Đoạn dọn dẹp <code>On Error GoTo Cleanup</code> của <code>MergeFolder</code> chưa được chạy, vì VBScript không có cú pháp này.</li>
+<li><strong>Đã kiểm chứng:</strong> 14 test về đọc ghi byte và phân tích CSV. Các test này không dùng chương trình bảng tính nên không phụ thuộc vào việc chạy trên WPS.</li>
+<li><strong>Mới chạy trên WPS:</strong> 7 test của <code>MergeFolder</code> gồm gom file, chặn tiêu đề lệch, không để file nguồn mở.</li>
+<li><strong>Chưa kiểm chứng:</strong> chưa chạy <code>MergeFolder</code> trên Microsoft Excel, và chưa import vào trình biên dịch VBA thật, vì máy kiểm thử không bật &quot;Trust access to the VBA project object model&quot; và mình không đổi thiết lập bảo mật đó. Đoạn dọn dẹp <code>On Error GoTo Cleanup</code> của <code>MergeFolder</code> chưa được chạy, vì VBScript không có cú pháp này.</li>
 </ul>
-<p>Lần đầu import, hãy chạy Debug, Compile VBAProject và thử cả trường hợp lỗi.</p>
+<p>Lần đầu import vào Microsoft Excel, hãy chạy Debug, Compile VBAProject, rồi thử <code>MergeFolder</code> với cả trường hợp đúng và trường hợp lỗi.</p>
 <h2 id="lab-vba--bai-tap">Bài tập</h2><ol>
 <li>Thêm tham số cho <code>MergeFolder</code> để cho phép khác thứ tự cột, ghép theo tên cột.</li>
 <li>Thêm ghi log mỗi file đã gom vào một sheet riêng.</li>
@@ -6319,6 +6346,9 @@ Check &quot;ParseCsv o trong&quot;, UBound(rows(0)) + 1, 4
 
 Dim xl, dest, destWb
 Set xl = CreateObject(&quot;Excel.Application&quot;)
+' WPS Office co the chiem ten nay va tu xung la Microsoft Excel, nen phai xem duong dan.
+WScript.Echo &quot;Chuong trinh chay test: &quot; &amp; xl.Path
+If InStr(1, xl.Path, &quot;Microsoft Office&quot;, vbTextCompare) = 0 Then WScript.Echo &quot;CANH BAO: khong phai Microsoft Excel, cac test MergeFolder chi dung cho chuong trinh nay&quot;
 xl.DisplayAlerts = False
 xl.Visible = False
 
