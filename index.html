@@ -2879,7 +2879,7 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 <li>Xuất báo cáo tháng và biết bắt đầu từ đâu khi có sự cố.</li>
 </ul>
 <blockquote>
-<p><strong>Phạm vi của bài.</strong> Manual công khai mình đọc được là JP1 Version 11 (Manager 11-01, User Response 11-00). Mình chưa tìm thấy manual Version 12 hay 13 của SLM, chưa thấy thông tin bản dùng thử và không có bản cài để chạy thử. Hãy hỏi dự án đang dùng phiên bản nào. Sản phẩm từng mang tên JP1/IT Service Level Management, nên tên dịch vụ và file cấu hình vẫn còn chữ <code>ITSLM</code>.</p>
+<p><strong>Phạm vi của bài.</strong> Manual công khai mình đọc được là JP1 Version 11 (Manager 11-01, User Response 11-00). Mình chưa tìm thấy manual Version 12 hay 13 của SLM, chưa thấy thông tin bản dùng thử và không có bản cài để chạy thử. Hãy hỏi dự án đang dùng phiên bản nào. Sản phẩm từng mang tên JP1/IT Service Level Management, nên tên dịch vụ và file cấu hình vẫn còn chữ <code>ITSLM</code>. Tên màn hình trong bài ghi theo giao diện tiếng Nhật; nếu màn hình của bạn là tiếng Anh, xem bảng đối chiếu ở phần 6.</p>
 </blockquote>
 <h2 id="09-slm--1-van-de">1. Vấn đề</h2><p>Server có thể báo CPU 30%, RAM ổn, mọi đèn đều xanh, trong khi người dùng vẫn gọi lên phàn nàn hệ thống chậm. Giám sát hạ tầng trả lời &quot;máy có khoẻ không&quot;. JP1/SLM trả lời &quot;người dùng có được phục vụ tốt không&quot;.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">SLI, SLO, SLA</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>SLI là con số đo được. SLO là mục tiêu nội bộ cho con số đó. SLA là cam kết với khách hàng, thường có hậu quả nếu không đạt.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Nhà hàng giao món. SLI là thời gian giao thực tế. SLO là bếp tự đặt ra đơn phải dưới 25 phút. SLA là cam kết &quot;trên 40 phút thì miễn phí&quot;.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Trễ giao món thì khách thấy ngay. Hệ thống có thể chậm chỉ với một nhóm người dùng, trong khi con số chung vẫn đẹp.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Vì sao SLO phải chặt hơn SLA?</dd></div></dl></section>
@@ -3037,6 +3037,7 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 <td>Từng chỉ số, hoặc ghép phản hồi với thông lượng</td>
 </tr>
 </tbody></table></div>
+<p>Manual tiếng Anh gọi ba cách này là <strong>threshold value monitoring</strong>, <strong>trend monitoring</strong> và <strong>out-of-range value detection</strong>. Cách thứ ba không mang tên &quot;outlier detection&quot;, nên khi tra manual tiếng Anh hãy tìm theo đúng tên này.</p>
 <h3 id="09-slm--しきい値監視">しきい値監視</h3><p>Để tránh báo nhầm vì một cú nhảy thoáng qua, hệ thống chỉ báo khi vượt đủ nhiều trong 60 giây, theo tham số <code>sloThresholdRate</code> trong <code>jp1itslm.properties</code>. Với <strong>S</strong> là số lần đo trong 60 giây và <strong>n</strong> là giá trị tham số:</p>
 <ul>
 <li><code>n = 1</code>: vượt một lần là báo.</li>
@@ -3101,10 +3102,50 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 </tbody></table></div>
 <p>JP1/SLM <strong>không hỗ trợ giám sát job</strong>, nên lô xử lý đêm phải dùng công cụ khác.</p>
 <section class="feynman"><div class="fy-head"><span class="fy-tag">Feynman</span><p class="fy-title">Đo thụ động và đo chủ động</p><button type="button" class="fy-cover" aria-pressed="false">Che lại để tự nói</button></div><dl><div class="fy-row fy-simple"><dt>Nói đơn giản</dt><dd>UR nghe lưu lượng thật, nên phản ánh đúng người dùng thật, nhưng phải có người dùng. Agent for Service Response tự gửi yêu cầu theo kịch bản để kiểm tra, nên lúc nào cũng có số liệu.</dd></div><div class="fy-row fy-example"><dt>Ví dụ đời thường</dt><dd>Đếm khách thật đi qua cửa so với thuê người đóng giả khách vào mua hàng theo lịch. Người đóng giả cho biết cửa hàng còn mở lúc nửa đêm, nhưng không cho biết khách thật có hài lòng không.</dd></div><div class="fy-row fy-wrong"><dt>Ví dụ này sai ở đâu</dt><dd>Người đóng giả có thể đi thử mọi quầy, còn kịch bản chỉ thử đúng những gì bạn đã viết. Luồng không có trong kịch bản hỏng thì vẫn báo xanh.</dd></div><div class="fy-row fy-say"><dt>Tự nói lại</dt><dd>Muốn biết trang đăng nhập có hoạt động lúc 3 giờ sáng, bạn dùng cách đo nào?</dd></div></dl></section>
-<h2 id="09-slm--6-quy-trinh-lam-viec">6. Quy trình làm việc</h2><p><strong>Chuẩn bị</strong></p>
+<h2 id="09-slm--6-quy-trinh-lam-viec">6. Quy trình làm việc</h2><blockquote>
+<p><strong>Giao diện tiếng Nhật hay tiếng Anh.</strong> JP1/SLM không chỉ có tiếng Nhật. Manual có bản tiếng Anh mô tả đủ các màn hình, và có mục 5.7.1 Browser language settings, tức là ngôn ngữ hiển thị liên quan tới cài đặt của trình duyệt. Mình chưa đọc được chi tiết mục này nên chưa biết chính xác những ngôn ngữ nào được hỗ trợ. Bài ghi tên màn hình theo bản tiếng Nhật vì dự án ở Nhật thường dùng giao diện tiếng Nhật. <strong>Hãy hỏi người bàn giao</strong> giao diện của dự án đang ở ngôn ngữ nào.</p>
+</blockquote>
+<p>Bảng dưới ghép theo mục lục chương 10 (SLM Windows) và mục 3.2.10 của hai bản manual Version 11:</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tiếng Nhật</th>
+<th>Tiếng Anh</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[ホーム]</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>[リアルタイム監視]</td>
+<td>Real-time Monitor</td>
+</tr>
+<tr>
+<td>[問題調査]</td>
+<td>Troubleshoot</td>
+</tr>
+<tr>
+<td>[レポート]</td>
+<td>Report</td>
+</tr>
+<tr>
+<td>[設定], mục [監視設定]</td>
+<td>Settings, mục Monitor settings</td>
+</tr>
+<tr>
+<td>サービスグループ</td>
+<td>service group</td>
+</tr>
+<tr>
+<td>エラー, 警告</td>
+<td>error, warning</td>
+</tr>
+</tbody></table></div>
+<p><strong>Chuẩn bị</strong></p>
 <ol>
 <li>Đăng ký dịch vụ cần giám sát, gom vào <strong>サービスグループ</strong> (thường theo khách hàng) và phân quyền theo nhóm. JP1/SLM phát hiện được URI để hỗ trợ việc đăng ký.</li>
-<li>Trong [監視設定], với từng dịch vụ: đặt ngưỡng SLO, bật 傾向監視 và thời gian N, đặt các tham số 外れ値検知.</li>
+<li>Trong màn hình [設定], mục [監視設定], với từng dịch vụ: đặt ngưỡng SLO, bật 傾向監視 và thời gian N, đặt các tham số 外れ値検知.</li>
 </ol>
 <p><strong>Hằng ngày</strong></p>
 <ol>
@@ -3318,14 +3359,18 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0012.HTM" target="_blank" rel="noopener">1.4 Single-Manager và Master-Slave</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0029.HTM" target="_blank" rel="noopener">3.1.1 Phương pháp và đối tượng giám sát</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0030.HTM" target="_blank" rel="noopener">3.1.2 外れ値検知</a></li>
-<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0031.HTM" target="_blank" rel="noopener">3.1.3 傾向監視</a></li>
-<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0032.HTM" target="_blank" rel="noopener">3.1.4 しきい値監視</a></li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0031.HTM" target="_blank" rel="noopener">3.1.3 傾向監視</a>, <a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0031.HTM" target="_blank" rel="noopener">bản tiếng Anh</a></li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0032.HTM" target="_blank" rel="noopener">3.1.4 しきい値監視</a>, <a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0032.HTM" target="_blank" rel="noopener">bản tiếng Anh</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0043.HTM" target="_blank" rel="noopener">3.2.9 Thiết lập mục giám sát</a></li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0044.HTM" target="_blank" rel="noopener">3.2.10 Thiết lập mục giám sát khi kết nối PFM</a>, có các bước trong Settings và Monitor settings</li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0053.HTM" target="_blank" rel="noopener">4.1.1 Quy trình giám sát</a></li>
 <li><a href="http://itdoc.hitachi.co.jp/manuals/3021/30213A3201/0061.HTM" target="_blank" rel="noopener">4.4.1 Xác định thời điểm phát sinh</a></li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0119.HTM" target="_blank" rel="noopener">5.7.1 Browser language settings</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0156.HTM" target="_blank" rel="noopener">7.1.1 Đọc thông báo và xử lý</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0166.HTM" target="_blank" rel="noopener">7.2.4 Log thông báo</a></li>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0225.HTM" target="_blank" rel="noopener">9.15 Lệnh <code>jslmreport</code></a></li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0231.HTM" target="_blank" rel="noopener">10. SLM Windows</a>, mục lục các màn hình bản tiếng Anh</li>
+<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0241.HTM" target="_blank" rel="noopener">10.3.1 ［リアルタイム監視］画面の構成</a></li>
 <li><a href="https://www.hitachi.co.jp/New/cnews/month/2011/06/0629.html" target="_blank" rel="noopener">Hitachi: thông báo sản phẩm năm 2011</a></li>
 </ul>
 <div class="done-bar"><button type="button" class="done-btn" data-done-toggle="09-slm">Đóng dấu đã học</button><span class="seal seal-lg" data-state-page="09-slm" role="img" aria-label="Đã học">済</span></div><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/08-ess-rec"><small>Bài trước</small><span>ESS REC</span></a><a class="pager-link" href="#/10-rhel"><small>Bài sau</small><span>RHEL</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/09-slm/1-van-de">1. Vấn đề</a></li><li><a href="#/09-slm/2-kien-truc">2. Kiến trúc</a></li><li><a href="#/09-slm/3-do-cai-gi">3. Đo cái gì</a></li><li><a href="#/09-slm/4-ba-cach-phat-hien">4. Ba cách phát hiện</a></li><li><a href="#/09-slm/5-ket-noi-jp1-pfm-tuy-chon">5. Kết nối JP1/PFM (tuỳ chọn)</a></li><li><a href="#/09-slm/6-quy-trinh-lam-viec">6. Quy trình làm việc</a></li><li><a href="#/09-slm/7-bao-cao">7. Báo cáo</a></li><li><a href="#/09-slm/8-xu-ly-su-co">8. Xử lý sự cố</a></li><li><a href="#/09-slm/9-cau-nen-hoi-khi-nhan-ban-giao">9. Câu nên hỏi khi nhận bàn giao</a></li><li><a href="#/09-slm/10-cau-noi-neu-ban-quen-sre">10. Cầu nối nếu bạn quen SRE</a></li><li><a href="#/09-slm/11-bai-tap-khong-can-cai-dat">11. Bài tập không cần cài đặt</a></li><li><a href="#/09-slm/12-tu-kiem-tra">12. Tự kiểm tra</a></li><li><a href="#/09-slm/tu-tieng-nhat-trong-bai">Từ tiếng Nhật trong bài</a></li><li><a href="#/09-slm/nguon">Nguồn</a></li></ol></details></div></article>
@@ -6269,6 +6314,53 @@ Cleanup:
     If errNumber &lt;&gt; 0 Then Err.Raise errNumber, &quot;MergeFolder&quot;, errText
     MergeFolder = total
 End Function
+</code></pre></details><details class="source" id="lab-vba--src-textfile-bas"><summary><code>TextFile.bas</code></summary><pre class="code" tabindex="0"><code>Attribute VB_Name = &quot;TextFile&quot;
+Option Explicit
+
+' Read and write text files with an explicit encoding.
+'
+' This file is ASCII on purpose. The VBA editor imports a .bas file using the
+' system ANSI code page, so non-ASCII comments can turn into mojibake.
+
+Private Const TYPE_BINARY As Long = 1
+Private Const TYPE_TEXT As Long = 2
+Private Const SAVE_OVERWRITE As Long = 2
+
+' charset examples: &quot;utf-8&quot;, &quot;shift_jis&quot; (ADODB maps this to cp932)
+Public Function ReadAllText(ByVal path As String, ByVal charset As String) As String
+    Dim s As Object
+    Set s = CreateObject(&quot;ADODB.Stream&quot;)
+    s.Type = TYPE_TEXT
+    s.Charset = charset
+    s.Open
+    s.LoadFromFile path
+    ReadAllText = s.ReadText
+    s.Close
+End Function
+
+' ADODB.Stream always prepends EF BB BF for utf-8, so &quot;no BOM&quot; means
+' switching to binary mode and copying from byte 3 onward.
+Public Sub WriteUtf8(ByVal path As String, ByVal text As String, ByVal withBom As Boolean)
+    Dim s As Object
+    Dim out As Object
+    Set s = CreateObject(&quot;ADODB.Stream&quot;)
+    s.Type = TYPE_TEXT
+    s.Charset = &quot;utf-8&quot;
+    s.Open
+    s.WriteText text
+    s.Position = 0
+    s.Type = TYPE_BINARY
+    If Not withBom Then
+        If s.Size &gt;= 3 Then s.Position = 3
+    End If
+    Set out = CreateObject(&quot;ADODB.Stream&quot;)
+    out.Type = TYPE_BINARY
+    out.Open
+    s.CopyTo out
+    out.SaveToFile path, SAVE_OVERWRITE
+    out.Close
+    s.Close
+End Sub
 </code></pre></details><details class="source" id="lab-vba--src-tests-run-vbs-tests-py"><summary><code>tests/run_vbs_tests.py</code></summary><pre class="code" tabindex="0"><code>&quot;&quot;&quot;Kiểm tra logic các module .bas bằng cscript và Excel COM, không cần mở VBE.
 
 Script lột kiểu dữ liệu để .bas chạy được như VBScript. Đây KHÔNG phải trình
@@ -6463,53 +6555,6 @@ Set xl = Nothing
 
 If failures &gt; 0 Then WScript.Quit 1
 WScript.Echo &quot;TAT CA DEU DAT&quot;
-</code></pre></details><details class="source" id="lab-vba--src-textfile-bas"><summary><code>TextFile.bas</code></summary><pre class="code" tabindex="0"><code>Attribute VB_Name = &quot;TextFile&quot;
-Option Explicit
-
-' Read and write text files with an explicit encoding.
-'
-' This file is ASCII on purpose. The VBA editor imports a .bas file using the
-' system ANSI code page, so non-ASCII comments can turn into mojibake.
-
-Private Const TYPE_BINARY As Long = 1
-Private Const TYPE_TEXT As Long = 2
-Private Const SAVE_OVERWRITE As Long = 2
-
-' charset examples: &quot;utf-8&quot;, &quot;shift_jis&quot; (ADODB maps this to cp932)
-Public Function ReadAllText(ByVal path As String, ByVal charset As String) As String
-    Dim s As Object
-    Set s = CreateObject(&quot;ADODB.Stream&quot;)
-    s.Type = TYPE_TEXT
-    s.Charset = charset
-    s.Open
-    s.LoadFromFile path
-    ReadAllText = s.ReadText
-    s.Close
-End Function
-
-' ADODB.Stream always prepends EF BB BF for utf-8, so &quot;no BOM&quot; means
-' switching to binary mode and copying from byte 3 onward.
-Public Sub WriteUtf8(ByVal path As String, ByVal text As String, ByVal withBom As Boolean)
-    Dim s As Object
-    Dim out As Object
-    Set s = CreateObject(&quot;ADODB.Stream&quot;)
-    s.Type = TYPE_TEXT
-    s.Charset = &quot;utf-8&quot;
-    s.Open
-    s.WriteText text
-    s.Position = 0
-    s.Type = TYPE_BINARY
-    If Not withBom Then
-        If s.Size &gt;= 3 Then s.Position = 3
-    End If
-    Set out = CreateObject(&quot;ADODB.Stream&quot;)
-    out.Type = TYPE_BINARY
-    out.Open
-    s.CopyTo out
-    out.SaveToFile path, SAVE_OVERWRITE
-    out.Close
-    s.Close
-End Sub
 </code></pre></details><nav class="pager" aria-label="Chuyển bài"><a class="pager-link" href="#/lab-encoding"><small>Bài trước</small><span>Encoding và dữ liệu độ dài cố định</span></a><a class="pager-link" href="#/lab-linux-acl"><small>Bài sau</small><span>Quyền Linux và POSIX ACL</span></a></nav></div><details class="toc"><summary>Trong bài này</summary><ol><li><a href="#/lab-vba/dung-trong-excel">Dùng trong Excel</a></li><li><a href="#/lab-vba/muc-do-da-kiem-chung">Mức độ đã kiểm chứng</a></li><li><a href="#/lab-vba/bai-tap">Bài tập</a></li><li><a href="#/lab-vba/ma-nguon">Mã nguồn</a></li></ol></details></div></article>
 <article class="page" data-page="lab-linux-acl" hidden><div class="page-grid"><div class="article-body"><header class="page-head"><h1 tabindex="-1">Lab: quyền Linux và POSIX ACL</h1></header><p>Dùng cho <a href="#/11-linux-shell-acl">Bài 11</a>.</p>
 <pre class="code" tabindex="0"><code>docker run --rm -v &quot;$PWD:/lab&quot; almalinux:9 bash /lab/acl_lab.sh</code></pre><p>Script tự chứng minh từng hành vi bằng cách thử truy cập dưới UID 2001 và 2002. Nó không tạo user nào, và xoá thư mục tạm khi kết thúc.</p>
@@ -6645,12 +6690,7 @@ docker compose down</code></pre><p>Mật khẩu trong lab chỉ dùng để th�
 <li>Tạo user <code>carol</code> trên Linux nhưng không chạy <code>smbpasswd</code>. Đăng nhập được không?</li>
 <li>Thêm <code>force user = batch</code>. Tải một file lên, rồi xem <code>ls -l</code>. Chủ file là ai?</li>
 </ol>
-<h2 id="lab-samba--ma-nguon">Mã nguồn</h2><details class="source" id="lab-samba--src-docker-compose-yml"><summary><code>docker-compose.yml</code></summary><pre class="code" tabindex="0"><code>services:
-  samba:
-    build: .
-    image: jp-ops-handbook/samba-lab
-    # Cố ý không publish cổng: lab chỉ dùng smbclient bên trong container.
-</code></pre></details><details class="source" id="lab-samba--src-dockerfile"><summary><code>Dockerfile</code></summary><pre class="code" tabindex="0"><code>FROM almalinux:9
+<h2 id="lab-samba--ma-nguon">Mã nguồn</h2><details class="source" id="lab-samba--src-dockerfile"><summary><code>Dockerfile</code></summary><pre class="code" tabindex="0"><code>FROM almalinux:9
 
 RUN dnf install -y -q samba samba-client acl \
     &amp;&amp; groupadd team_a \
@@ -6666,6 +6706,11 @@ RUN dnf install -y -q samba samba-client acl \
 COPY smb.conf /etc/samba/smb.conf
 
 CMD [&quot;smbd&quot;, &quot;--foreground&quot;, &quot;--no-process-group&quot;, &quot;--debug-stdout&quot;]
+</code></pre></details><details class="source" id="lab-samba--src-docker-compose-yml"><summary><code>docker-compose.yml</code></summary><pre class="code" tabindex="0"><code>services:
+  samba:
+    build: .
+    image: jp-ops-handbook/samba-lab
+    # Cố ý không publish cổng: lab chỉ dùng smbclient bên trong container.
 </code></pre></details><details class="source" id="lab-samba--src-smb-conf"><summary><code>smb.conf</code></summary><pre class="code" tabindex="0"><code>[global]
     workgroup = LAB
     security = user
