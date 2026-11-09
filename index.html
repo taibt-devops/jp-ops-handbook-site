@@ -3320,7 +3320,12 @@ End Sub</code></pre><p>Đoạn code này để minh hoạ và chưa được ch�
 <summary><span>Đáp án</span><small>Viết câu trả lời của bạn trước khi mở</small></summary>
 
 <p><strong>(a)</strong> Tạo <strong>Web transaction</strong> riêng cho chuỗi thanh toán, vì ở All Web Access 2% lượng truy cập sẽ bị hoà vào trung bình.</p>
-<p><strong>(b)</strong> Giám sát ngưỡng: đặt ngưỡng thấp hơn 3 giây, ví dụ 2,5 giây, để có dư địa trước khi vi phạm hợp đồng; tỷ lệ lỗi theo dữ liệu thực tế. Giám sát xu hướng cho thời gian phản hồi, N vài giờ. Phát hiện ngoại lệ với độ nhạy vừa, ghép với thông lượng; lưu ý cần thời gian tích luỹ dữ liệu nên chưa có tác dụng từ ngày đầu.</p>
+<p><strong>(b)</strong> Bật cả ba cách:</p>
+<ul>
+<li><strong>Giám sát ngưỡng:</strong> đặt ngưỡng thời gian phản hồi thấp hơn mức 3 giây của hợp đồng, ví dụ 2,5 giây. Hệ thống sẽ báo khi còn cách mức vi phạm 0,5 giây, nên bạn kịp xử lý trước khi vi phạm hợp đồng thật. Nếu đặt đúng 3 giây thì lúc có báo là đã vi phạm rồi. Ngưỡng tỷ lệ lỗi thì chưa có con số trong hợp đồng, nên cho chạy một thời gian, xem tỷ lệ lỗi bình thường là bao nhiêu rồi mới đặt.</li>
+<li><strong>Giám sát xu hướng:</strong> bật cho thời gian phản hồi. N, tức số giờ dữ liệu dùng để kéo đường xu hướng, đặt khoảng vài giờ.</li>
+<li><strong>Phát hiện ngoại lệ:</strong> độ nhạy vừa, ghép thời gian phản hồi với thông lượng. Cách này phải tích luỹ dữ liệu nhiều ngày mới học được mức bình thường, nên chưa có tác dụng từ ngày đầu.</li>
+</ul>
 <p><strong>(c)</strong> Tuỳ mục tiêu. Ngoài bộ cân bằng tải thì nhìn đúng như người dùng và gom ba server làm một. Trong thì thấy được server nào có vấn đề. Phải xác nhận tại điểm đó dữ liệu chưa mã hoá. Lưu ý mọi truy cập của transaction phải nằm trong phạm vi của cùng một UR.</p>
 <p><strong>(d)</strong> Hợp đồng đo ở đâu và tính theo trung bình hay theo từng lượt: SLM dùng trung bình nên có thể không khớp. Có loại trừ giờ bảo trì không. Lỗi nghiệp vụ như thẻ bị từ chối trả về mã gì. Nếu trả 200 thì tỷ lệ lỗi không đếm được.</p>
 </details>
