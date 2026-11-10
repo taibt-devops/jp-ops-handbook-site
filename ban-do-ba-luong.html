@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Bản đồ ba luồng · Cẩm nang vận hành Nhật</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c4321f'/%3E%3Ctext x='16' y='24' font-size='22' text-anchor='middle' fill='%23fff'%3E%E6%B8%88%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Mono:wght@400;600&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<style>
+/* Layout: bản vẽ hệ thống dạng tờ kỹ thuật chia 3 dải (online / batch / quản trị); thanh điều khiển luồng ở trên; bảng chi tiết khối bên phải; danh sách bước + câu hỏi phỏng vấn bên dưới */
+:root{
+  --bg:#eef0f2; --sheet:#fbfbfa; --ink:#1b2128; --mute:#5d6670; --line:#cdd3d9; --grid:#e3e7ea;
+  --on:#1f5fa8; --on-soft:#dde8f5;
+  --bt:#6a3fa0; --bt-soft:#ebe2f5;
+  --ad:#1d7a5a; --ad-soft:#d9efe6;
+  --as:#b36b00; --as-soft:#fbecd2;
+  --uv:#a3433a; --uv-soft:#f6dedb;
+  --f-display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Noto Sans Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121518; --sheet:#1a1e23; --ink:#e4e8ec; --mute:#98a2ac; --line:#323942; --grid:#20262c;
+  --on:#6ea6e8; --on-soft:#1a2a3d; --bt:#b28be3; --bt-soft:#2a2238; --ad:#5cc49a; --ad-soft:#163027;
+  --as:#f0aa45; --as-soft:#3a2a12; --uv:#ee8579; --uv-soft:#3b1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121518; --sheet:#1a1e23; --ink:#e4e8ec; --mute:#98a2ac; --line:#323942; --grid:#20262c;
+  --on:#6ea6e8; --on-soft:#1a2a3d; --bt:#b28be3; --bt-soft:#2a2238; --ad:#5cc49a; --ad-soft:#163027;
+  --as:#f0aa45; --as-soft:#3a2a12; --uv:#ee8579; --uv-soft:#3b1f1c; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 52px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(28px,4.4vw,42px);line-height:1.05}
+h2{font-size:22px}
+h3{font-size:18px}
+p{margin:0}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--bg);border:1px solid var(--line);padding:0 4px;border-radius:3px;word-break:break-word}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.lede{max-width:72ch;color:var(--mute)}
+header{display:grid;gap:8px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.sw.dash{border:2px dashed var(--as);background:var(--as-soft)}
+.sw.uvb{border:2px dotted var(--uv);background:var(--uv-soft)}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--sheet)}
+.seg button{font:600 14px var(--f-body);border:0;border-right:1px solid var(--line);background:transparent;color:var(--mute);padding:8px 14px;cursor:pointer;display:flex;gap:7px;align-items:center}
+.seg button:last-child{border-right:0}
+.seg button i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.seg button[aria-pressed="true"]{color:var(--ink);background:var(--bg);box-shadow:inset 0 -3px 0 var(--k,var(--ink))}
+.play{display:flex;gap:6px;align-items:center}
+.play button{font:600 14px var(--f-body);border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:6px;padding:8px 12px;cursor:pointer;min-width:40px}
+.play button.primary{background:var(--ink);color:var(--sheet);border-color:var(--ink);min-width:96px}
+.play button:disabled{opacity:.4;cursor:default}
+.play .count{font:600 13px var(--f-mono);color:var(--mute);font-variant-numeric:tabular-nums;min-width:52px;text-align:center}
+button:focus-visible,.node:focus-visible{outline:2px solid var(--as);outline-offset:2px}
+
+.main{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
+@media (max-width:1060px){.main{grid-template-columns:minmax(0,1fr)}}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:8px}
+.canvas{overflow-x:auto;padding:6px}
+#svg{display:block;width:100%;min-width:860px;height:auto}
+#svg text{font-family:var(--f-body)}
+.node{cursor:pointer}
+.node .box{transition:opacity .25s}
+.dim{opacity:.22}
+.narr{border-top:1px solid var(--line);padding:12px 16px;display:grid;gap:4px;min-height:84px}
+.narr .tag{font:600 12px var(--f-mono);letter-spacing:.06em}
+.narr p{max-width:90ch}
+
+.detail{padding:16px;display:grid;gap:12px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:1060px){.detail{position:static;max-height:none}}
+.detail .who{display:grid;gap:2px}
+.detail .vendor{font-size:13px;color:var(--mute)}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font:600 11px var(--f-mono);letter-spacing:.06em;padding:3px 7px;border-radius:3px;text-transform:uppercase}
+.badge.as{background:var(--as-soft);color:var(--as);border:1px dashed var(--as)}
+.badge.uv{background:var(--uv-soft);color:var(--uv);border:1px dotted var(--uv)}
+.badge.fl{background:var(--bg);color:var(--mute);border:1px solid var(--line)}
+.sec{display:grid;gap:4px}
+.sec h4{margin:0;font:600 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.sec ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.sec li,.sec p{font-size:14px}
+.warn{font-size:13px;background:var(--as-soft);border-left:3px solid var(--as);padding:8px 10px;border-radius:0 4px 4px 0}
+.warn.uv{background:var(--uv-soft);border-color:var(--uv)}
+.src a{color:var(--on);font-size:13px;word-break:break-word}
+.hint{color:var(--mute);font-size:14px}
+
+.lower{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:900px){.lower{grid-template-columns:minmax(0,1fr)}}
+.steps{padding:16px;display:grid;gap:10px}
+.steps ol{margin:0;padding:0;list-style:none;display:grid;gap:4px;counter-reset:s}
+.steps li button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:28px 1fr;gap:8px;width:100%;padding:7px 8px;border-radius:5px;cursor:pointer;font-size:14px}
+.steps li button:hover{background:var(--bg)}
+.steps li button[aria-current="step"]{background:var(--bg);box-shadow:inset 3px 0 0 var(--k)}
+.steps li button:focus-visible{outline:2px solid var(--as)}
+.steps .n{font:600 13px var(--f-mono);color:var(--mute);font-variant-numeric:tabular-nums}
+.qa{padding:16px;display:grid;gap:10px}
+details{border-top:1px solid var(--line);padding-top:8px}
+details:first-of-type{border-top:0;padding-top:0}
+summary{cursor:pointer;font-weight:600;font-size:15px}
+details p,details li{font-size:14px;margin-top:6px}
+details ul{margin:0;padding-left:18px}
+.sources{padding:16px;display:grid;gap:8px}
+.sources ul{margin:0;padding-left:18px;display:grid;gap:3px;columns:2;column-gap:28px}
+@media (max-width:760px){.sources ul{columns:1}}
+.sources li{font-size:13px;break-inside:avoid}
+.sources a{color:var(--on);word-break:break-word}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{justify-self:start;font-size:14px;font-weight:600;color:var(--on);text-decoration:none}
+.back:hover{text-decoration:underline}
+.back:focus-visible,.les a:focus-visible{outline:2px solid var(--as);outline-offset:2px}
+.les a{color:var(--on);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="back" href="./">← Cẩm nang vận hành Nhật</a>
+    <span class="eyebrow">Ôn phỏng vấn · kiến trúc hệ thống</span>
+    <h1>Ba luồng của hệ thống: online, batch đêm, quản trị</h1>
+    <p class="lede">Chọn một luồng và bấm Play để xem từng bước chạy qua sơ đồ. Bấm vào bất kỳ khối nào để xem khối đó làm gì, log nằm ở đâu và sự cố hay gặp. Phần nào chưa xác nhận được ghi rõ ngay trên sơ đồ.</p>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--on)"></i>Online</span>
+      <span><i class="sw" style="background:var(--bt)"></i>Batch đêm</span>
+      <span><i class="sw" style="background:var(--ad)"></i>Quản trị</span>
+      <span><i class="sw dash"></i>Giả định: vai trò hoặc kết nối chưa xác nhận</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Chọn luồng" id="flows">
+      <button data-f="all" aria-pressed="true" style="--k:var(--ink)">Toàn cảnh</button>
+      <button data-f="online" aria-pressed="false" style="--k:var(--on)"><i style="background:var(--on)"></i>① Online</button>
+      <button data-f="batch" aria-pressed="false" style="--k:var(--bt)"><i style="background:var(--bt)"></i>② Batch đêm</button>
+      <button data-f="admin" aria-pressed="false" style="--k:var(--ad)"><i style="background:var(--ad)"></i>③ Quản trị</button>
+    </div>
+    <div class="play">
+      <button id="prev" aria-label="Bước trước">◀</button>
+      <button id="playbtn" class="primary">▶ Play</button>
+      <button id="next" aria-label="Bước sau">▶</button>
+      <span class="count" id="count">–</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <section class="sheet">
+      <div class="canvas"><svg id="svg" viewBox="0 0 1000 640" role="img" aria-label="Sơ đồ kiến trúc ba luồng"></svg></div>
+      <div class="narr" id="narr" aria-live="polite"></div>
+    </section>
+    <aside class="sheet detail" id="detail" aria-live="polite"></aside>
+  </div>
+
+  <div class="lower">
+    <section class="sheet steps">
+      <h2 id="steps-title">Các bước</h2>
+      <ol id="steplist"></ol>
+    </section>
+    <section class="sheet qa">
+      <h2>Câu hỏi người phỏng vấn hay hỏi</h2>
+      <details open><summary>Người dùng báo chậm. Bạn kiểm tra từ đâu?</summary>
+        <p>Đi theo đúng đường của request, từ ngoài vào, và tìm tầng đầu tiên mà thời gian tăng vọt:</p>
+        <ul>
+          <li>Load balancer: health check, số kết nối, có node nào bị loại ra không.</li>
+          <li>OHS: access log và log <code>&lt;instance&gt;.log</code>; lỗi plug-in được gắn tên module <code>weblogic</code>, ví dụ <code>READ_TIMEOUT</code>.</li>
+          <li>WebLogic: <code>SERVER_NAME.log</code>, thread bị kẹt, connection pool JDBC cạn.</li>
+          <li>Tuxedo (nếu có): ULOG trong ngày, lỗi kết nối WTC.</li>
+          <li>Oracle: alert log trong ADR, session đang chờ gì.</li>
+        </ul></details>
+      <details><summary>Batch đêm trễ, sáng ra chưa có file Excel. Xử lý thế nào?</summary>
+        <ul>
+          <li>Xem jobnet trên JP1/AJS3 View hoặc Web Console: job nào lỗi hoặc đang chờ.</li>
+          <li>Nếu là bước truyền file: tra send/receive log của HULFT, lấy mã lỗi, xem có gửi lại được không.</li>
+          <li>Nếu là bước chuyển đổi: log của DataMagic, kiểm tra file đầu vào có đúng định dạng và bảng mã.</li>
+          <li>Kiểm tra đích: S3 (CloudTrail data events hoặc server access log), quyền ghi trên file server.</li>
+          <li>Báo cho người dùng file Excel trễ trước khi họ phát hiện.</li>
+        </ul></details>
+      <details><summary>Đã có ticket ServiceNow, sao còn cần ESS REC?</summary>
+        <p>Ticket chứng minh thao tác <b>được phép</b>. ESS REC chứng minh thao tác <b>đã thực sự làm gì</b>: nó ghi video màn hình, phím gõ, chương trình đã chạy. Kiểm toán đối chiếu hai thứ này để tìm truy cập không có phê duyệt.</p></details>
+      <details><summary>Phần nào trong sơ đồ bạn chưa chắc?</summary>
+        <p>Trả lời thẳng: Tuxedo, Mainframe, JP1/AJS3 và PS Gateway là giả định. Access Check (SecureCube của NRI Secure) và JP1/SLM thì đã biết là sản phẩm gì, nhưng Access Check có đọc change trên ServiceNow không và JP1/SLM đọc đoạn mạng nào thì chưa xác nhận. Nói rõ phần nào đã biết, phần nào sẽ xác nhận khi vào dự án tạo ấn tượng tốt hơn là trình bày như thể đã chắc.</p></details>
+    </section>
+  </div>
+
+  <section class="sheet sources">
+    <h2>Nguồn đối chiếu</h2>
+    <ul id="srclist"></ul>
+    <p class="hint">Tài liệu Tuxedo về ULOG là bản BEA Tuxedo 6.5 cũ; cấu trúc ULOG vẫn được dùng ở các bản sau nhưng nên kiểm tra theo đúng phiên bản hệ thống thật. Các mục "kinh nghiệm thường gặp" là kiến thức vận hành chung, không lấy từ tài liệu hãng.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const SRC={
+  ohs:['Oracle: Configuring the Plug-In for Oracle HTTP Server (14.1.2)','https://docs.oracle.com/en/middleware/fusion-middleware/web-tier/14.1.2/develop-plugin/oracle.html'],
+  wlslog:['Oracle: Understanding WebLogic Logging Services (14.1.2)','https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/wllog/logging_services.html'],
+  wtc:['Oracle: WebLogic Tuxedo Connector Administration','https://docs.oracle.com/middleware/12211/wls/WTCCF/bdconfig.htm'],
+  tuxlog:['Oracle (BEA Tuxedo 6.5): Monitoring logs – ULOG, TLOG','https://docs.oracle.com/cd/E13203_01/tuxedo/tux65/admingd/monlogs.htm'],
+  oradiag:['Oracle Database 23: DIAGNOSTIC_DEST','https://docs.oracle.com/en/database/oracle/oracle-database/23/refrn/DIAGNOSTIC_DEST.html'],
+  jp1:['Hitachi: JP1/AJS3 – Job Management: Getting Started','https://itpfdoc.hitachi.co.jp/manuals/3021/30213B1110e/AJSZ0003.HTM'],
+  jp1res:['Hitachi: JP1/AJS3 – Checking the execution results of jobnets','http://itdoc.hitachi.co.jp/manuals/3021/30213B1620e/AJSJ0053.HTM'],
+  hulftlog:['HULFT: Management of logs','https://www.hulft.com/help/en-us/HULFT-V8/COM-FUN/Content/HULFT_FUN/Function/reference_log.htm'],
+  utllist:['HULFT10: utllist (Send and Receive Log List Display)','https://www.hulft.com/help/en-us/HULFT-V10/WIN-ERR/Content/HULFT_ERR_WIN/ExitStatus/SndReceiLListDispCom_utllist.htm'],
+  hulftenv:['HULFT10: System Environment Settings list','https://www.hulft.com/help/en-us/HULFT-V10/LX-ADM/Content/HULFT_ADM_LINUX/Env/SYS_ENV_SET_list.htm'],
+  dm:['NEC: HULFT シリーズ – DataMagic','https://jpn.nec.com/hulft/product_hulft_datamagic_top.html'],
+  s3log:['AWS: Logging options for Amazon S3','https://docs.aws.eu/AmazonS3/latest/userguide/logging-with-S3.html'],
+  s3ct:['AWS: Enabling CloudTrail event logging for S3','https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-cloudtrail-logging-for-s3.html'],
+  snow:['ServiceNow: Process a change request','https://www.servicenow.com/docs/r/zurich/it-service-management/change-management/t_ProcessAChangeRequest.html'],
+  essrec:['日立ソリューションズ: ESS REC','https://www.hitachi-solutions.co.jp/essrec/'],
+  eac:['日立ソリューションズ: ESS AdminControl','https://www.hitachi-solutions.co.jp/eac/'],
+  ac:['NRI Secure: SecureCube Access Check','https://www.nri-secure.co.jp/service/solution/accesscheck'],
+  acproto:['IT Leaders: Access Check 6.4.0, các giao thức trung chuyển','https://it.impress.co.jp/articles/-/28201'],
+  acrec:['Cloud Watch: Access Check 5.2.0 thêm ghi hình thao tác','https://cloud.watch.impress.co.jp/docs/news/1268034.html'],
+  slm:['Hitachi: JP1/SLM V11 – Giới thiệu sản phẩm','https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210e/0004.HTM'],
+  slmcfg:['Hitachi: JP1/SLM V11 – 1.3 Cấu hình hệ thống','https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0011.HTM'],
+  slmlog:['Hitachi: JP1/SLM V11 – 7.2.4 Log thông báo','https://itpfdoc.hitachi.co.jp/manuals/3021/30213A3210/0166.HTM']
+};
+// Lessons in the handbook that cover each block. build.mjs stops if one of these ids no longer exists.
+const LES={
+  '01-encoding-csv-duong-dan':'Bài 1. Encoding, BOM, CSV, đường dẫn',
+  '03-hulft':'Bài 3. HULFT',
+  '04-datamagic':'Bài 4. DataMagic',
+  '06-excel-pivot-chart':'Bài 6. Pivot và Chart',
+  '07-access-gateway':'Bài 7. Gateway đặc quyền',
+  '08-ess-rec':'Bài 8. ESS REC',
+  '09-slm':'Bài 9. JP1/SLM',
+  '10-rhel':'Bài 10. RHEL',
+  '12-windows-server':'Bài 12. Windows Server',
+  '13-windows-file-server':'Bài 13. Windows File Server',
+  '14-samba':'Bài 14. Samba',
+  '15-servicenow':'Bài 15. ServiceNow',
+  '17-aws-cli-s3':'Bài 17. AWS CLI và S3',
+  '18-oracle-database':'Bài 18. Oracle Database',
+  '19-oracle-web-app-server':'Bài 19. OHS, WebLogic, Tuxedo'
+};
+const NODE_LES={
+  ohs:['19-oracle-web-app-server'],wls:['19-oracle-web-app-server'],tux:['19-oracle-web-app-server'],
+  ora:['18-oracle-database'],mf:['04-datamagic'],
+  hulft:['03-hulft'],dm:['04-datamagic','01-encoding-csv-duong-dan'],s3:['17-aws-cli-s3'],
+  fs:['13-windows-file-server','14-samba'],excel:['06-excel-pivot-chart','01-encoding-csv-duong-dan'],
+  op:['07-access-gateway'],snow:['15-servicenow'],ac:['07-access-gateway'],psg:['07-access-gateway'],
+  srv:['10-rhel','12-windows-server'],esrec:['08-ess-rec'],slm:['09-slm']
+};
+const FC={online:'var(--on)',batch:'var(--bt)',admin:'var(--ad)'};
+const FS={online:'var(--on-soft)',batch:'var(--bt-soft)',admin:'var(--ad-soft)'};
+const W=130,H=52;
+// node: x,y,flow,name,sub,flag('as'|'uv'|null),detail
+const N={
+ user:{x:30,y:80,f:'online',name:'Người dùng',sub:'trình duyệt',
+   does:['Gửi request HTTPS từ trình duyệt tới địa chỉ public của hệ thống.'],
+   logs:['Phía hệ thống không có log riêng cho người dùng; bắt đầu tìm từ log của load balancer.'],
+   issues:['Lỗi DNS, chứng chỉ SSL hết hạn, mạng nội bộ của khách hàng chặn (kinh nghiệm thường gặp).'],src:[]},
+ lb:{x:190,y:80,f:'online',name:'Load balancer',sub:'phân tải vào OHS',
+   does:['Nhận request và chia cho các OHS đang khỏe dựa trên health check.','Có thể kết thúc SSL tại đây hoặc chuyển thẳng (tùy cấu hình).'],
+   logs:['Tùy sản phẩm LB. Loại LB chưa được nêu, nên chưa chỉ ra đường dẫn log cụ thể.'],
+   issues:['Health check sai đường dẫn làm loại nhầm node.','Session dính (sticky) không đều làm một OHS quá tải.','Chứng chỉ SSL hết hạn (kinh nghiệm thường gặp).'],
+   note:'Chưa biết loại load balancer (thiết bị phần cứng hay dịch vụ cloud). Nên hỏi lại khi phỏng vấn.',src:[]},
+ ohs:{x:350,y:80,f:'online',name:'OHS',sub:'Oracle HTTP Server',vendor:'Oracle',
+   does:['Web server phía trước. Dùng plug-in <code>mod_wl_ohs</code> (đi kèm OHS) để chuyển request tới WebLogic.','Mỗi <code>&lt;Location&gt;</code> bật <code>WLSRequest On</code> và trỏ tới <code>WebLogicCluster host:port,...</code>; plug-in chia vòng tròn (round-robin) và tự cập nhật danh sách node khi bật Dynamic Server List.'],
+   logs:['Cấu hình plug-in: <code>DOMAIN_HOME/config/fmwconfig/components/OHS/&lt;component&gt;/mod_wl_ohs.conf</code>.','Chế độ ODL-text (mặc định): log ở <code>OraLogDir</code>, tên <code>&lt;instance-name&gt;.log</code>. Lỗi plug-in gắn tên module <code>weblogic</code>.','Bản 14.1.2: <code>WLLogFile</code> và <code>Debug</code> đã bị bỏ qua; muốn log chi tiết thì đặt <code>OraLogSeverity TRACE:16</code>.'],
+   issues:['<code>CONNECTION_REFUSED</code>: WebLogic không lắng nghe ở host:port đã khai.','<code>READ_TIMEOUT</code>: WebLogic không trả lời trong <code>WLIOTimeoutSecs</code>.','POST vượt <code>MaxPostSize</code>.','Kết thúc SSL ở phía trước nhưng thiếu <code>WLProxySSL ON</code> hoặc chưa bật WebLogic Plug-In Enabled.'],src:['ohs']},
+ wls:{x:510,y:80,f:'online',name:'WebLogic',sub:'Java EE app server',vendor:'Oracle',
+   does:['Chạy ứng dụng Java nghiệp vụ. Gọi Oracle qua JDBC, và gọi service Tuxedo qua WebLogic Tuxedo Connector (WTC) nếu có Tuxedo.'],
+   logs:['Log từng server: <code>DOMAIN/servers/SERVER_NAME/logs/SERVER_NAME.log</code>.','Log domain (trên Admin Server): <code>DOMAIN/servers/ADMIN/logs/DOMAIN_NAME.log</code>.','HTTP access log mặc định cùng thư mục <code>logs</code> với server log.'],
+   issues:['Thread bị kẹt (stuck thread) khi chờ DB hoặc Tuxedo lâu.','Connection pool JDBC cạn, thiếu bộ nhớ heap, GC kéo dài.','Một Managed Server chết và plug-in OHS phải chuyển hướng (kinh nghiệm thường gặp).'],src:['wlslog']},
+ tux:{x:670,y:80,f:'online',name:'Tuxedo',sub:'transaction monitor',flag:'as',vendor:'Oracle',
+   does:['Chạy các service giao dịch (thường viết bằng C/COBOL). WebLogic gọi vào qua WTC: cấu hình <code>wtc-local-tux-dom</code>, <code>wtc-remote-tux-dom</code> và <code>wtc-import</code> ánh xạ tên service; phía Tuxedo là tiến trình gateway <code>GWTDOMAIN</code>.'],
+   logs:['ULOG: file văn bản <code>ULOG.mmddyy</code>, mặc định trong <code>$APPDIR</code>, đổi chỗ bằng <code>ULOGPFX</code> trong mục <code>MACHINES</code> của <code>UBBCONFIG</code>. Mỗi ngày một file.','TLOG: file nhị phân theo dõi giao dịch toàn cục, chỉ TMS đọc; xem bằng <code>tmadmin</code> → <code>dumptlog</code>.'],
+   issues:['<code>tperrno</code> = <code>TPESYSTEM</code> hoặc <code>TPEOS</code>: chi tiết đã ghi vào ULOG. Đọc dòng lỗi <b>sớm nhất</b> vì thường chỉ đúng nguyên nhân gốc.','Kết nối WTC đặt <code>ON_DEMAND</code> thì không có failover; failover cần <code>ON_STARTUP</code> hoặc <code>INCOMING_ONLY</code>.','Cấu hình security của WTC không khớp <code>*DM_LOCAL_DOMAINS</code> phía Tuxedo.'],
+   note:'Chưa xác nhận hệ thống có Tuxedo hay WebLogic gọi thẳng Oracle.',src:['wtc','tuxlog']},
+ ora:{x:830,y:80,f:'online',name:'Oracle DB',sub:'cơ sở dữ liệu',vendor:'Oracle',
+   does:['Lưu dữ liệu nghiệp vụ. WebLogic kết nối qua JDBC data source (và Tuxedo, nếu có).'],
+   logs:['Alert log và trace nằm trong Automatic Diagnostic Repository (ADR); gốc ADR do tham số <code>DIAGNOSTIC_DEST</code> quyết định.'],
+   issues:['Khóa (lock) giữa các session, câu SQL chậm sau khi thống kê thay đổi, tablespace đầy, số session vượt giới hạn (kinh nghiệm thường gặp).'],src:['oradiag']},
+ mf:{x:830,y:196,f:'online',name:'Mainframe',sub:'hệ thống lõi?',flag:'as',
+   does:['Có thể là hệ thống lõi phía sau Tuxedo, hoặc nguồn file cho batch đêm. Chưa xác nhận vai trò.'],
+   logs:['Chưa xác định.'],issues:['Chuyển mã EBCDIC ↔ ký tự Nhật/UTF-8 khi trao đổi file (nếu Mainframe là nguồn file; HULFT có thiết lập bảng mã khi truyền).'],
+   note:'Cả khối và kết nối tới Mainframe đều là giả định.',src:['hulftenv']},
+ jp1:{x:30,y:290,f:'batch',name:'JP1/AJS3',sub:'lập lịch job',flag:'as',vendor:'Hitachi',
+   does:['Tự động chạy job theo lịch hoặc theo sự kiện. <b>Manager</b> giữ định nghĩa jobnet và lịch, gửi job xuống <b>Agent</b> chạy; <b>View</b> / <b>Web Console</b> để định nghĩa và theo dõi.','Job là đơn vị nhỏ nhất (lệnh, script); jobnet là chuỗi job có thứ tự. JP1/Base là điều kiện bắt buộc trên Manager và Agent.'],
+   logs:['Trạng thái và kết quả chạy xem trên View hoặc Web Console. Đường dẫn file log cụ thể nằm trong cuốn Troubleshooting, trang này chưa dẫn chi tiết.'],
+   issues:['Job lỗi làm jobnet dừng, các bước sau không chạy.','Agent không liên lạc được với Manager.','Jobnet chạy quá giờ kết thúc dự kiến (kinh nghiệm thường gặp).'],
+   note:'Chưa xác nhận bộ lập lịch thật sự là JP1/AJS3.',src:['jp1','jp1res']},
+ hulft:{x:210,y:290,f:'batch',name:'HULFT',sub:'truyền file',vendor:'Saison Technology',
+   does:['Truyền file giữa các máy với xác nhận hai phía, chuyển mã, nén, và chạy job trước/sau khi gửi hoặc nhận. Thường được job JP1 gọi bằng lệnh <code>utlsend</code>.','Cổng mặc định HULFT10: nhận 30000, Observe 31000, lệnh 32000.'],
+   logs:['Năm loại log: Send Log, Receive Log, Observe Log (yêu cầu gửi từ phía nhận), Job Execution Log, Schedule Log.','Xem bằng HULFT Management Console hoặc lệnh <code>utllist</code>.'],
+   issues:['Rớt mạng giữa chừng: kiểm tra mã lỗi rồi gửi lại.','File ID chưa khai báo ở phía nhận.','<code>utllist</code> trả 103: lỗi quyền trên file log; 109: không thấy file log.'],src:['hulftlog','utllist','hulftenv']},
+ dm:{x:390,y:290,f:'batch',name:'DataMagic',sub:'chuyển đổi dữ liệu',vendor:'Saison Technology (dòng HULFT)',
+   does:['Công cụ xử lý và chuyển đổi dữ liệu, cấu hình bằng GUI thay vì viết chương trình: trích xuất, làm sạch, đổi định dạng, thống nhất bảng mã, loại bản ghi trùng.'],
+   logs:['Tài liệu tổng quan không nêu vị trí log. Cần xem manual của phiên bản đang dùng.'],
+   issues:['File đầu vào sai layout hoặc sai bảng mã làm chuyển đổi lỗi.','Bản ghi không hợp lệ bị loại mà không ai để ý (kinh nghiệm thường gặp).'],
+   note:'Cách HULFT kích hoạt DataMagic (job sau nhận hay jobnet JP1 kế tiếp) chưa xác nhận.',src:['dm']},
+ s3:{x:590,y:226,f:'batch',name:'Amazon S3',sub:'lưu trữ object',vendor:'AWS',
+   does:['Lưu file kết quả để hệ thống khác hoặc người dùng lấy về.'],
+   logs:['CloudTrail data events: AWS khuyến nghị dùng cho thao tác mức bucket và object, giao log khoảng 5 phút.','Server access log: có thêm lỗi xác thực và các sự kiện lifecycle mà CloudTrail không ghi.'],
+   issues:['<code>AccessDenied</code> do IAM hoặc bucket policy.','Ghi đè file cùng tên khi chưa bật versioning (kinh nghiệm thường gặp).'],src:['s3log','s3ct']},
+ fs:{x:590,y:330,f:'batch',name:'File server',sub:'thư mục dùng chung',
+   does:['Nơi đặt file kết quả cho người dùng nội bộ mở.'],
+   logs:['Tùy hệ điều hành và giao thức chia sẻ; chưa xác định.'],
+   issues:['Đầy dung lượng, sai quyền thư mục, file đang bị người dùng mở nên không ghi đè được (kinh nghiệm thường gặp).'],src:[]},
+ excel:{x:790,y:330,f:'batch',name:'Excel',sub:'báo cáo cho người dùng',
+   does:['Người dùng mở báo cáo vào buổi sáng.'],
+   logs:['Không có log phía hệ thống.'],
+   issues:['Lỗi phông chữ hoặc bảng mã khi mở CSV bằng Excel (kinh nghiệm thường gặp).'],
+   note:'Tài liệu DataMagic không liệt kê cụ thể định dạng Excel. Cần xác nhận file đầu ra là .xlsx hay CSV mở bằng Excel.',src:['dm']},
+ op:{x:30,y:444,f:'admin',name:'Người vận hành',sub:'operator / admin',
+   does:['Tạo yêu cầu thay đổi, chờ phê duyệt, rồi mới được cấp quyền vào server.'],
+   logs:['Yêu cầu nằm ở ServiceNow (ticket), log phiên ở Access Check, ghi hình ở ESS REC.'],
+   issues:['Làm ngoài khung giờ đã duyệt, dùng chung tài khoản (kinh nghiệm thường gặp).'],src:[]},
+ snow:{x:190,y:444,f:'admin',name:'ServiceNow',sub:'change request',vendor:'ServiceNow',
+   does:['Quản lý yêu cầu thay đổi. Khi được duyệt, change chuyển sang Scheduled; bị từ chối thì quay về New. Implement tự tạo hai task: thực hiện và kiểm thử sau thực hiện. Review hủy các task mở; Closed cần close code và ghi chú.'],
+   logs:['Lịch sử và work notes trên chính bản ghi change request; lý do hủy được ghi vào Work Notes.'],
+   issues:['Change đã duyệt nhưng thực hiện ngoài cửa sổ thời gian.','Task tạo tay không tự hủy ở Review, phải đóng trước khi đóng change.'],src:['snow']},
+ ac:{x:350,y:444,f:'admin',name:'Access Check',sub:'gateway đặc quyền',vendor:'NRI SecureTechnologies (SecureCube Access Check)',
+   does:['Gateway truy cập đặc quyền: phiên SSH, RDP, SCP tới server đi qua nó. Không cần cài gì lên server hay máy người dùng.','<b>Trước</b> khi làm: xin và duyệt ngay trên Access Check, có duyệt sau và duyệt nhiều cấp. <b>Trong</b> khi làm: chỉ cho vào theo yêu cầu đã duyệt và tự đăng nhập bằng ID đặc quyền, người vận hành không cần biết mật khẩu. <b>Sau</b> khi làm: tự liên kết yêu cầu với log để kiểm toán.','Mật khẩu ID đặc quyền được quản lý tập trung và đổi tự động.'],
+   logs:['Log thao tác được mã hoá, chỉ người được phân quyền mới xem. Từ bản 5.2.0 có ghi hình thao tác.','Vị trí lưu cụ thể chưa có trong tài liệu công khai.'],
+   issues:['Không vào được dù trước đây được: yêu cầu đã hết hạn, hoặc mật khẩu ID vừa bị đổi tự động.','Vào gateway được nhưng không vào được server: firewall từ gateway tới đích, đích đổi IP hoặc host key.','Đổi mật khẩu tự động làm hỏng job hay ứng dụng đang dùng chung tài khoản đó.','Server vẫn cho SSH thẳng, không qua gateway, nên mọi kiểm soát bị vượt qua (kinh nghiệm thường gặp).'],
+   note:'Access Check có quy trình xin và duyệt riêng. Việc nó đọc trạng thái change trên ServiceNow như mũi tên trên sơ đồ là giả định, chưa xác nhận.',src:['ac','acproto','acrec']},
+ psg:{x:510,y:444,f:'admin',name:'PS Gateway',sub:'cổng phiên truy cập?',flag:'as',
+   does:['Giả định: điểm trung chuyển phiên vào server, sau khi Access Check cho phép.'],
+   logs:['Chưa xác định.'],issues:['Gateway quá tải hoặc chết thì không ai vào được server (giả định).'],
+   note:'Chưa xác định được PS Gateway là sản phẩm nào. Một phỏng đoán là パワーセキュリティ (PowerSecurity) của Hitachi Solutions, cũng là gateway đặc quyền, nhưng trang sản phẩm không dùng tên "PS Gateway". Cũng có thể là tên nội bộ của dự án. Access Check bản thân đã là gateway, nên PS Gateway đứng ở đâu trong chuỗi này cũng chưa rõ.',src:[]},
+ srv:{x:690,y:444,f:'admin',name:'Server mục tiêu',sub:'Web / AP / Batch',
+   does:['Các máy chạy OHS, WebLogic, batch… mà người vận hành cần thao tác.'],
+   logs:['Log hệ điều hành và log của từng phần mềm (xem các khối ở luồng online và batch).'],
+   issues:['Thay đổi tay không đi qua release làm lệch cấu hình giữa các node (kinh nghiệm thường gặp).'],src:[]},
+ esrec:{x:690,y:548,f:'admin',name:'ESS REC',sub:'ghi lại thao tác',vendor:'Hitachi Solutions',
+   does:['Ghi lại thao tác bằng tài khoản đặc quyền dưới dạng video, kèm văn bản trên màn hình, tiêu đề cửa sổ, phím gõ, chương trình đã chạy, kết nối mạng.','Có agent thường trú trên server/máy trạm được ghi; quản trị qua giao diện web. Hỗ trợ Windows, UNIX/Linux, môi trường ảo và VDI.','Có thể đặt quy tắc để cảnh báo hoặc khóa màn hình theo thời gian thực, và tạo báo cáo kiểm toán.'],
+   logs:['Dữ liệu ghi hình lưu tập trung, tìm kiếm qua giao diện web.'],
+   issues:['Agent không chạy trên server mới nên không có bản ghi (kinh nghiệm thường gặp).','Dung lượng lưu trữ bản ghi tăng nhanh.'],src:['essrec','eac']},
+ slm:{x:510,y:548,f:'admin',name:'JP1/SLM',sub:'giám sát dịch vụ web',flag:'as',vendor:'Hitachi',
+   does:['JP1/Service Level Management đo xem người dùng thật có được dịch vụ web phục vụ đủ tốt không, qua ba chỉ số: thời gian phản hồi trung bình, thông lượng, tỷ lệ lỗi.','<b>UR</b> (User Response) đọc bản sao gói HTTP mà switch chép sang cổng mirror, nên không nằm trên đường đi của người dùng. <b>Manager</b> tổng hợp, phát hiện vượt ngưỡng, xu hướng và ngoại lệ, rồi xuất báo cáo.','Không đưa bản phát hành lên server; nó chỉ quan sát.'],
+   logs:['Theo manual (đường dẫn Windows): log Manager ở <code>&lt;thư mục cài Manager&gt;\\mgr\\logs\\</code>, log UR ở <code>&lt;thư mục cài UR&gt;\\ur\\logs\\</code>.','Log theo dõi hợp nhất: <code>HNTRLib2\\spool\\hntr2N.log</code>, <code>N</code> từ 1 đến 4. Thêm Windows Event Log.'],
+   issues:['Không có số liệu: cấu hình mirror, dịch vụ UR, card mạng, kết nối UR tới Manager.','Mất số liệu sau khi chuyển sang HTTPS: đoạn mạng được mirror đang mã hoá.','Ứng dụng lỗi mà tỷ lệ lỗi vẫn thấp: trang báo lỗi trả về HTTP 200 (kinh nghiệm thường gặp).'],
+   note:'Đoạn mạng nào được mirror cho UR, trước hay sau load balancer, chưa xác nhận. Vì vậy mũi tên tới JP1/SLM vẫn là giả định.',src:['slm','slmcfg','slmlog']}
+};
+// edges: id,from,to,flow,label,flag, path builder
+function R(n){return{x:N[n].x+W,y:N[n].y+H/2}}function L(n){return{x:N[n].x,y:N[n].y+H/2}}
+function T(n,dx){return{x:N[n].x+(dx??W/2),y:N[n].y}}function B(n,dx){return{x:N[n].x+(dx??W/2),y:N[n].y+H}}
+function curve(a,b){const mx=(a.x+b.x)/2;return`M${a.x},${a.y} C${mx},${a.y} ${mx},${b.y} ${b.x},${b.y}`;}
+const E={
+ e_user_lb:{f:'online',d:()=>curve(R('user'),L('lb')),lab:'HTTPS'},
+ e_lb_ohs:{f:'online',d:()=>curve(R('lb'),L('ohs'))},
+ e_ohs_wls:{f:'online',d:()=>curve(R('ohs'),L('wls')),lab:'mod_wl_ohs'},
+ e_wls_tux:{f:'online',d:()=>curve(R('wls'),L('tux')),lab:'WTC',as:1},
+ e_wls_ora:{f:'online',d:()=>{const a=T('wls'),b=T('ora');return`M${a.x},${a.y} C${a.x},${a.y-46} ${b.x},${b.y-46} ${b.x},${b.y}`;},lab:'JDBC',lx:735,ly:44},
+ e_tux_mf:{f:'online',d:()=>{const a=B('tux'),b=L('mf');return`M${a.x},${a.y} C${a.x},${b.y} ${a.x},${b.y} ${b.x},${b.y}`;},as:1,lab:'?',lx:745,ly:212},
+ e_jp1_hulft:{f:'batch',d:()=>curve(R('jp1'),L('hulft')),lab:'utlsend'},
+ e_hulft_dm:{f:'batch',d:()=>curve(R('hulft'),L('dm'))},
+ e_dm_s3:{f:'batch',d:()=>curve(R('dm'),L('s3'))},
+ e_dm_fs:{f:'batch',d:()=>curve(R('dm'),L('fs'))},
+ e_fs_excel:{f:'batch',d:()=>curve(R('fs'),L('excel'))},
+ e_op_snow:{f:'admin',d:()=>curve(R('op'),L('snow')),lab:'change'},
+ e_snow_ac:{f:'admin',d:()=>curve(R('snow'),L('ac')),as:1,lab:'đã duyệt'},
+ e_ac_psg:{f:'admin',d:()=>curve(R('ac'),L('psg')),as:1},
+ e_psg_srv:{f:'admin',d:()=>curve(R('psg'),L('srv')),as:1,lab:'phiên'},
+ e_srv_esrec:{f:'admin',d:()=>{const a=B('srv'),b=T('esrec');return`M${a.x},${a.y} L${b.x},${b.y}`;},lab:'ghi lại',lx:795,ly:526},
+ e_srv_slm:{f:'admin',d:()=>{const a={x:N.srv.x,y:N.srv.y+H-6},b=R('slm');return`M${a.x},${a.y} C${a.x-30},${a.y} ${b.x+30},${b.y} ${b.x},${b.y}`;},as:1,lab:'bản sao HTTP',lx:606,ly:528}
+};
+const FLOWS={
+ online:{title:'① Request online',steps:[
+  {n:['user','lb'],e:'e_user_lb',t:'Người dùng gửi request',x:'Trình duyệt gửi HTTPS tới địa chỉ public. Load balancer nhận đầu tiên.'},
+  {n:['lb','ohs'],e:'e_lb_ohs',t:'Load balancer chọn một OHS',x:'LB chỉ chuyển cho OHS đang qua health check. Nếu SSL kết thúc ở đây thì từ LB vào OHS có thể là HTTP nội bộ.'},
+  {n:['ohs','wls'],e:'e_ohs_wls',t:'OHS chuyển tới WebLogic',x:'Plug-in <code>mod_wl_ohs</code> khớp <code>&lt;Location&gt;</code> có <code>WLSRequest On</code>, chọn một server trong <code>WebLogicCluster</code> theo vòng tròn. Request tĩnh có thể được OHS trả luôn.'},
+  {n:['wls','tux'],e:'e_wls_tux',t:'WebLogic gọi service Tuxedo (giả định)',x:'Nếu có Tuxedo: ứng dụng gọi một service đã <code>wtc-import</code>, WTC chuyển qua access point tới gateway <code>GWTDOMAIN</code> phía Tuxedo.'},
+  {n:['wls','ora'],e:'e_wls_ora',t:'WebLogic truy vấn Oracle',x:'Ứng dụng lấy connection từ JDBC data source, đọc/ghi dữ liệu rồi trả connection về pool.'},
+  {n:['ora','wls','ohs','lb','user'],e:'e_user_lb',rev:1,t:'Response quay về',x:'Kết quả đi ngược lại qua WebLogic → OHS → LB → người dùng. Khi điều tra chậm, so thời gian ở access log từng tầng để biết tầng nào tốn thời gian.'}
+ ]},
+ batch:{title:'② Batch đêm',steps:[
+  {n:['jp1'],t:'JP1/AJS3 khởi động jobnet (giả định)',x:'Đến giờ đã lập lịch, Manager chạy jobnet và gửi từng job xuống Agent trên máy batch.'},
+  {n:['jp1','hulft'],e:'e_jp1_hulft',t:'Job gọi HULFT gửi file',x:'Một job trong jobnet chạy <code>utlsend -f FILEID</code>. HULFT ghi Send Log bên gửi và Receive Log bên nhận.'},
+  {n:['hulft','dm'],e:'e_hulft_dm',t:'DataMagic chuyển đổi dữ liệu',x:'File đến được DataMagic đổi định dạng, thống nhất bảng mã, lọc bản ghi lỗi. Cách kích hoạt (job sau nhận của HULFT hay job JP1 kế tiếp) chưa xác nhận.'},
+  {n:['dm','s3'],e:'e_dm_s3',t:'Đưa kết quả lên S3',x:'File kết quả được ghi lên bucket S3. Thao tác có thể truy vết bằng CloudTrail data events.'},
+  {n:['dm','fs'],e:'e_dm_fs',t:'Đưa kết quả lên file server',x:'Bản sao đặt vào thư mục dùng chung cho người dùng nội bộ.'},
+  {n:['fs','excel'],e:'e_fs_excel',t:'Người dùng mở báo cáo Excel',x:'Sáng hôm sau người dùng mở file. Nếu bước nào ở trên lỗi, đây là nơi người dùng phát hiện đầu tiên, nên cần cảnh báo sớm hơn thế.'}
+ ]},
+ admin:{title:'③ Quản trị',steps:[
+  {n:['op','snow'],e:'e_op_snow',t:'Tạo change request',x:'Người vận hành tạo change trên ServiceNow, mô tả việc sẽ làm và khung giờ.'},
+  {n:['snow'],t:'Phê duyệt',x:'Được duyệt thì change sang Scheduled; bị từ chối thì quay về New.'},
+  {n:['snow','ac'],e:'e_snow_ac',t:'Xin quyền trên Access Check',x:'Người vận hành xin dùng ID đặc quyền trên Access Check, ghi lý do và khung giờ theo change đã duyệt. Access Check có quy trình duyệt riêng; nó có đọc trạng thái change trên ServiceNow hay không thì chưa xác nhận.'},
+  {n:['ac','psg'],e:'e_ac_psg',t:'Đi qua PS Gateway (giả định)',x:'Access Check tự đăng nhập bằng ID đặc quyền nên người vận hành không cần biết mật khẩu. Phiên đi qua gateway trung chuyển, không vào thẳng server. PS Gateway là gì và đứng ở đâu trong chuỗi này chưa xác nhận.'},
+  {n:['psg','srv'],e:'e_psg_srv',t:'Thao tác trên server',x:'Người vận hành làm việc theo change đã duyệt.'},
+  {n:['srv','esrec'],e:'e_srv_esrec',t:'ESS REC ghi lại',x:'Agent ESS REC trên server ghi video, phím gõ, chương trình đã chạy. Kiểm toán đối chiếu với ticket để tìm thao tác không được duyệt.'},
+  {n:['srv','slm'],e:'e_srv_slm',t:'JP1/SLM theo dõi chất lượng dịch vụ',x:'Song song với các bước trên, UR của JP1/SLM đọc bản sao gói HTTP tới web server và báo khi thời gian phản hồi, thông lượng hay tỷ lệ lỗi vượt ngưỡng. Sau một thay đổi, đây là nơi thấy sớm người dùng có bị chậm đi không. Đoạn mạng nào được mirror chưa xác nhận.'}
+ ]}
+};
+
+const st={flow:'all',step:-1,sel:'ohs',timer:null,raf:null};
+const NS='http://www.w3.org/2000/svg';
+function el(t,a,txt){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;}
+
+function draw(){
+  const svg=$('svg');svg.innerHTML='';
+  const defs=el('defs',{});
+  const pat=el('pattern',{id:'grid',width:20,height:20,patternUnits:'userSpaceOnUse'});pat.appendChild(el('path',{d:'M20 0H0V20',fill:'none',stroke:'var(--grid)','stroke-width':1}));defs.appendChild(pat);
+  ['on','bt','ad','as','mute'].forEach(k=>{const m=el('marker',{id:'ar-'+k,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'});m.appendChild(el('path',{d:'M0,0L10,5L0,10z',fill:k==='mute'?'var(--line)':`var(--${k})`}));defs.appendChild(m);});
+  svg.appendChild(defs);
+  svg.appendChild(el('rect',{x:0,y:0,width:1000,height:640,fill:'url(#grid)'}));
+  const bands=[['online',28,156,'① ONLINE · ban ngày'],['batch',180,226,'② BATCH ĐÊM'],['admin',418,212,'③ QUẢN TRỊ']];
+  const cur=st.flow!=='all'?FLOWS[st.flow].steps[st.step]:null;
+  bands.forEach(([f,y,h,t])=>{
+    const g=el('g',{class:st.flow!=='all'&&st.flow!==f?'dim':''});
+    g.appendChild(el('rect',{x:10,y,width:980,height:h,rx:8,fill:FS[f],opacity:.45,stroke:FC[f],'stroke-opacity':.35}));
+    g.appendChild(el('text',{x:22,y:y+18,'font-size':12,'font-weight':600,fill:FC[f],'letter-spacing':'.08em'},t));
+    svg.appendChild(g);
+  });
+  // edges
+  const fk={online:'on',batch:'bt',admin:'ad'};
+  Object.entries(E).forEach(([id,e])=>{
+    const active=cur&&cur.e===id;
+    const inFlow=st.flow==='all'||st.flow===e.f;
+    const done=cur&&FLOWS[st.flow].steps.slice(0,st.step).some(s=>s.e===id);
+    const col=e.as?'var(--as)':FC[e.f];
+    const g=el('g',{class:inFlow?'':'dim'});
+    const p=el('path',{id:'p-'+id,d:e.d(),fill:'none',stroke:col,'stroke-width':active?3.5:(done?2.4:1.8),'stroke-dasharray':e.as?'6 5':'','marker-end':`url(#ar-${e.as?'as':fk[e.f]})`,opacity:cur&&!active&&!done&&inFlow?.45:1});
+    g.appendChild(p);
+    svg.appendChild(g);
+  });
+  // Edge labels are drawn after the nodes so a box never covers them. A label without a
+  // fixed position sits on the middle of its arrow; the dashed orange line already marks
+  // an assumed link, so the label only needs to say what flows.
+  const labels=[];
+  Object.entries(E).forEach(([id,e])=>{
+    if(!e.lab&&!e.as) return;
+    let x=e.lx,y=e.ly;
+    if(x==null){const p=$('p-'+id);const pt=p.getPointAtLength(p.getTotalLength()/2);x=pt.x;y=pt.y+3.5;}
+    const g=el('g',{class:st.flow==='all'||st.flow===e.f?'':'dim'});
+    g.appendChild(el('text',{x,y,'text-anchor':'middle','font-size':10.5,fill:e.as?'var(--as)':'var(--mute)','font-weight':e.as?700:500,'paint-order':'stroke',stroke:'var(--sheet)','stroke-width':4,'stroke-linejoin':'round'},e.lab||'giả định'));
+    labels.push(g);
+  });
+  // nodes
+  Object.entries(N).forEach(([id,n])=>{
+    const inFlow=st.flow==='all'||st.flow===n.f;
+    const hot=cur&&cur.n.includes(id);
+    const sel=st.sel===id;
+    const g=el('g',{class:'node'+(inFlow?'':' dim'),tabindex:0,role:'button','aria-label':n.name+(n.flag==='as'?' (giả định)':n.flag==='uv'?' (chưa đối chiếu)':'')});
+    const stroke=n.flag==='as'?'var(--as)':n.flag==='uv'?'var(--uv)':FC[n.f];
+    const fill=n.flag==='as'?'var(--as-soft)':n.flag==='uv'?'var(--uv-soft)':'var(--sheet)';
+    if(sel) g.appendChild(el('rect',{x:n.x-5,y:n.y-5,width:W+10,height:H+10,rx:9,fill:'none',stroke:'var(--ink)','stroke-width':2}));
+    g.appendChild(el('rect',{class:'box',x:n.x,y:n.y,width:W,height:H,rx:6,fill,stroke,'stroke-width':hot?3.2:1.6,'stroke-dasharray':n.flag==='as'?'6 4':n.flag==='uv'?'2 3':''}));
+    if(hot) g.appendChild(el('rect',{x:n.x,y:n.y,width:5,height:H,rx:2,fill:FC[n.f]}));
+    g.appendChild(el('text',{x:n.x+W/2,y:n.y+22,'text-anchor':'middle','font-size':14.5,'font-weight':700,fill:'var(--ink)'},n.name));
+    g.appendChild(el('text',{x:n.x+W/2,y:n.y+39,'text-anchor':'middle','font-size':11,fill:'var(--mute)'},n.sub));
+    if(n.flag){
+      const lab=n.flag==='as'?'GIẢ ĐỊNH':'CHƯA ĐỐI CHIẾU';const w=n.flag==='as'?62:96;
+      g.appendChild(el('rect',{x:n.x+W-w+6,y:n.y-10,width:w,height:16,rx:3,fill:n.flag==='as'?'var(--as)':'var(--uv)'}));
+      g.appendChild(el('text',{x:n.x+W-w/2+6,y:n.y+2,'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:'var(--sheet)','letter-spacing':'.06em'},lab));
+    }
+    g.addEventListener('click',()=>{st.sel=id;draw();renderDetail();});
+    g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();st.sel=id;draw();renderDetail();}});
+    svg.appendChild(g);
+  });
+  labels.forEach(g=>svg.appendChild(g));
+  animatePacket(cur);
+}
+function animatePacket(cur){
+  cancelAnimationFrame(st.raf);
+  if(!cur||!cur.e) return;
+  const p=$('p-'+cur.e); if(!p) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const dot=el('circle',{r:7,fill:FC[st.flow],stroke:'var(--sheet)','stroke-width':2.5});
+  $('svg').appendChild(dot);
+  const Lg=p.getTotalLength();
+  const place=f=>{const pt=p.getPointAtLength(cur.rev?Lg*(1-f):Lg*f);dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y);};
+  if(reduce){place(cur.rev?0.1:0.9);return;}
+  const t0=performance.now();
+  const loop=t=>{const f=((t-t0)%1400)/1400;place(f);st.raf=requestAnimationFrame(loop);};
+  st.raf=requestAnimationFrame(loop);
+}
+
+function renderDetail(){
+  const n=N[st.sel];const d=$('detail');
+  const flowName={online:'Luồng online',batch:'Luồng batch đêm',admin:'Luồng quản trị'}[n.f];
+  const li=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  d.innerHTML=`<div class="who"><span class="eyebrow">Chi tiết khối</span><h2>${n.name}</h2>${n.vendor?`<span class="vendor">${n.vendor}</span>`:''}</div>
+  <div class="badges"><span class="badge fl" style="color:${FC[n.f]}">${flowName}</span>${n.flag==='as'?'<span class="badge as">Giả định</span>':''}${n.flag==='uv'?'<span class="badge uv">Chưa đối chiếu tài liệu</span>':''}</div>
+  ${n.note?`<p class="warn${n.flag==='uv'?' uv':''}">${n.note}</p>`:''}
+  <div class="sec"><h4>Làm gì</h4>${li(n.does)}</div>
+  <div class="sec"><h4>Log ở đâu</h4>${li(n.logs)}</div>
+  <div class="sec"><h4>Sự cố hay gặp</h4>${li(n.issues)}</div>
+  ${NODE_LES[st.sel]?`<div class="sec les"><h4>Bài trong cẩm nang</h4>${li(NODE_LES[st.sel].map(k=>`<a href="./#/${k}">${LES[k]}</a>`))}</div>`:''}
+  <div class="sec src"><h4>Nguồn</h4>${n.src.length?li(n.src.map(k=>`<a href="${SRC[k][1]}" target="_blank" rel="noopener">${SRC[k][0]}</a>`)):'<p class="hint">Không có tài liệu hãng cho khối này; nội dung là mô tả vai trò và kinh nghiệm vận hành chung.</p>'}</div>`;
+}
+function renderNarr(){
+  const box=$('narr');
+  if(st.flow==='all'){box.innerHTML=`<span class="tag" style="color:var(--mute)">TOÀN CẢNH</span><p>Chọn một luồng ở trên rồi bấm Play. Hoặc bấm vào khối bất kỳ để xem chi tiết.</p>`;return;}
+  const F=FLOWS[st.flow];
+  if(st.step<0){box.innerHTML=`<span class="tag" style="color:${FC[st.flow]}">${F.title.toUpperCase()}</span><p>${F.steps.length} bước. Bấm Play để chạy tự động hoặc dùng ◀ ▶ để đi từng bước.</p>`;return;}
+  const s=F.steps[st.step];
+  box.innerHTML=`<span class="tag" style="color:${FC[st.flow]}">BƯỚC ${st.step+1}/${F.steps.length}</span><h3>${s.t}</h3><p>${s.x}</p>`;
+}
+function renderSteps(){
+  const ol=$('steplist');
+  if(st.flow==='all'){
+    $('steps-title').textContent='Các bước';
+    ol.innerHTML=Object.entries(FLOWS).map(([k,F])=>`<li><button data-flow="${k}" style="--k:${FC[k]}"><span class="n" style="color:${FC[k]}">●</span><span><b>${F.title}</b> · ${F.steps.length} bước</span></button></li>`).join('');
+    ol.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setFlow(b.dataset.flow)));
+    return;
+  }
+  const F=FLOWS[st.flow];$('steps-title').textContent='Các bước · '+F.title;
+  ol.innerHTML=F.steps.map((s,i)=>`<li><button data-i="${i}" style="--k:${FC[st.flow]}" ${i===st.step?'aria-current="step"':''}><span class="n">${String(i+1).padStart(2,'0')}</span><span>${s.t}</span></button></li>`).join('');
+  ol.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{stop();go(+b.dataset.i);}));
+}
+function renderControls(){
+  const all=st.flow==='all';const len=all?0:FLOWS[st.flow].steps.length;
+  $('prev').disabled=all||st.step<=0;$('next').disabled=all||st.step>=len-1;$('playbtn').disabled=all;
+  $('count').textContent=all?'–':`${Math.max(0,st.step+1)}/${len}`;
+  $('playbtn').textContent=st.timer?'❚❚ Dừng':(st.step>=len-1&&len?'↺ Chạy lại':'▶ Play');
+}
+function render(){draw();renderNarr();renderSteps();renderControls();}
+function go(i){
+  st.step=i;const s=FLOWS[st.flow].steps[i];
+  st.sel=s.rev?'user':s.n[s.n.length-1];
+  render();renderDetail();
+}
+function stop(){if(st.timer){clearInterval(st.timer);st.timer=null;}renderControls();}
+function setFlow(f){
+  stop();st.flow=f;st.step=-1;
+  $('flows').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===f));
+  if(f!=='all'){const first=FLOWS[f].steps[0].n[0];st.sel=first;}
+  render();renderDetail();
+}
+$('flows').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setFlow(b.dataset.f);});
+$('prev').addEventListener('click',()=>{stop();if(st.step>0)go(st.step-1);});
+$('next').addEventListener('click',()=>{stop();const len=FLOWS[st.flow].steps.length;if(st.step<len-1)go(st.step+1);});
+$('playbtn').addEventListener('click',()=>{
+  if(st.timer){stop();return;}
+  const len=FLOWS[st.flow].steps.length;
+  if(st.step>=len-1||st.step<0)go(0);
+  st.timer=setInterval(()=>{if(st.step>=len-1){stop();return;}go(st.step+1);},3200);
+  renderControls();
+});
+// sources list
+$('srclist').innerHTML=Object.values(SRC).map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('');
+render();renderDetail();
+})();
+</script>
+
+</body></html>
